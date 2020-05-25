@@ -1,0 +1,214 @@
+﻿<Window x:Class="naLauncherWPF.App.LauncherWindow"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:ext="clr-namespace:naLauncherWPF.App.Extensions"
+	xmlns:ctrl="clr-namespace:naLauncherWPF.App.Controls"
+	xmlns:model="clr-namespace:naLauncherWPF.App.Model"
+	mc:Ignorable="d"
+	Title="naLauncher.WPF" 
+	Name="MainWindow" 
+	Width="{Binding WindowSizeWidth, Mode=TwoWay}" Height="{Binding WindowSizeHeight, Mode=TwoWay}"
+	MinWidth="{Binding MinWindowSize.Width}" MinHeight="{Binding MinWindowSize.Height}"
+	Left="{Binding WindowPositionX, Mode=TwoWay}" Top="{Binding WindowPositionY, Mode=TwoWay}"
+	WindowStyle="None"
+	AllowsTransparency="True"
+	ResizeMode="CanResizeWithGrip"
+	Keyboard.KeyUp="MainWindow_KeyUp"
+	Mouse.MouseLeave="MainWindow_MouseLeave" 
+	Closing="MainWindow_Closing">
+
+	<Window.Resources>
+
+		<DropShadowEffect x:Key="BlackShadow16" BlurRadius="16" Color="Black" ShadowDepth="0" />
+		<DropShadowEffect x:Key="BlackShadow32" BlurRadius="32" Color="Black" ShadowDepth="0" />
+
+		<Style x:Key="HeaderLabel" TargetType="Label">
+			<Setter Property="Foreground" Value="#cccccc" />
+			<Setter Property="VerticalContentAlignment" Value="Center" />
+			<Setter Property="Background" Value="#dd111111" />
+
+			<Style.Triggers>
+				<Trigger Property="IsMouseOver" Value="True">
+					<Setter Property="Foreground" Value="White" />
+				</Trigger>
+			</Style.Triggers>
+		</Style>
+
+		<Style x:Key="Line" TargetType="Line">
+			<Setter Property="Stroke" Value="#cccccc" />
+			<Setter Property="StrokeThickness" Value="1" />
+
+			<Style.Triggers>
+				<Trigger Property="IsMouseOver" Value="True">
+					<Setter Property="Stroke" Value="White" />
+				</Trigger>
+			</Style.Triggers>
+		</Style>
+
+	</Window.Resources>
+
+	<Window.Background>
+		<SolidColorBrush Color="#dd222222"/>
+	</Window.Background>
+
+	<Window.DataContext>
+		<model:LauncherWindowViewModel />
+	</Window.DataContext>
+
+	<Border BorderThickness="1" BorderBrush="#dd111111">
+		<Grid>
+
+			<Grid.RowDefinitions>
+				<RowDefinition Height="32"/>
+				<RowDefinition Height="8"/>
+				<RowDefinition />
+				<RowDefinition Height="56"/>
+			</Grid.RowDefinitions>
+
+			<DockPanel Grid.Row="0">
+				<!--<Label DockPanel.Dock="Right" Name="HeaderCloseLabel"
+					Style="{StaticResource HeaderLabel}"
+					FontSize="{Binding HeaderFontSize}"
+					HorizontalContentAlignment="Center"
+					Width="32"
+					Content="X"
+					Mouse.MouseUp="HeaderCloseLabel_MouseUp">
+				</Label>-->
+
+				<Grid DockPanel.Dock="Right" Width="40" Background="#dd111111"
+					Mouse.MouseUp="HeaderCloseLabel_MouseUp">
+					<Line Style="{StaticResource Line}" X1="10" Y1="10" X2="22" Y2="22" />
+					<Line Style="{StaticResource Line}" X1="10" Y1="22" X2="22" Y2="10" />
+				</Grid>
+
+				<Grid DockPanel.Dock="Right" Width="32" Background="#dd111111">
+					<Line Style="{StaticResource Line}" X1="10" Y1="10" X2="22" Y2="10" />
+					<Line Style="{StaticResource Line}" X1="22" Y1="10" X2="22" Y2="22" />
+					<Line Style="{StaticResource Line}" X1="22" Y1="22" X2="10" Y2="22" />
+					<Line Style="{StaticResource Line}" X1="10" Y1="22" X2="10" Y2="10" />
+				</Grid>
+
+				<Grid DockPanel.Dock="Right" Width="32" Background="#dd111111">
+					<Line Style="{StaticResource Line}" X1="10" Y1="16" X2="22" Y2="16" />
+				</Grid>
+
+				<Label Name="HeaderLabel"
+					Style="{StaticResource HeaderLabel}"
+					FontSize="{Binding HeaderFontSize}"
+					HorizontalContentAlignment="Stretch"
+					Padding="16,0,0,0"
+					Content="naLauncher"
+					Mouse.MouseDown="MainWindow_MouseDown"
+					Mouse.MouseUp="MainWindow_MouseUp"
+					Mouse.MouseMove="MainWindow_MouseMove">
+				</Label>
+			</DockPanel>
+
+
+			<Grid Grid.Row="1">
+				<ProgressBar Name="LibraryUpdateProgressBar" 
+					Height="4" BorderThickness="0" VerticalAlignment="Top"
+					IsIndeterminate="{Binding IsProgressBarRunning}" 
+					Minimum="0" Maximum="100"
+	 				Background="Transparent" Foreground="LightSkyBlue" />
+			</Grid>
+
+			<Grid Grid.Row="2">
+				<ScrollViewer Name="GameGridScrollViewer"
+					HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"
+					PreviewMouseWheel="GameGridScrollViewer_PreviewMouseWheel">
+
+					<ItemsControl ItemsSource="{Binding FilteredGameControls}">
+
+						<ItemsControl.ItemsPanel>
+							<ItemsPanelTemplate>
+								<Grid Name="GameGrid"
+									Width="{Binding WindowSizeWidth}"
+							  		Mouse.MouseDown="MainWindow_MouseDown" 
+									Mouse.MouseUp="MainWindow_MouseUp" 
+									Mouse.MouseMove="MainWindow_MouseMove" 
+									ext:GridExtensions.ColumnDefinitions="{Binding ColumnDefinitions}"
+									ext:GridExtensions.RowDefinitions="{Binding RowDefinitions}">
+								</Grid>
+							</ItemsPanelTemplate>
+						</ItemsControl.ItemsPanel>
+
+						<ItemsControl.ItemContainerStyle>
+							<Style>
+								<Setter Property="Grid.Column" Value="{Binding ColumnIndex}" />
+								<Setter Property="Grid.Row" Value="{Binding RowIndex}" />
+							</Style>
+						</ItemsControl.ItemContainerStyle>
+
+						<!--<ctrl:GameControl />
+						<ctrl:GameControl />
+						<ctrl:GameControl />-->
+					</ItemsControl>
+
+				</ScrollViewer>
+			</Grid>
+
+			<DockPanel Grid.Row="3" Grid.RowSpan="2" Margin="16,8,16,16">
+
+				<Button Name="FilterButton"
+					Height="32" Padding="8,0,8,0" Margin="0,0,16,0" BorderThickness="1" BorderBrush="#333333"
+					Background="#222222" Foreground="#aaaaaa"
+					Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+					FontSize="{Binding TextFontSize}"
+					Effect="{StaticResource BlackShadow16}"
+					Command="{Binding ChangeFilterCommand}"
+					Content="{Binding Filter}" />
+
+				<Button Name="OrderButton" 
+					Height="32" Padding="8,0,8,0" Margin="0,0,16,0" BorderThickness="1" BorderBrush="#333333"
+					Background="#222222" Foreground="#aaaaaa"
+					Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+					FontSize="{Binding TextFontSize}"
+					Effect="{StaticResource BlackShadow16}"
+					Command="{Binding ChangeOrderCommand}"
+					Content="{Binding Order}" />
+
+				<Button Name="OrderDirectionButton" 
+					Height="32" Padding="8,0,8,0" Margin="0,0,16,0" BorderThickness="1" BorderBrush="#333333"
+					Background="#222222" Foreground="#aaaaaa"
+					Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+					FontSize="{Binding TextFontSize}"
+					Effect="{StaticResource BlackShadow16}"
+					Command="{Binding ChangeOrderDirectionCommand}"
+					Content="{Binding OrderDirection}" />
+
+				<Grid>
+					<TextBox Name="GameFilterInput" 
+						Height="32" Padding="7,0,0,0" BorderBrush="#333333"
+						VerticalContentAlignment="Center" 
+						Background="#222222" Foreground="#aaaaaa"
+						FontSize="{Binding TextFontSize}"
+						Effect="{StaticResource BlackShadow16}" 
+						Text="{Binding TitleFilter,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+					<TextBlock Text="Find game ..." 
+						Height="32" Padding="10,8,0,0"
+						FontSize="{Binding TextFontSize}"
+						Foreground="#444444" 
+						IsHitTestVisible="False"
+						VerticalAlignment="Center">
+						<TextBlock.Style>
+							<Style TargetType="{x:Type TextBlock}">
+								<Setter Property="Visibility" Value="Collapsed"/>
+								<Style.Triggers>
+									<DataTrigger Binding="{Binding Text, ElementName=GameFilterInput}" Value="">
+										<Setter Property="Visibility" Value="Visible"/>
+									</DataTrigger>
+								</Style.Triggers>
+							</Style>
+						</TextBlock.Style>
+					</TextBlock>
+				</Grid>
+
+			</DockPanel>
+
+		</Grid>
+	</Border>
+
+</Window>

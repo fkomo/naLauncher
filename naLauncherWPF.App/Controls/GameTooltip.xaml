@@ -1,0 +1,49 @@
+﻿<UserControl x:Class="naLauncherWPF.App.Controls.GameTooltip"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:naLauncherWPF.App.Controls"
+             mc:Ignorable="d"
+			 Background="#ee282828"
+			 BorderBrush="#ee383838"
+			 BorderThickness="2"
+			 Width="460"
+			 Height="215">
+	<StackPanel Orientation="Vertical">
+
+		<DockPanel Name="AddedPanel">
+			<Label Width="100" 
+			   Foreground="#aaaaaa"
+			   HorizontalContentAlignment="Right">Added:</Label>
+			<Label Name="AddedLabel" Foreground="#aaaaaa">More than 1 year ago</Label>
+		</DockPanel>
+
+		<DockPanel Name="TimePlayedPanel">
+			<Label Width="100"
+				   Foreground="#aaaaaa"
+				   HorizontalContentAlignment="Right">Time played:</Label>
+			<Label Name="TimePlayedLabel" Foreground="#aaaaaa" Content="123 hours"/>
+		</DockPanel>
+
+		<DockPanel Name="LastPlayedPanel">
+			<Label Width="100"
+				   Foreground="#aaaaaa"
+				   HorizontalContentAlignment="Right">Last played:</Label>
+			<Label Name="LastPlayedLabel" Foreground="#aaaaaa">3 hours ago</Label>
+		</DockPanel>
+
+		<DockPanel>
+			<Label Width="100"
+				   Foreground="#aaaaaa"
+				   HorizontalContentAlignment="Right">Developed by:</Label>
+			<Label Foreground="#aaaaaa">Devlolver</Label>
+		</DockPanel>
+
+		<DockPanel Name="SummaryPanel">
+			<TextBlock Name="SummaryLabel" 
+					   Padding="8,4,8,8" Foreground="#aaaaaa" TextWrapping="WrapWithOverflow">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</TextBlock>
+		</DockPanel>
+
+	</StackPanel>
+</UserControl>
