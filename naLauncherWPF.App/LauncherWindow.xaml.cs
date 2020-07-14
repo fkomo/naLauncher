@@ -11,6 +11,7 @@ namespace naLauncherWPF.App
 	// TODO skin question message boxes
 	// TODO application context menu
 	// TODO merge game library with another one (from different device)
+	// TODO upload/download library to/from google drive
 
 	public enum SmoothScrollingMode
 	{
