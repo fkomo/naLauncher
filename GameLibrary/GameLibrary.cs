@@ -38,6 +38,7 @@ namespace GameLibrary
 		Rating = 3,
 		LastPlayed = 4,
 		BeatenIn = 5,
+		Added = 6,
 
 		Count
 	}
@@ -123,6 +124,7 @@ namespace GameLibrary
 				case GameOrder.PlayCount: games = games.OrderBy(g => g.Value.PlayCount); break;
 				case GameOrder.Rating: games = games.OrderBy(g => g.Value.Rating); break;
 				case GameOrder.BeatenIn: games = games.OrderBy(g => g.Value.BeatenIn); break;
+				case GameOrder.Added: games = games.OrderBy(g => g.Value.Added); break;
 				case GameOrder.LastPlayed:
 					{
 						games = games

@@ -3,27 +3,25 @@ using naLauncherWPF.App.Controls;
 using naLauncherWPF.App.Helpers;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
 using Ujeby.Common.Tools;
-using Ujeby.Common.Tools.Extensions;
 
 namespace naLauncherWPF.App.Model
 {
-	public class LauncherWindowViewModel : ObservableObject
+	public class LauncherWindowViewModel2 : ObservableObject
 	{
-		public LauncherWindowViewModel()
+		public LauncherWindowViewModel2()
 		{
 			GameLibrary.GameLibrary.Load();
 
-			using (var tb = new TimedBlock($"LauncherWindowViewModel({ GameLibrary.GameLibrary.Games.Count })#CreateAllGameControls"))
+			using (var tb = new TimedBlock($"LauncherWindowViewModel2({ GameLibrary.GameLibrary.Games.Count })#CreateAllGameControls"))
 			{
 				// all controls must be created on STA thread, so better create controls for all games now
-				allGameControls = GameLibrary.GameLibrary.Games
-					.Select(g => 
+				allGames = GameLibrary.GameLibrary.Games
+					.Select(g =>
 						new GameControl(g.Key, RebuildGameGrid, ProgressBarStartStop)
 						{
 							Width = Const.GameControlSize.Width,
@@ -38,14 +36,14 @@ namespace naLauncherWPF.App.Model
 
 			// update games
 			GameLibrary.GameLibrary.UpdateAll(
-				(gameId) => GameUpdated(gameId), 
-				() => 
+				(gameId) => GameUpdated(gameId),
+				() =>
 				{
 					try
 					{
 						ProgressBarStartStop(false);
 
-						Application.Current?.Dispatcher.Invoke(() => 
+						Application.Current?.Dispatcher.Invoke(() =>
 						{
 							RebuildGameGrid();
 						});
@@ -55,7 +53,43 @@ namespace naLauncherWPF.App.Model
 						Log.WriteLine(ex.ToString());
 					}
 				});
+
+			// TEST
+			//using (var tb = new TimedBlock($"LauncherWindowViewModel2({ GameLibrary.GameLibrary.Games.Count })#CreateAllGameControls"))
+			//{
+			//	var allControls = new List<TestUserControl>();
+			//	foreach (var imageFile in System.IO.Directory.EnumerateFiles(@"c:\Users\filip\AppData\Roaming\Ujeby\naLauncher\ImageCache\SteamDbInfo\", "*.jpg"))
+			//	{
+			//		System.Drawing.Bitmap imageFromFile;
+			//		using (Stream stream = File.OpenRead(imageFile))
+			//			imageFromFile = (System.Drawing.Bitmap)System.Drawing.Bitmap.FromStream(stream);
+
+			//		allControls.Add(new TestUserControl
+			//		{
+			//			ViewModel = new TestViewModel
+			//			{
+			//				ImageBitmap = imageFromFile,
+			//				Left = Rng.Next(0, (int)(windowSize.Width - Const.GameControlSize.Width)),
+			//				Top = Rng.Next(0, (int)(windowSize.Height - Const.GameControlSize.Height - (32 + 8 + 56)))
+			//			}
+			//		});
+			//	}
+
+			//	AllControls = allControls.ToArray();
+			//}
 		}
+
+		// TEST
+		//private TestUserControl[] allControls = new TestUserControl[] { };
+		//public TestUserControl[] AllControls
+		//{
+		//	get { return allControls; }
+		//	private set
+		//	{
+		//		allControls = value?.ToArray();
+		//		OnPropertyChanged();
+		//	}
+		//}
 
 		public void Save()
 		{
@@ -65,11 +99,10 @@ namespace naLauncherWPF.App.Model
 			Properties.Settings.Default.Filter = (int)filter;
 			Properties.Settings.Default.OrderAscending = isOrderAscending;
 
-			Properties.Settings.Default.GridSize = GridSize;
 			Properties.Settings.Default.WindowPosition =
 				new System.Drawing.Point((int)Application.Current.MainWindow.Left, (int)Application.Current.MainWindow.Top);
-			Properties.Settings.Default.WindowSize =
-				new System.Drawing.Size((int)Application.Current.MainWindow.Width, (int)Application.Current.MainWindow.Height);
+			//Properties.Settings.Default.WindowSize =
+			//	new System.Drawing.Size((int)Application.Current.MainWindow.Width, (int)Application.Current.MainWindow.Height);
 
 			Properties.Settings.Default.Save();
 		}
@@ -86,12 +119,7 @@ namespace naLauncherWPF.App.Model
 				using (var tb = new TimedBlock($"RebuildGameGrid()"))
 				{
 					FilteredGameIds = GameLibrary.GameLibrary.ListGames(titleFilter, filter, order, isOrderAscending);
-
-					var _filteredGameControls = new List<GameControl>();
-					foreach (var gameId in filteredGameIds)
-						_filteredGameControls.Add(allGameControls.Single(g => g.ViewModel.GameId == gameId));
-
-					FilteredGameControls = _filteredGameControls;
+					FilteredGames = allGames.Where(g => FilteredGameIds.Contains(g.ViewModel.GameId)).ToArray();
 				}
 			});
 		}
@@ -103,9 +131,9 @@ namespace naLauncherWPF.App.Model
 				var game = GameLibrary.GameLibrary.Games[gameId];
 				Log.WriteLine($"GameChanged({ gameId }, { game.Title })");
 
-				Application.Current?.Dispatcher.Invoke(() => 
+				Application.Current?.Dispatcher.Invoke(() =>
 				{
-					FilteredGameControls.SingleOrDefault(g => g.ViewModel.GameId == gameId).ViewModel = new GameControlViewModel(gameId, RebuildGameGrid);
+					FilteredGames.SingleOrDefault(g => g.ViewModel.GameId == gameId).ViewModel = new GameControlViewModel(gameId, RebuildGameGrid);
 					RebuildGameGrid();
 				});
 			}
@@ -157,69 +185,23 @@ namespace naLauncherWPF.App.Model
 
 		#region Properties
 
-		private IList<RowDefinition> rowDefinitions = null;
-		public IList<RowDefinition> RowDefinitions
-		{
-			get { return rowDefinitions; }
-			set
-			{
-				rowDefinitions = value;
-				OnPropertyChanged();
-			}
-		}
+		private static Random Rng = new Random();
 
-		private IList<ColumnDefinition> columnDefinitions = null;
-		public IList<ColumnDefinition> ColumnDefinitions
-		{
-			get { return columnDefinitions; }
-			set
-			{
-				columnDefinitions = value;
-				OnPropertyChanged();
-			}
-		}
+		private GameControl[] allGames = new GameControl[] { };
 
-		private GameControl[] allGameControls = null;
-
-		private GameControl[] filteredGameControls = null;
-		public IList<GameControl> FilteredGameControls
+		private GameControl[] filteredGames = new GameControl[] { };
+		public GameControl[] FilteredGames
 		{
-			get { return filteredGameControls; }
+			get { return filteredGames; }
 			private set
 			{
-				filteredGameControls = value.ToArray();
-
-				if (filteredGameControls != null)
+				filteredGames = value?.ToArray();
+				if (filteredGames != null)
 				{
-					using (var tb = new TimedBlock($"FilteredGameControls({ filteredGameControls.Length })#UpdateGridLayout"))
+					for (var i = 0; i < filteredGames.Length; i++)
 					{
-						var rowCount = filteredGameControls.Length / GridSize;
-						if (filteredGameControls.Length % GridSize != 0)
-							rowCount++;
-
-						// rows, for example: 8 | 260 | 16 | ... | 16 | 260 | 8
-						RowDefinitions = EnumerableExtensions.Pad(() => { return new RowDefinition { Height = new GridLength(Const.GridBorder / 2) }; },
-						EnumerableExtensions.Join(() => { return new RowDefinition { Height = new GridLength(Const.GridBorder) }; },
-							EnumerableExtensions.RepeatNew(() => { return new RowDefinition { Height = new GridLength(Const.GameControlSize.Height) }; }, rowCount)));
-
-						// columns, for example: 16 | 460 | 16 | ... | 16 | 460 | 16
-						ColumnDefinitions = EnumerableExtensions.Pad(() => { return new ColumnDefinition { Width = new GridLength(Const.GridBorder) }; },
-							EnumerableExtensions.Join(() => { return new ColumnDefinition { Width = new GridLength(Const.GridBorder) }; },
-								EnumerableExtensions.RepeatNew(() => { return new ColumnDefinition(); }, GridSize)));
-
-						Debug.WriteLine($"GameGrid { ColumnDefinitions.Count() }x{ RowDefinitions.Count() }");
-					}
-				}
-
-				if (filteredGameControls != null)
-				{
-					using (var tb = new TimedBlock($"FilteredGameControls({ filteredGameControls.Length })#UpdateGameControlPositions"))
-					{
-						for (var i = 0; i < filteredGameControls.Length; i++)
-						{
-							filteredGameControls[i].ViewModel.Y = 1 + (i / GridSize) * 2;
-							filteredGameControls[i].ViewModel.X = 1 + (i % GridSize) * 2;
-						}
+						filteredGames[i].ViewModel.X = Rng.Next(0, (int)(windowSize.Width - Const.GameControlSize.Width));
+						filteredGames[i].ViewModel.Y = Rng.Next(0, (int)(windowSize.Height - Const.GameControlSize.Height - (32 + 8 + 56)));
 					}
 				}
 
@@ -297,7 +279,7 @@ namespace naLauncherWPF.App.Model
 		public double HeaderFontSize { get; private set; } = Const.WindowHeaderFontSize;
 		public double TextFontSize { get; private set; } = Const.WindowTextFontSize;
 
-		private Size windowSize = new Size(Properties.Settings.Default.WindowSize.Width, Properties.Settings.Default.WindowSize.Height);
+		private Size windowSize = new Size(1920/*Properties.Settings.Default.WindowSize.Width*/, 1080/*Properties.Settings.Default.WindowSize.Height*/);
 		public Size WindowSize
 		{
 			get { return windowSize; }
@@ -317,10 +299,6 @@ namespace naLauncherWPF.App.Model
 			{
 				windowSize.Width = value;
 				OnPropertyChanged();
-
-				var newGridSize = Math.Max(1, (int)(windowSize.Width - (2 * Const.GridBorder + 2)) / (int)(Const.GameImageSize.Width + Const.GridBorder));
-				if (GridSize != newGridSize && FilteredGameControls.Count() >= newGridSize)
-					GridSize = newGridSize;
 			}
 		}
 
@@ -369,19 +347,6 @@ namespace naLauncherWPF.App.Model
 			{
 				windowPosition.Y = value;
 				OnPropertyChanged();
-			}
-		}
-
-		private int gridSize = Properties.Settings.Default.GridSize;
-		public int GridSize
-		{
-			get { return gridSize; }
-			set
-			{
-				gridSize = value;
-				OnPropertyChanged();
-
-				RebuildGameGrid();				
 			}
 		}
 

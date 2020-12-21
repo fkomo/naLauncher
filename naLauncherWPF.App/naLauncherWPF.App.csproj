@@ -70,6 +70,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\TestUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="LauncherWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -86,6 +90,9 @@
       <DependentUpon>GameTooltip.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\MarqueeControl.cs" />
+    <Compile Include="Controls\TestUserControl.xaml.cs">
+      <DependentUpon>TestUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Extensions\GridExtensions.cs" />
     <Compile Include="Extensions\TextBlockExtensions.cs" />
     <Compile Include="Extensions\FocusExtensions.cs" />
@@ -97,13 +104,21 @@
       <DependentUpon>LauncherWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="LauncherWindow2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LauncherWindow2.xaml.cs">
+      <DependentUpon>LauncherWindow2.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Model\GameControlViewModel.cs" />
+    <Compile Include="Model\LauncherWindowViewModel2.cs" />
     <Compile Include="Model\LauncherWindowViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

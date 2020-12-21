@@ -8,6 +8,7 @@
 			 xmlns:ctrls="clr-namespace:naLauncherWPF.App.Controls"
 			 xmlns:hlp="clr-namespace:naLauncherWPF.App.Helpers"
 			 mc:Ignorable="d" 
+			 CacheMode="BitmapCache"
              d:DesignWidth="460" d:DesignHeight="260">
 
 	<UserControl.DataContext>

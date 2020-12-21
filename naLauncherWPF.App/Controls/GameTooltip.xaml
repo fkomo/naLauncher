@@ -37,7 +37,7 @@
 			<Label Width="100"
 				   Foreground="#aaaaaa"
 				   HorizontalContentAlignment="Right">Developed by:</Label>
-			<Label Foreground="#aaaaaa">Devlolver</Label>
+			<Label Foreground="#aaaaaa">Devolver</Label>
 		</DockPanel>
 
 		<DockPanel Name="SummaryPanel">

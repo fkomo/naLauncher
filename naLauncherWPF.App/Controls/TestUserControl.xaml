@@ -1,0 +1,102 @@
+﻿<UserControl x:Class="naLauncherWPF.App.Controls.TestUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+			 xmlns:model="clr-namespace:naLauncherWPF.App.Controls"
+			 xmlns:ext="clr-namespace:naLauncherWPF.App.Extensions"
+			 xmlns:ctrls="clr-namespace:naLauncherWPF.App.Controls"
+			 xmlns:hlp="clr-namespace:naLauncherWPF.App.Helpers"
+             mc:Ignorable="d" 
+             d:DesignWidth="460" d:DesignHeight="215"
+			 CacheMode="BitmapCache">
+
+	<UserControl.DataContext>
+		<model:TestViewModel />
+	</UserControl.DataContext>
+
+	<UserControl.Resources>
+
+		<hlp:InverseBooleanConverter x:Key="InverseBooleanConverter" />
+
+		<DropShadowEffect x:Key="BlackGlow" BlurRadius="16" Color="Black" ShadowDepth="0" />
+		<DropShadowEffect x:Key="LightBlueGlow" BlurRadius="4" Color="LightSkyBlue" ShadowDepth="0" />
+
+		<Style x:Key="GameImageBorder" TargetType="Border">
+			<Setter Property="BorderThickness" Value="1" />
+			<Setter Property="BorderBrush" Value="#333333" />
+			<Setter Property="Effect" Value="{StaticResource BlackGlow}" />
+
+			<Style.Triggers>
+				<Trigger Property="IsMouseOver" Value="True">
+					<Setter Property="Effect" Value="{StaticResource LightBlueGlow}"/>
+					<Setter Property="BorderBrush" Value="LightSkyBlue" />
+				</Trigger>
+			</Style.Triggers>
+		</Style>
+
+		<Style x:Key="GameImage" TargetType="Image">
+			<Setter Property="Stretch" Value="Fill" />
+			<Setter Property="Opacity" Value="0.75" />
+
+			<Style.Triggers>
+				<EventTrigger RoutedEvent="Image.MouseEnter">
+					<EventTrigger.Actions>
+						<BeginStoryboard>
+							<Storyboard>
+								<DoubleAnimation Storyboard.TargetProperty="(Image.Opacity)" To="1.0" Duration="0:0:0.2" />
+							</Storyboard>
+						</BeginStoryboard>
+					</EventTrigger.Actions>
+				</EventTrigger>
+				<EventTrigger RoutedEvent="Image.MouseLeave">
+					<EventTrigger.Actions>
+						<BeginStoryboard>
+							<Storyboard>
+								<DoubleAnimation Storyboard.TargetProperty="(Image.Opacity)" To=".75" Duration="0:0:0.2" />
+							</Storyboard>
+						</BeginStoryboard>
+					</EventTrigger.Actions>
+				</EventTrigger>
+				<EventTrigger RoutedEvent="Image.MouseDown">
+					<EventTrigger.Actions>
+						<BeginStoryboard>
+							<Storyboard>
+								<DoubleAnimation Storyboard.TargetProperty="(Image.Opacity)" To="0.5" Duration="0:0:0.1" />
+							</Storyboard>
+						</BeginStoryboard>
+					</EventTrigger.Actions>
+				</EventTrigger>
+				<EventTrigger RoutedEvent="Image.MouseUp">
+					<EventTrigger.Actions>
+						<BeginStoryboard>
+							<Storyboard>
+								<DoubleAnimation Storyboard.TargetProperty="(Image.Opacity)" To="1.0" Duration="0:0:0.1" />
+							</Storyboard>
+						</BeginStoryboard>
+					</EventTrigger.Actions>
+				</EventTrigger>
+			</Style.Triggers>
+
+		</Style>
+	</UserControl.Resources>
+
+	<Border 
+		Name="Game"
+		Style="{StaticResource GameImageBorder}"
+		MouseEnter="Game_MouseEnter"
+		MouseLeave="Game_MouseLeave"
+		IsEnabled="{Binding Path=IsDisabled, Converter={StaticResource InverseBooleanConverter}}">
+		<Grid>
+			<Image
+				Name="GameImage"
+				Style="{StaticResource GameImage}"
+				Source="{Binding GameImageSource}"
+				MouseEnter="Game_MouseEnter">
+			<Image.InputBindings>
+				<MouseBinding Gesture="LeftDoubleClick" Command="{Binding RunCommand}" />
+			</Image.InputBindings>
+			</Image>
+		</Grid>
+	</Border>
+</UserControl>

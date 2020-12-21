@@ -45,6 +45,12 @@ namespace naLauncherWPF.App.Controls
 		public GameControl()
 		{
 			InitializeComponent();
+
+			//GameInfoTextBlock.MaxWidth = Const.GameImageSize.Width;
+			//GameInfoTextBlock.MaxHeight = Const.GameImageSize.Height;
+
+			//GameRatingLabel.MaxWidth = Const.RatingSize.Width;
+			//GameRatingLabel.MaxHeight = Const.RatingSize.Height;
 		}
 
 		public GameControl(string gameId, Action rebuildGameGrid, Action<bool> progressStartStop)
@@ -77,6 +83,7 @@ namespace naLauncherWPF.App.Controls
 			{
 				if (ViewModel.IsGameInfoPresent)
 					GameInfoTextBlock.Visibility = Visibility.Visible;
+
 				if (ViewModel.GameRating.HasValue)
 					GameRatingLabel.Visibility = Visibility.Visible;
 

@@ -336,33 +336,37 @@ namespace naLauncherWPF.App.Model
 				OnPropertyChanged();
 			}
 		}
+		public Action RebuildGameGrid { get; set; } = null;
 
-		private Action RebuildGameGrid { get; set; } = null;
-
-		private int columnIndex;
-		public int ColumnIndex
+		private int x;
+		public int X
 		{
-			get { return columnIndex; }
+			get { return x; }
 			set
 			{
-				columnIndex = value;
+				x = value;
 				OnPropertyChanged();
 			}
 		}
 
-		private int rowIndex;
-		public int RowIndex
+		private int y;
+		public int Y
 		{
-			get { return rowIndex; }
+			get { return y; }
 			set
 			{
-				rowIndex = value;
+				y = value;
 				OnPropertyChanged();
 			}
 		}
 
 		public string GameId
 		{
+			set
+			{
+				Model = GameLibrary.GameLibrary.Games[value];
+				GameTitle = Model?.Title;
+			}
 			get { return GameLibrary.GameLibrary.GetGameId(Model); }
 		}
 

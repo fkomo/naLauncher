@@ -25,7 +25,7 @@ namespace naLauncherWPF.App
 	/// </summary>
 	public partial class LauncherWindow : Window
 	{
-		public SmoothScrollingMode SmoothScrolling { get; set; } = SmoothScrollingMode.Linear;
+		public SmoothScrollingMode SmoothScrolling { get; set; } = SmoothScrollingMode.Exponential;
 
 		public LauncherWindowViewModel ViewModel
 		{
@@ -185,7 +185,7 @@ namespace naLauncherWPF.App
 							if (newScroll == realScrollableHeight)
 								break;
 
-							System.Threading.Thread.Sleep(50);
+							System.Threading.Thread.Sleep(32);
 						}
 					}
 				});
@@ -206,6 +206,16 @@ namespace naLauncherWPF.App
 			{
 				Log.WriteLine(ex.ToString());
 			}
+		}
+
+		private void HeaderMaximizeLabel_MouseUp(object sender, MouseButtonEventArgs e)
+		{
+			WindowState = WindowState.Maximized;
+		}
+
+		private void HeaderMinimizeLabel_MouseUp(object sender, MouseButtonEventArgs e)
+		{
+			WindowState = WindowState.Normal;
 		}
 	}
 }
