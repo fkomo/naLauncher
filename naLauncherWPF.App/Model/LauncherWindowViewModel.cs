@@ -68,6 +68,7 @@ namespace naLauncherWPF.App.Model
 			Properties.Settings.Default.GridSize = GridSize;
 			Properties.Settings.Default.WindowPosition =
 				new System.Drawing.Point((int)Application.Current.MainWindow.Left, (int)Application.Current.MainWindow.Top);
+
 			Properties.Settings.Default.WindowSize =
 				new System.Drawing.Size((int)Application.Current.MainWindow.Width, (int)Application.Current.MainWindow.Height);
 

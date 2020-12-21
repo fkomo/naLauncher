@@ -30,12 +30,25 @@ namespace naLauncherWPF.App
 		public LauncherWindowViewModel ViewModel
 		{
 			get { return this.DataContext as LauncherWindowViewModel; }
-			set { this.DataContext = value; }
+			set 
+			{ 
+				this.DataContext = value; 
+			}
 		}
 
 		public LauncherWindow()
 		{
 			InitializeComponent();
+
+			if (ViewModel != null)
+			{
+				var screenSize = System.Windows.Forms.Screen.PrimaryScreen.Bounds.Size;
+				if (ViewModel.WindowSize.Width >= screenSize.Width || ViewModel.WindowSize.Height >= screenSize.Height)
+				{
+					ViewModel.WindowSize = new Size(screenSize.Width, screenSize.Height);
+					WindowState = WindowState.Maximized;
+				}
+			}
 		}
 
 		/// <summary>point where mouse drag started</summary>
@@ -216,6 +229,8 @@ namespace naLauncherWPF.App
 		private void HeaderMinimizeLabel_MouseUp(object sender, MouseButtonEventArgs e)
 		{
 			WindowState = WindowState.Normal;
+			ViewModel.WindowSizeWidth = 494;
+			ViewModel.WindowSizeHeight = 960;
 		}
 	}
 }
