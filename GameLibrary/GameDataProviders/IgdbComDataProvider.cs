@@ -113,8 +113,7 @@ namespace GameLibrary.GameDataProviders
 	}
 
 	/// <summary>
-	/// implemented against v3, https://api-v3.igdb.com/
-	/// TODO igdb v4 - https://api-docs.igdb.com/#authentication
+	/// igdb v4
 	/// </summary>
 	internal class IgdbComDataProvider : GameDataProvider, IGameDataProvider
 	{
@@ -128,7 +127,8 @@ namespace GameLibrary.GameDataProviders
 			{
 				return new Dictionary<string, string>
 				{
-					{ "user-key", Properties.Settings.Default.IGDBApiKey }
+					{ "Client-ID", Properties.Settings.Default.TwitchDevClientId },
+					{ "Authorization", $"{ TwitchDev.TokenType } { TwitchDev.AccessToken }" },
 				};
 			}
 		}

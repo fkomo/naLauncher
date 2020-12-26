@@ -69,8 +69,6 @@ namespace naLauncherWPF.App
 				{
 					MainWindow2.Left = System.Windows.Forms.Cursor.Position.X - DragStart.Value.X;
 					MainWindow2.Top = System.Windows.Forms.Cursor.Position.Y - DragStart.Value.Y;
-
-					//DragStart = new System.Drawing.Point(System.Windows.Forms.Cursor.Position.X, System.Windows.Forms.Cursor.Position.Y);
 				}
 			}
 			catch (Exception ex)
@@ -169,10 +167,13 @@ namespace naLauncherWPF.App
 			}
 		}
 
+		private Size? WindowSizeBeforeMax { get; set; } = null;
+
 		private void HeaderMaximizeLabel_MouseUp(object sender, MouseButtonEventArgs e)
 		{
 			try
 			{
+				WindowSizeBeforeMax = ViewModel.WindowSize;
 				WindowState = WindowState.Maximized;
 			}
 			catch (Exception ex)
@@ -186,8 +187,11 @@ namespace naLauncherWPF.App
 			try
 			{
 				WindowState = WindowState.Normal;
-				ViewModel.WindowSizeWidth = Const.MinWindowSize.Width;
-				ViewModel.WindowSizeHeight = Const.MinWindowSize.Height;
+
+				if (WindowSizeBeforeMax.HasValue)
+					ViewModel.WindowSize = WindowSizeBeforeMax.Value;
+				else
+					ViewModel.WindowSize = new Size(Const.MinWindowSize.Width, Const.MinWindowSize.Height);
 			}
 			catch (Exception ex)
 			{

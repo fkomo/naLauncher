@@ -80,15 +80,6 @@ namespace GameLibrary.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string IGDBApiKey {
-            get {
-                return ((string)(this["IGDBApiKey"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string FixLibrary {
             get {
                 return ((string)(this["FixLibrary"]));
@@ -137,6 +128,33 @@ namespace GameLibrary.Properties {
         public string IGDBApiUrl {
             get {
                 return ((string)(this["IGDBApiUrl"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string TwitchDevClientId {
+            get {
+                return ((string)(this["TwitchDevClientId"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string TwitchDevClientSecret {
+            get {
+                return ((string)(this["TwitchDevClientSecret"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://id.twitch.tv/oauth2/token")]
+        public string TwitchDevOAuth2Url {
+            get {
+                return ((string)(this["TwitchDevOAuth2Url"]));
             }
         }
     }

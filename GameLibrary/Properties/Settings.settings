@@ -20,9 +20,6 @@
     <Setting Name="UserSteamId" Type="System.String" Scope="Application">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="IGDBApiKey" Type="System.String" Scope="Application">
-      <Value Profile="(Default)" />
-    </Setting>
     <Setting Name="FixLibrary" Type="System.String" Scope="Application">
       <Value Profile="(Default)" />
     </Setting>
@@ -40,6 +37,15 @@
     </Setting>
     <Setting Name="IGDBApiUrl" Type="System.String" Scope="Application">
       <Value Profile="(Default)">https://api.igdb.com/v4/</Value>
+    </Setting>
+    <Setting Name="TwitchDevClientId" Type="System.String" Scope="Application">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="TwitchDevClientSecret" Type="System.String" Scope="Application">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="TwitchDevOAuth2Url" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">https://id.twitch.tv/oauth2/token</Value>
     </Setting>
   </Settings>
 </SettingsFile>

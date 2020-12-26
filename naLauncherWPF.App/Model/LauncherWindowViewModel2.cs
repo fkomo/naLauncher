@@ -28,8 +28,8 @@ namespace naLauncherWPF.App.Model
 							Width = Const.GameControlSize.Width,
 							Height = Const.GameControlSize.Height,
 						};
-						gc.ViewModel.X = Rng.Next((int)Const.GridBorder, (int)(windowSize.Width - Const.GameControlSize.Width - (2 * Const.GridBorder)));
-						gc.ViewModel.Y = Rng.Next((int)Const.GridBorder, (int)(windowSize.Height - Const.GameControlSize.Height - (32 + 8 + 56 + 2 * Const.GridBorder)));
+						gc.ViewModel.X = (int)Const.GridBorder + Rng.Next(0, (int)(windowSize.Width - Const.GameControlSize.Width - (1 + Const.GridBorder + Const.GridBorder + 1)));
+						gc.ViewModel.Y = (int)Const.GridBorder + Rng.Next(0, (int)(windowSize.Height - Const.GameControlSize.Height - (32 + 8 + 56 + Const.GridBorder + Const.GridBorder)));
 						
 						return gc;
 					})
@@ -59,43 +59,7 @@ namespace naLauncherWPF.App.Model
 						Log.WriteLine(ex.ToString());
 					}
 				});
-
-			// TEST
-			//using (var tb = new TimedBlock($"LauncherWindowViewModel2({ GameLibrary.GameLibrary.Games.Count })#CreateAllGameControls"))
-			//{
-			//	var allControls = new List<TestUserControl>();
-			//	foreach (var imageFile in System.IO.Directory.EnumerateFiles(@"c:\Users\filip\AppData\Roaming\Ujeby\naLauncher\ImageCache\SteamDbInfo\", "*.jpg"))
-			//	{
-			//		System.Drawing.Bitmap imageFromFile;
-			//		using (Stream stream = File.OpenRead(imageFile))
-			//			imageFromFile = (System.Drawing.Bitmap)System.Drawing.Bitmap.FromStream(stream);
-
-			//		allControls.Add(new TestUserControl
-			//		{
-			//			ViewModel = new TestViewModel
-			//			{
-			//				ImageBitmap = imageFromFile,
-			//				Left = Rng.Next(0, (int)(windowSize.Width - Const.GameControlSize.Width)),
-			//				Top = Rng.Next(0, (int)(windowSize.Height - Const.GameControlSize.Height - (32 + 8 + 56)))
-			//			}
-			//		});
-			//	}
-
-			//	AllControls = allControls.ToArray();
-			//}
 		}
-
-		// TEST
-		//private TestUserControl[] allControls = new TestUserControl[] { };
-		//public TestUserControl[] AllControls
-		//{
-		//	get { return allControls; }
-		//	private set
-		//	{
-		//		allControls = value?.ToArray();
-		//		OnPropertyChanged();
-		//	}
-		//}
 
 		public void Save()
 		{
@@ -107,8 +71,8 @@ namespace naLauncherWPF.App.Model
 
 			Properties.Settings.Default.WindowPosition =
 				new System.Drawing.Point((int)Application.Current.MainWindow.Left, (int)Application.Current.MainWindow.Top);
-			//Properties.Settings.Default.WindowSize =
-			//	new System.Drawing.Size((int)Application.Current.MainWindow.Width, (int)Application.Current.MainWindow.Height);
+			Properties.Settings.Default.WindowSize =
+				new System.Drawing.Size((int)Application.Current.MainWindow.Width, (int)Application.Current.MainWindow.Height);
 
 			Properties.Settings.Default.Save();
 		}
@@ -127,8 +91,10 @@ namespace naLauncherWPF.App.Model
 					var newFilteredGameIds = GameLibrary.GameLibrary.ListGames(titleFilter, filter, order, isOrderAscending);
 					var newFilteredGames = newFilteredGameIds.Select(gameId => allGames.Single(game => game.ViewModel.GameId == gameId)).ToArray();
 
-					var xCount = (int)((windowSize.Width - (Const.GridBorder * 2)) / Const.GameControlSize.Width);
+					var xCount = (int)((windowSize.Width - Const.GridBorder) / (Const.GameControlSize.Width + Const.GridBorder));
 					var border = (int)(windowSize.Width - xCount * Const.GameControlSize.Width) / (xCount + 1);
+
+					//Log.WriteLine($"RebuildGameGrid(width={ windowSize.Width }, border={ border }, ")
 
 					for (var i = 0; i < newFilteredGames.Length; i++)
 					{
@@ -290,7 +256,7 @@ namespace naLauncherWPF.App.Model
 		public double HeaderFontSize { get; private set; } = Const.WindowHeaderFontSize;
 		public double TextFontSize { get; private set; } = Const.WindowTextFontSize;
 
-		private Size windowSize = new Size(1920/*Properties.Settings.Default.WindowSize.Width*/, 1080/*Properties.Settings.Default.WindowSize.Height*/);
+		private Size windowSize = new Size(Properties.Settings.Default.WindowSize.Width, Properties.Settings.Default.WindowSize.Height);
 		public Size WindowSize
 		{
 			get { return windowSize; }
