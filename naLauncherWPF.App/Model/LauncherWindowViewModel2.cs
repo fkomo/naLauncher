@@ -2,8 +2,6 @@
 using naLauncherWPF.App.Controls;
 using naLauncherWPF.App.Helpers;
 using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
@@ -13,6 +11,8 @@ namespace naLauncherWPF.App.Model
 {
 	public class LauncherWindowViewModel2 : ObservableObject
 	{
+		private static Random Rng = new Random();
+
 		public LauncherWindowViewModel2()
 		{
 			GameLibrary.GameLibrary.Load();
@@ -22,11 +22,17 @@ namespace naLauncherWPF.App.Model
 				// all controls must be created on STA thread, so better create controls for all games now
 				allGames = GameLibrary.GameLibrary.Games
 					.Select(g =>
-						new GameControl(g.Key, RebuildGameGrid, ProgressBarStartStop)
+					{
+						var gc = new GameControl(g.Key, RebuildGameGrid, ProgressBarStartStop)
 						{
 							Width = Const.GameControlSize.Width,
-							Height = Const.GameControlSize.Height
-						})
+							Height = Const.GameControlSize.Height,
+						};
+						gc.ViewModel.X = Rng.Next((int)Const.GridBorder, (int)(windowSize.Width - Const.GameControlSize.Width - (2 * Const.GridBorder)));
+						gc.ViewModel.Y = Rng.Next((int)Const.GridBorder, (int)(windowSize.Height - Const.GameControlSize.Height - (32 + 8 + 56 + 2 * Const.GridBorder)));
+						
+						return gc;
+					})
 					.ToArray();
 			}
 
@@ -112,14 +118,30 @@ namespace naLauncherWPF.App.Model
 			IsProgressBarRunning = isRunning;
 		}
 
-		private void RebuildGameGrid()
+		public void RebuildGameGrid()
 		{
 			Application.Current?.Dispatcher.Invoke(() =>
 			{
 				using (var tb = new TimedBlock($"RebuildGameGrid()"))
 				{
-					FilteredGameIds = GameLibrary.GameLibrary.ListGames(titleFilter, filter, order, isOrderAscending);
-					FilteredGames = allGames.Where(g => FilteredGameIds.Contains(g.ViewModel.GameId)).ToArray();
+					var newFilteredGameIds = GameLibrary.GameLibrary.ListGames(titleFilter, filter, order, isOrderAscending);
+					var newFilteredGames = newFilteredGameIds.Select(gameId => allGames.Single(game => game.ViewModel.GameId == gameId)).ToArray();
+
+					var xCount = (int)((windowSize.Width - (Const.GridBorder * 2)) / Const.GameControlSize.Width);
+					var border = (int)(windowSize.Width - xCount * Const.GameControlSize.Width) / (xCount + 1);
+
+					for (var i = 0; i < newFilteredGames.Length; i++)
+					{
+						var newX = border + (int)(Const.GameControlSize.Width + border) * (i % xCount);
+						var newY = (int)(border - Const.GridBorder) + (int)(Const.GameControlSize.Height + border) * (i / xCount);
+						newFilteredGames[i].ViewModel.SetDestination(newX, newY);
+					}
+
+					FilteredGameIds = newFilteredGameIds;
+					FilteredGames = newFilteredGames;
+
+					foreach (var gameControl in newFilteredGames)
+						gameControl.MoveToDestination(256);
 				}
 			});
 		}
@@ -185,8 +207,6 @@ namespace naLauncherWPF.App.Model
 
 		#region Properties
 
-		private static Random Rng = new Random();
-
 		private GameControl[] allGames = new GameControl[] { };
 
 		private GameControl[] filteredGames = new GameControl[] { };
@@ -195,16 +215,7 @@ namespace naLauncherWPF.App.Model
 			get { return filteredGames; }
 			private set
 			{
-				filteredGames = value?.ToArray();
-				if (filteredGames != null)
-				{
-					for (var i = 0; i < filteredGames.Length; i++)
-					{
-						filteredGames[i].ViewModel.X = Rng.Next(0, (int)(windowSize.Width - Const.GameControlSize.Width));
-						filteredGames[i].ViewModel.Y = Rng.Next(0, (int)(windowSize.Height - Const.GameControlSize.Height - (32 + 8 + 56)));
-					}
-				}
-
+				filteredGames = value;
 				OnPropertyChanged();
 			}
 		}
@@ -308,7 +319,6 @@ namespace naLauncherWPF.App.Model
 			set
 			{
 				windowSize.Height = value;
-
 				OnPropertyChanged();
 			}
 		}

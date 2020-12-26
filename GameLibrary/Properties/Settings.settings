@@ -38,5 +38,8 @@
     <Setting Name="GameSpyCheckTimer" Type="System.Int32" Scope="Application">
       <Value Profile="(Default)">10</Value>
     </Setting>
+    <Setting Name="IGDBApiUrl" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">https://api.igdb.com/v4/</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

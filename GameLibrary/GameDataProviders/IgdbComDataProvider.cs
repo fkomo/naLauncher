@@ -112,9 +112,13 @@ namespace GameLibrary.GameDataProviders
 		}
 	}
 
+	/// <summary>
+	/// implemented against v3, https://api-v3.igdb.com/
+	/// TODO igdb v4 - https://api-docs.igdb.com/#authentication
+	/// </summary>
 	internal class IgdbComDataProvider : GameDataProvider, IGameDataProvider
 	{
-		const string ApiBaseUrl = @"https://api-v3.igdb.com/";
+		public static string ApiBaseUrl { get { return Properties.Settings.Default.IGDBApiUrl; } }
 
 		static string CurrentClassName { get { return typeof(IgdbComDataProvider).Name; } }
 

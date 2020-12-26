@@ -15,9 +15,12 @@
 	WindowStyle="None"
 	AllowsTransparency="True"
 	ResizeMode="CanResizeWithGrip"
+	SizeChanged="MainWindow_SizeChanged"
 	Keyboard.KeyUp="MainWindow_KeyUp"
 	Mouse.MouseLeave="MainWindow_MouseLeave" 
-	Closing="MainWindow_Closing">
+	Closing="MainWindow_Closing"
+	Loaded="MainWindow_Loaded"
+	PreviewMouseWheel="ItemsControl_PreviewMouseWheel">
 
 	<Window.Resources>
 
@@ -63,8 +66,8 @@
 			<Grid.RowDefinitions>
 				<RowDefinition Height="32"/>
 				<RowDefinition Height="8"/>
-				<RowDefinition />
 				<RowDefinition Height="56"/>
+				<RowDefinition />
 			</Grid.RowDefinitions>
 
 			<DockPanel Grid.Row="0">
@@ -83,14 +86,16 @@
 					<Line Style="{StaticResource Line}" X1="10" Y1="22" X2="22" Y2="10" />
 				</Grid>
 
-				<Grid DockPanel.Dock="Right" Width="32" Background="#dd111111">
+				<Grid DockPanel.Dock="Right" Width="32" Background="#dd111111"
+					Mouse.MouseUp="HeaderMaximizeLabel_MouseUp">
 					<Line Style="{StaticResource Line}" X1="10" Y1="10" X2="22" Y2="10" />
 					<Line Style="{StaticResource Line}" X1="22" Y1="10" X2="22" Y2="22" />
 					<Line Style="{StaticResource Line}" X1="22" Y1="22" X2="10" Y2="22" />
 					<Line Style="{StaticResource Line}" X1="10" Y1="22" X2="10" Y2="10" />
 				</Grid>
 
-				<Grid DockPanel.Dock="Right" Width="32" Background="#dd111111">
+				<Grid DockPanel.Dock="Right" Width="32" Background="#dd111111"
+					Mouse.MouseUp="HeaderMinimizeLabel_MouseUp">
 					<Line Style="{StaticResource Line}" X1="10" Y1="16" X2="22" Y2="16" />
 				</Grid>
 
@@ -114,52 +119,11 @@
 	 				Background="Transparent" Foreground="LightSkyBlue" />
 			</Grid>
 
-			<Grid Grid.Row="2">
-				<!--<ItemsControl ItemsSource="{Binding AllControls}">
-					<ItemsControl.ItemsPanel>
-						<ItemsPanelTemplate>
-							<Canvas />
-						</ItemsPanelTemplate>
-					</ItemsControl.ItemsPanel>
-					<ItemsControl.ItemContainerStyle>
-						<Style TargetType="ctrl:TestUserControl">
-							<Setter Property="Canvas.Top" Value="{Binding Top}"/>
-							<Setter Property="Canvas.Left" Value="{Binding Left}"/>
-							<Style.Triggers>
-								<Trigger Property="IsMouseOver" Value="True">
-									<Setter Property="Canvas.ZIndex" Value="1" />
-								</Trigger>
-							</Style.Triggers>
-						</Style>
-					</ItemsControl.ItemContainerStyle>
-				</ItemsControl>-->
+			<DockPanel Grid.Row="2" Margin="16,8,16,16">
 
-				<ItemsControl ItemsSource="{Binding FilteredGames}">
-					<ItemsControl.ItemsPanel>
-						<ItemsPanelTemplate>
-							<Canvas 
-						  		Mouse.MouseDown="MainWindow_MouseDown" 
-								Mouse.MouseUp="MainWindow_MouseUp" 
-								Mouse.MouseMove="MainWindow_MouseMove" 
-								/>
-						</ItemsPanelTemplate>
-					</ItemsControl.ItemsPanel>
-					<ItemsControl.ItemContainerStyle>
-						<Style TargetType="ctrl:GameControl">
-							<Setter Property="Canvas.Top" Value="{Binding Y}"/>
-							<Setter Property="Canvas.Left" Value="{Binding X}"/>
-							<Style.Triggers>
-								<Trigger Property="IsMouseOver" Value="True">
-									<Setter Property="Canvas.ZIndex" Value="1" />
-								</Trigger>
-							</Style.Triggers>
-						</Style>
-					</ItemsControl.ItemContainerStyle>
-				</ItemsControl>
-			</Grid>
-
-			<DockPanel Grid.Row="3" Grid.RowSpan="2" Margin="16,8,16,16">
-
+				<Label FontSize="{Binding TextFontSize}" 
+					VerticalContentAlignment="Center"
+					Foreground="#aaaaaa">Filter:</Label>
 				<Button Name="FilterButton"
 					Height="32" Padding="8,0,8,0" Margin="0,0,16,0" BorderThickness="1" BorderBrush="#333333"
 					Background="#222222" Foreground="#aaaaaa"
@@ -169,6 +133,9 @@
 					Command="{Binding ChangeFilterCommand}"
 					Content="{Binding Filter}" />
 
+				<Label FontSize="{Binding TextFontSize}"
+					VerticalContentAlignment="Center"
+					Foreground="#aaaaaa">Order:</Label>
 				<Button Name="OrderButton" 
 					Height="32" Padding="8,0,8,0" Margin="0,0,16,0" BorderThickness="1" BorderBrush="#333333"
 					Background="#222222" Foreground="#aaaaaa"
@@ -216,6 +183,57 @@
 
 			</DockPanel>
 
+			<Grid Grid.Row="3">
+				<!--<ItemsControl ItemsSource="{Binding AllControls}">
+					<ItemsControl.ItemsPanel>
+						<ItemsPanelTemplate>
+							<Canvas />
+						</ItemsPanelTemplate>
+					</ItemsControl.ItemsPanel>
+					<ItemsControl.ItemContainerStyle>
+						<Style TargetType="ctrl:TestUserControl">
+							<Setter Property="Canvas.Top" Value="{Binding Top}"/>
+							<Setter Property="Canvas.Left" Value="{Binding Left}"/>
+							<Style.Triggers>
+								<Trigger Property="IsMouseOver" Value="True">
+									<Setter Property="Canvas.ZIndex" Value="1" />
+								</Trigger>
+							</Style.Triggers>
+						</Style>
+					</ItemsControl.ItemContainerStyle>
+				</ItemsControl>-->
+
+				<ScrollViewer Name="GamesScrollViewer"
+					HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"
+					PreviewMouseWheel="ItemsControl_PreviewMouseWheel">
+
+					<ItemsControl Name="GamesControl"
+						ItemsSource="{Binding FilteredGames}">
+						<ItemsControl.ItemsPanel>
+							<ItemsPanelTemplate>
+								<Canvas x:Name="GamesCanvas"
+						  		Mouse.MouseDown="MainWindow_MouseDown" 
+								Mouse.MouseUp="MainWindow_MouseUp" 
+								Mouse.MouseMove="MainWindow_MouseMove" 
+								/>
+							</ItemsPanelTemplate>
+						</ItemsControl.ItemsPanel>
+						<ItemsControl.ItemContainerStyle>
+							<Style TargetType="ctrl:GameControl">
+								<Setter Property="Canvas.Top" Value="{Binding Y}"/>
+								<Setter Property="Canvas.Left" Value="{Binding X}"/>
+								<Style.Triggers>
+									<Trigger Property="IsMouseOver" Value="True">
+										<Setter Property="Canvas.ZIndex" Value="1" />
+									</Trigger>
+								</Style.Triggers>
+							</Style>
+						</ItemsControl.ItemContainerStyle>
+					</ItemsControl>
+
+				</ScrollViewer>
+				
+			</Grid>
 		</Grid>
 	</Border>
 

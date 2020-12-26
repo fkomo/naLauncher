@@ -360,6 +360,18 @@ namespace naLauncherWPF.App.Model
 			}
 		}
 
+		public int? DestinationX { get; private set; } = null;
+		public int? DestinationY { get; private set; } = null;
+
+		public void SetDestination(int? x, int? y)
+		{
+			if (x == X && y == Y)
+				return;
+
+			DestinationX = x;
+			DestinationY = y;
+		}
+
 		public string GameId
 		{
 			set

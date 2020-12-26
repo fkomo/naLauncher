@@ -1,11 +1,8 @@
-﻿using System;
-using System.Diagnostics;
-using System.Net;
+﻿using System.Net;
 using System.Net.Security;
 using System.Security.Cryptography.X509Certificates;
 using System.Windows;
 using Ujeby.Common.Tools;
-using System.Linq;
 
 namespace naLauncherWPF.App
 {
@@ -14,6 +11,11 @@ namespace naLauncherWPF.App
 	/// </summary>
 	public partial class App : Application
 	{
+		App()
+		{
+			StartupUri = new System.Uri($"{ naLauncherWPF.App.Properties.Settings.Default.WindowVersion }.xaml", System.UriKind.Relative);
+		}
+
 		private void Application_Startup(object sender, StartupEventArgs e)
 		{
 			ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12 | SecurityProtocolType.Ssl3;

@@ -3,6 +3,7 @@ using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media.Animation;
 using Ujeby.Common.Tools;
 
 namespace naLauncherWPF.App.Controls
@@ -45,12 +46,6 @@ namespace naLauncherWPF.App.Controls
 		public GameControl()
 		{
 			InitializeComponent();
-
-			//GameInfoTextBlock.MaxWidth = Const.GameImageSize.Width;
-			//GameInfoTextBlock.MaxHeight = Const.GameImageSize.Height;
-
-			//GameRatingLabel.MaxWidth = Const.RatingSize.Width;
-			//GameRatingLabel.MaxHeight = Const.RatingSize.Height;
 		}
 
 		public GameControl(string gameId, Action rebuildGameGrid, Action<bool> progressStartStop)
@@ -152,6 +147,46 @@ namespace naLauncherWPF.App.Controls
 			catch (Exception ex)
 			{
 				Log.WriteLine(ex.ToString());
+			}
+		}
+
+		private Storyboard Movement = new Storyboard();
+
+		internal void MoveToDestination(int duration)
+		{
+			if (ViewModel.DestinationY.HasValue && ViewModel.DestinationX.HasValue)
+			{
+				if (ViewModel.DestinationX.Value == ViewModel.X && ViewModel.DestinationY.Value == ViewModel.Y)
+				{
+					ViewModel.SetDestination(null, null);
+					return;
+				}
+
+				Movement.Children.Clear();
+
+				var doubleAnimation = new DoubleAnimation(ViewModel.Y, ViewModel.DestinationY.Value, new Duration(new TimeSpan(0, 0, 0, 0, duration)));
+				Storyboard.SetTarget(doubleAnimation, this);
+				Storyboard.SetTargetProperty(doubleAnimation, new PropertyPath("(Canvas.Top)"));
+				Movement.Children.Add(doubleAnimation);
+
+				doubleAnimation = new DoubleAnimation(ViewModel.X, ViewModel.DestinationX.Value, new Duration(new TimeSpan(0, 0, 0, 0, duration)));
+				Storyboard.SetTarget(doubleAnimation, this);
+				Storyboard.SetTargetProperty(doubleAnimation, new PropertyPath("(Canvas.Left)"));
+				Movement.Children.Add(doubleAnimation);
+
+				Movement.DecelerationRatio = 0.5;
+
+				Movement.Completed += (o, s) =>
+				{
+					if (ViewModel.DestinationX.HasValue && ViewModel.DestinationY.HasValue)
+					{
+						ViewModel.X = ViewModel.DestinationX.Value;
+						ViewModel.Y = ViewModel.DestinationY.Value;
+
+						ViewModel.SetDestination(null, null);
+					}
+				};
+				Movement.Begin();
 			}
 		}
 	}
