@@ -173,6 +173,8 @@ namespace naLauncherWPF.App
 		{
 			try
 			{
+				// TODO header double click
+
 				WindowSizeBeforeMax = ViewModel.WindowSize;
 				WindowState = WindowState.Maximized;
 			}
@@ -186,10 +188,16 @@ namespace naLauncherWPF.App
 		{
 			try
 			{
-				WindowState = WindowState.Normal;
+				// TODO header double click
+				if (WindowState == WindowState.Maximized)
+				{
+					WindowState = WindowState.Normal;
 
-				if (WindowSizeBeforeMax.HasValue)
-					ViewModel.WindowSize = WindowSizeBeforeMax.Value;
+					if (WindowSizeBeforeMax.HasValue)
+						ViewModel.WindowSize = WindowSizeBeforeMax.Value;
+					else
+						ViewModel.WindowSize = new Size(Const.MinWindowSize.Width, Const.MinWindowSize.Height);
+				}
 				else
 					ViewModel.WindowSize = new Size(Const.MinWindowSize.Width, Const.MinWindowSize.Height);
 			}

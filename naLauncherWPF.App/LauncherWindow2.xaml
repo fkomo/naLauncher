@@ -120,11 +120,8 @@
 			</Grid>
 
 			<DockPanel Grid.Row="2" Margin="16,8,16,16">
-
-				<Label FontSize="{Binding TextFontSize}" 
-					VerticalContentAlignment="Center"
-					Foreground="#aaaaaa">Filter:</Label>
-				<Button Name="FilterButton"
+				<Button DockPanel.Dock="Left"
+					Name="FilterButton"
 					Height="32" Padding="8,0,8,0" Margin="0,0,16,0" BorderThickness="1" BorderBrush="#333333"
 					Background="#222222" Foreground="#aaaaaa"
 					Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
@@ -132,11 +129,8 @@
 					Effect="{StaticResource BlackShadow16}"
 					Command="{Binding ChangeFilterCommand}"
 					Content="{Binding Filter}" />
-
-				<Label FontSize="{Binding TextFontSize}"
-					VerticalContentAlignment="Center"
-					Foreground="#aaaaaa">Order:</Label>
-				<Button Name="OrderButton" 
+				<Button DockPanel.Dock="Left"
+					Name="OrderButton" 
 					Height="32" Padding="8,0,8,0" Margin="0,0,16,0" BorderThickness="1" BorderBrush="#333333"
 					Background="#222222" Foreground="#aaaaaa"
 					Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
@@ -145,7 +139,8 @@
 					Command="{Binding ChangeOrderCommand}"
 					Content="{Binding Order}" />
 
-				<Button Name="OrderDirectionButton" 
+				<Button DockPanel.Dock="Left"
+					Name="OrderDirectionButton" 
 					Height="32" Padding="8,0,8,0" Margin="0,0,16,0" BorderThickness="1" BorderBrush="#333333"
 					Background="#222222" Foreground="#aaaaaa"
 					Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
@@ -154,7 +149,7 @@
 					Command="{Binding ChangeOrderDirectionCommand}"
 					Content="{Binding OrderDirection}" />
 
-				<Grid>
+				<Grid DockPanel.Dock="Right">
 					<TextBox Name="GameFilterInput" 
 						Height="32" Padding="7,0,0,0" BorderBrush="#333333"
 						VerticalContentAlignment="Center" 

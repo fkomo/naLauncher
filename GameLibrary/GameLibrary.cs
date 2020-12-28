@@ -23,8 +23,8 @@ namespace GameLibrary
 		Installed = 1,
 		Removed = 2,
 		Beaten = 3,
-		ToBeat = 4,
-		Controller = 5,
+		Unbeaten = 4,
+		WithControllerSupport = 5,
 		Unidentified = 6,
 
 		Count
@@ -37,8 +37,8 @@ namespace GameLibrary
 		PlayCount = 2,
 		Rating = 3,
 		LastPlayed = 4,
-		BeatenIn = 5,
-		Added = 6,
+		BeatTime = 5,
+		DateAdded = 6,
 
 		Count
 	}
@@ -109,8 +109,8 @@ namespace GameLibrary
 				case GameFilter.Installed: games = games.Where(g => !g.Value.Removed); break;
 				case GameFilter.Removed: games = games.Where(g => g.Value.Removed); break;
 				case GameFilter.Beaten: games = games.Where(g => g.Value.Completed.HasValue); break;
-				case GameFilter.ToBeat: games = games.Where(g => !g.Value.Completed.HasValue && !g.Value.Removed); break;
-				case GameFilter.Controller: games = games.Where(g => g.Value.GamepadFriendly == true && !g.Value.Removed); break;
+				case GameFilter.Unbeaten: games = games.Where(g => !g.Value.Completed.HasValue && !g.Value.Removed); break;
+				case GameFilter.WithControllerSupport: games = games.Where(g => g.Value.GamepadFriendly == true && !g.Value.Removed); break;
 				case GameFilter.Unidentified: games = games.Where(g => g.Value.Image == null); break;
 
 				default:
@@ -123,8 +123,8 @@ namespace GameLibrary
 				case GameOrder.PlayTime: games = games.OrderBy(g => g.Value.TotalTimePlayed); break;
 				case GameOrder.PlayCount: games = games.OrderBy(g => g.Value.PlayCount); break;
 				case GameOrder.Rating: games = games.OrderBy(g => g.Value.Rating); break;
-				case GameOrder.BeatenIn: games = games.OrderBy(g => g.Value.BeatenIn); break;
-				case GameOrder.Added: games = games.OrderBy(g => g.Value.Added); break;
+				case GameOrder.BeatTime: games = games.OrderBy(g => g.Value.BeatenIn); break;
+				case GameOrder.DateAdded: games = games.OrderBy(g => g.Value.Added); break;
 				case GameOrder.LastPlayed:
 					{
 						games = games

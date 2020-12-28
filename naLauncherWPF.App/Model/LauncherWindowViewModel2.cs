@@ -28,8 +28,8 @@ namespace naLauncherWPF.App.Model
 							Width = Const.GameControlSize.Width,
 							Height = Const.GameControlSize.Height,
 						};
-						gc.ViewModel.X = (int)Const.GridBorder + Rng.Next(0, (int)(windowSize.Width - Const.GameControlSize.Width - (1 + Const.GridBorder + Const.GridBorder + 1)));
-						gc.ViewModel.Y = (int)Const.GridBorder + Rng.Next(0, (int)(windowSize.Height - Const.GameControlSize.Height - (32 + 8 + 56 + Const.GridBorder + Const.GridBorder)));
+						gc.ViewModel.X = (int)Const.GridBorder + Rng.Next(0, (int)(windowSize.Width - Const.MinWindowSize.Width));
+						gc.ViewModel.Y = (int)Const.GridBorder + Rng.Next(0, (int)(windowSize.Height - Const.MinWindowSize.Height));
 						
 						return gc;
 					})
@@ -211,26 +211,26 @@ namespace naLauncherWPF.App.Model
 		private GameFilter filter = (GameFilter)Properties.Settings.Default.Filter;
 		public string Filter
 		{
-			get { return filter.ToString(); }
+			get { return string.Join(" ", Strings.SplitToWords(filter.ToString())) + " " + $"({ filteredGames.Length })"; }
 			private set
 			{
-				filter = (GameFilter)Enum.Parse(typeof(GameFilter), value);
-				OnPropertyChanged();
-
+				filter = (GameFilter)Enum.Parse(typeof(GameFilter), value.Replace(" ", string.Empty));
 				RebuildGameGrid();
+
+				OnPropertyChanged();
 			}
 		}
 
 		private GameOrder order = (GameOrder)Properties.Settings.Default.Order;
 		public string Order
 		{
-			get { return order.ToString(); }
+			get { return $"By { string.Join(" ", Strings.SplitToWords(order.ToString())) }"; }
 			private set
 			{
-				order = (GameOrder)Enum.Parse(typeof(GameOrder), value);
-				OnPropertyChanged();
-
+				order = (GameOrder)Enum.Parse(typeof(GameOrder), value.Replace("By ", string.Empty).Replace(" ", string.Empty));
 				RebuildGameGrid();
+
+				OnPropertyChanged();
 			}
 		}
 
@@ -247,9 +247,9 @@ namespace naLauncherWPF.App.Model
 			set
 			{
 				titleFilter = value;
-				OnPropertyChanged();
-
 				RebuildGameGrid();
+
+				OnPropertyChanged();
 			}
 		}
 
