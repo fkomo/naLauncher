@@ -181,7 +181,13 @@ namespace naLauncherWPF.App.Model
 			get { return filteredGames; }
 			private set
 			{
+				foreach (var gameControl in allGames)
+					gameControl.Visibility = Visibility.Collapsed;
+				foreach (var gameControl in value)
+					gameControl.Visibility = Visibility.Visible;
+				
 				filteredGames = value;
+
 				OnPropertyChanged();
 			}
 		}

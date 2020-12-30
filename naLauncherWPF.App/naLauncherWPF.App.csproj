@@ -90,6 +90,7 @@
       <DependentUpon>GameTooltip.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\MarqueeControl.cs" />
+    <Compile Include="Controls\ScrollableCanvas.cs" />
     <Compile Include="Controls\TestUserControl.xaml.cs">
       <DependentUpon>TestUserControl.xaml</DependentUpon>
     </Compile>

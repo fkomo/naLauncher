@@ -20,6 +20,7 @@
 	Mouse.MouseLeave="MainWindow_MouseLeave" 
 	Closing="MainWindow_Closing"
 	Loaded="MainWindow_Loaded"
+	Mouse.MouseDown="MainWindow_MouseDown" Mouse.MouseUp="MainWindow_MouseUp" Mouse.MouseMove="MainWindow_MouseMove"
 	PreviewMouseWheel="ItemsControl_PreviewMouseWheel">
 
 	<Window.Resources>
@@ -39,15 +40,14 @@
 			</Style.Triggers>
 		</Style>
 
-		<Style x:Key="Line" TargetType="Line">
+		<Style x:Key="LineShape" TargetType="Line">
 			<Setter Property="Stroke" Value="#cccccc" />
 			<Setter Property="StrokeThickness" Value="1" />
+		</Style>
 
-			<Style.Triggers>
-				<Trigger Property="IsMouseOver" Value="True">
-					<Setter Property="Stroke" Value="White" />
-				</Trigger>
-			</Style.Triggers>
+		<Style x:Key="RectangleShape" TargetType="Rectangle">
+			<Setter Property="Stroke" Value="#cccccc" />
+			<Setter Property="StrokeThickness" Value="1" />
 		</Style>
 
 	</Window.Resources>
@@ -68,6 +68,7 @@
 				<RowDefinition Height="8"/>
 				<RowDefinition Height="56"/>
 				<RowDefinition />
+				<RowDefinition Height="16"/>
 			</Grid.RowDefinitions>
 
 			<DockPanel Grid.Row="0">
@@ -80,34 +81,32 @@
 					Mouse.MouseUp="HeaderCloseLabel_MouseUp">
 				</Label>-->
 
-				<Grid DockPanel.Dock="Right" Width="40" Background="#dd111111"
+				<Grid Name="HeaderClose" DockPanel.Dock="Right" Width="32" Background="#dd111111"
+					Mouse.MouseEnter="HeaderClose_MouseEnter" Mouse.MouseLeave="HeaderClose_MouseLeave"
 					Mouse.MouseUp="HeaderCloseLabel_MouseUp">
-					<Line Style="{StaticResource Line}" X1="10" Y1="10" X2="22" Y2="22" />
-					<Line Style="{StaticResource Line}" X1="10" Y1="22" X2="22" Y2="10" />
+					<Line x:Name="HeaderCloseShape1" Style="{StaticResource LineShape}" X1="10" Y1="10" X2="22" Y2="22" />
+					<Line x:Name="HeaderCloseShape2" Style="{StaticResource LineShape}" X1="10" Y1="22" X2="22" Y2="10" />
 				</Grid>
 
-				<Grid DockPanel.Dock="Right" Width="32" Background="#dd111111"
+				<Grid Name="HeaderMax" DockPanel.Dock="Right" Width="32" Background="#dd111111"
+					Mouse.MouseEnter="HeaderMax_MouseEnter" Mouse.MouseLeave="HeaderMax_MouseLeave"
 					Mouse.MouseUp="HeaderMaximizeLabel_MouseUp">
-					<Line Style="{StaticResource Line}" X1="10" Y1="10" X2="22" Y2="10" />
-					<Line Style="{StaticResource Line}" X1="22" Y1="10" X2="22" Y2="22" />
-					<Line Style="{StaticResource Line}" X1="22" Y1="22" X2="10" Y2="22" />
-					<Line Style="{StaticResource Line}" X1="10" Y1="22" X2="10" Y2="10" />
+					<Rectangle x:Name="HeaderMaxShape" Width="12" Height="12" Fill="Transparent" Style="{StaticResource RectangleShape}" />
 				</Grid>
 
-				<Grid DockPanel.Dock="Right" Width="32" Background="#dd111111"
+				<Grid Name="HeaderMin" DockPanel.Dock="Right" Width="32" Background="#dd111111"
+					Mouse.MouseEnter="HeaderMin_MouseEnter" Mouse.MouseLeave="HeaderMin_MouseLeave"
 					Mouse.MouseUp="HeaderMinimizeLabel_MouseUp">
-					<Line Style="{StaticResource Line}" X1="10" Y1="16" X2="22" Y2="16" />
+					<Line x:Name="HeaderMinShape" Style="{StaticResource LineShape}" X1="10" Y1="16" X2="22" Y2="16" />
 				</Grid>
 
 				<Label Name="HeaderLabel"
+					Mouse.MouseDown="MainWindow_MouseDown" Mouse.MouseUp="MainWindow_MouseUp" Mouse.MouseMove="MainWindow_MouseMove"
 					Style="{StaticResource HeaderLabel}"
 					FontSize="{Binding HeaderFontSize}"
 					HorizontalContentAlignment="Stretch"
-					Padding="16,0,0,0"
-					Content="naLauncher"
-					Mouse.MouseDown="MainWindow_MouseDown"
-					Mouse.MouseUp="MainWindow_MouseUp"
-					Mouse.MouseMove="MainWindow_MouseMove">
+					Padding="8,0,0,0"
+					Content="naLauncher">
 				</Label>
 			</DockPanel>
 
@@ -128,7 +127,9 @@
 					FontSize="{Binding TextFontSize}"
 					Effect="{StaticResource BlackShadow16}"
 					Command="{Binding ChangeFilterCommand}"
-					Content="{Binding Filter}" />
+					Content="{Binding Filter}"
+					Click="FilterButton_Click"/>
+				
 				<Button DockPanel.Dock="Left"
 					Name="OrderButton" 
 					Height="32" Padding="8,0,8,0" Margin="0,0,16,0" BorderThickness="1" BorderBrush="#333333"
@@ -201,16 +202,14 @@
 				<ScrollViewer Name="GamesScrollViewer"
 					HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"
 					PreviewMouseWheel="ItemsControl_PreviewMouseWheel">
-
 					<ItemsControl Name="GamesControl"
+						Mouse.MouseDown="MainWindow_MouseDown" Mouse.MouseUp="MainWindow_MouseUp" Mouse.MouseMove="MainWindow_MouseMove"
 						ItemsSource="{Binding FilteredGames}">
 						<ItemsControl.ItemsPanel>
 							<ItemsPanelTemplate>
-								<Canvas x:Name="GamesCanvas"
-						  		Mouse.MouseDown="MainWindow_MouseDown" 
-								Mouse.MouseUp="MainWindow_MouseUp" 
-								Mouse.MouseMove="MainWindow_MouseMove" 
-								/>
+								<ctrl:ScrollableCanvasControl x:Name="GamesCanvas"
+									Mouse.MouseDown="MainWindow_MouseDown" Mouse.MouseUp="MainWindow_MouseUp" Mouse.MouseMove="MainWindow_MouseMove"
+									/>
 							</ItemsPanelTemplate>
 						</ItemsControl.ItemsPanel>
 						<ItemsControl.ItemContainerStyle>

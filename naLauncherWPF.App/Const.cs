@@ -30,7 +30,7 @@ namespace naLauncherWPF.App
 		readonly public static double GameTilteFontSize = 15 * Scale;
 		readonly public static double RatingTextFontSize = 20 * Scale;
 
-		readonly public static double WindowHeaderFontSize = 14;
+		readonly public static double WindowHeaderFontSize = 15;
 		readonly public static double WindowTextFontSize = 12;
 	}
 }
