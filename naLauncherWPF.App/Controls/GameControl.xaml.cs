@@ -77,7 +77,10 @@ namespace naLauncherWPF.App.Controls
 			try
 			{
 				if (ViewModel.IsGameInfoPresent)
+				{
 					GameInfoTextBlock.Visibility = Visibility.Visible;
+					ViewModel.CycleGameInfo();
+				}
 
 				if (ViewModel.GameRating.HasValue)
 					GameRatingLabel.Visibility = Visibility.Visible;

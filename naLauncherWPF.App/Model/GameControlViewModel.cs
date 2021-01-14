@@ -472,73 +472,100 @@ namespace naLauncherWPF.App.Model
 			get { return gameInfo?.Count() > 0; }
 		}
 
-		private IList<Inline> gameInfo = null;
-		public IList<Inline> GameInfo
+		public void CycleGameInfo()
+		{
+			OnPropertyChanged(nameof(GameInfo));
+		}
+
+		private int gameInfoIndex = 0;
+		private List<List<Inline>> gameInfo = new List<List<Inline>>();
+
+		public List<Inline> GameInfo
 		{
 			get
 			{
-				gameInfo = new List<Inline>();
+				gameInfo.Clear();
 
 				if (Model != null)
 				{
+					var common = new List<Inline>();
+
 					var igdbData = Model.CustomData<GameLibrary.GameDataProviders.IgdbComData>();
 					if (igdbData != null)
 					{
 						if (igdbData.Developer != null)
 						{
-							gameInfo.Add(new Run("Developed by "));
-							gameInfo.Add(new Run(igdbData.Developer) { FontWeight = FontWeights.Bold });
-							gameInfo.Add(new LineBreak());
+							common.Add(new Run("Developed by "));
+							common.Add(new Run(igdbData.Developer) { FontWeight = FontWeights.Bold });
+							common.Add(new LineBreak());
 						}
 
 						if (igdbData.Genres?.Length > 0)
 						{
-							gameInfo.Add(new LineBreak());
-							gameInfo.Add(new Run(string.Join(" | ", igdbData.Genres)));
-							gameInfo.Add(new LineBreak());
+							common.Add(new LineBreak());
+							common.Add(new Run(string.Join(" | ", igdbData.Genres)));
+							common.Add(new LineBreak());
 						}
 					}
 
+					var summary = new List<Inline>(common);
 					if (Model.Summary != null)
 					{
-						gameInfo.Add(new LineBreak());
-						gameInfo.Add(new Run(Model.Summary));
-						gameInfo.Add(new LineBreak());
+						summary.Add(new LineBreak());
+						summary.Add(new Run(Model.Summary));
+						summary.Add(new LineBreak());
 					}
 
-					gameInfo.Add(new LineBreak());
-					gameInfo.Add(new Run($"Added { Strings.TimeStringSince(Model.Added) }"));
-					gameInfo.Add(new LineBreak());
+					gameInfo.Add(summary);
+
+					var stats = new List<Inline>(common);
+
+					stats.Add(new LineBreak());
+					stats.Add(new Run($"Added { Strings.TimeStringSince(Model.Added) }"));
+					stats.Add(new LineBreak());
 
 					if (Model.PlayCount > 0)
 					{
-						gameInfo.Add(new Run($"Played { Strings.NumToCountableString(Model.PlayCount) }, last time { Strings.TimeStringSince(Model.LastPlayed.Value) }"));
-						gameInfo.Add(new LineBreak());
+						stats.Add(new Run($"Played { Strings.NumToCountableString(Model.PlayCount) }, last time { Strings.TimeStringSince(Model.LastPlayed.Value) }"));
+						stats.Add(new LineBreak());
 					}
 
 					if (Model.TotalTimePlayed > 0)
 					{
-						gameInfo.Add(new Run($"Played for { Strings.DurationString(new TimeSpan(0, Model.TotalTimePlayed, 0)) }"));
-						gameInfo.Add(new LineBreak());
+						stats.Add(new Run($"Played for { Strings.DurationString(new TimeSpan(0, Model.TotalTimePlayed, 0)) }"));
+						stats.Add(new LineBreak());
 					}
 
 					if (Model.GamepadFriendly == true)
 					{
-						gameInfo.Add(new LineBreak());
-						gameInfo.Add(new Run($"Controller support"));
-						gameInfo.Add(new LineBreak());
+						stats.Add(new LineBreak());
+						stats.Add(new Run($"Controller support"));
+						stats.Add(new LineBreak());
 					}
 
-					// remove extensive line breaks at start
-					while (gameInfo.FirstOrDefault() is LineBreak)
-						gameInfo.RemoveAt(0);
+					if (stats.Count > common.Count)
+						gameInfo.Add(stats);
 
-					// remove extensive line breaks at the end
-					while (gameInfo.LastOrDefault() is LineBreak)
-						gameInfo.RemoveAt(gameInfo.Count - 1);
+					// cleanup
+					for (var i = 0; i < gameInfo.Count; i++)
+					{
+						// remove extensive line breaks at start
+						while (gameInfo[i].FirstOrDefault() is LineBreak)
+							gameInfo[i].RemoveAt(0);
+
+						// remove extensive line breaks at the end
+						while (gameInfo[i].LastOrDefault() is LineBreak)
+							gameInfo[i].RemoveAt(gameInfo[i].Count - 1);
+					}
 				}
 
-				return gameInfo;
+				if (gameInfo.Count > 0)
+				{
+					gameInfoIndex = (gameInfoIndex + 1) % gameInfo.Count;
+					return gameInfo[gameInfoIndex];
+				}
+
+				return new List<Inline>();
 			}
 		}
 
