@@ -516,9 +516,16 @@ namespace naLauncherWPF.App.Model
 						summary.Add(new LineBreak());
 					}
 
+					if (Model.GamepadFriendly == true)
+					{
+						summary.Add(new LineBreak());
+						summary.Add(new Run($"Controller support"));
+						summary.Add(new LineBreak());
+					}
+
 					gameInfo.Add(summary);
 
-					var stats = new List<Inline>(common);
+					var stats = new List<Inline>(/*common*/);
 
 					stats.Add(new LineBreak());
 					stats.Add(new Run($"Added { Strings.TimeStringSince(Model.Added) }"));
@@ -526,25 +533,33 @@ namespace naLauncherWPF.App.Model
 
 					if (Model.PlayCount > 0)
 					{
-						stats.Add(new Run($"Played { Strings.NumToCountableString(Model.PlayCount) }, last time { Strings.TimeStringSince(Model.LastPlayed.Value) }"));
+						stats.Add(new Run($"Played "));
+						stats.Add(new Run(Strings.NumToCountableString(Model.PlayCount)) { FontWeight = FontWeights.Bold });
+						stats.Add(new Run($", last time { Strings.TimeStringSince(Model.LastPlayed.Value) }"));
 						stats.Add(new LineBreak());
 					}
 
 					if (Model.TotalTimePlayed > 0)
 					{
-						stats.Add(new Run($"Played for { Strings.DurationString(new TimeSpan(0, Model.TotalTimePlayed, 0)) }"));
+						stats.Add(new Run($"Played for "));
+						stats.Add(new Run(Strings.DurationString(new TimeSpan(0, Model.TotalTimePlayed, 0))) { FontWeight = FontWeights.Bold });
 						stats.Add(new LineBreak());
 					}
 
-					if (Model.GamepadFriendly == true)
+					if (Model.Completed.HasValue)
 					{
-						stats.Add(new LineBreak());
-						stats.Add(new Run($"Controller support"));
+						stats.Add(new Run($"Beaten on "));
+						stats.Add(new Run($"{ Model.Completed.Value.Day }/{ Model.Completed.Value.Month }/{ Model.Completed.Value.Year }") { FontWeight = FontWeights.Bold });
+						if (Model.BeatenIn.HasValue && Model.BeatenIn.Value > 60)
+						{
+							stats.Add(new Run($" in ~"));
+							stats.Add(new Run($"{ Model.BeatenIn.Value / 60 }") { FontWeight = FontWeights.Bold });
+							stats.Add(new Run($" hours"));
+						}
 						stats.Add(new LineBreak());
 					}
 
-					if (stats.Count > common.Count)
-						gameInfo.Add(stats);
+					gameInfo.Add(stats);
 
 					// cleanup
 					for (var i = 0; i < gameInfo.Count; i++)

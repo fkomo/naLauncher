@@ -14,6 +14,7 @@ using GameLibrary.GameDataProviders;
 using GameLibrary.Properties;
 using System.Threading.Tasks;
 using System.Xml;
+using System.Text.RegularExpressions;
 
 namespace GameLibrary
 {
@@ -98,10 +99,55 @@ namespace GameLibrary
 		/// <param name="order"></param>
 		/// <param name="ascending"></param>
 		/// <returns></returns>
-		public static string[] ListGames(string titleFilter, GameFilter filter, GameOrder order, bool ascending)
+		public static string[] ListGames(string filterCommand, GameFilter filter, GameOrder order, bool ascending)
 		{
-			var games = Games
-				.Where(g => string.IsNullOrEmpty(titleFilter) || g.Value.Title.ToLower().Contains(titleFilter.ToLower()));
+			var games = Games.AsEnumerable();
+
+			if (!string.IsNullOrEmpty(filterCommand))
+			{
+				try
+				{
+					var commands = filterCommand.Trim().ToLower().Split(new char[] { ';' }, StringSplitOptions.RemoveEmptyEntries);
+					foreach (var command in commands)
+					{
+						if (command.StartsWith("*"))
+						{
+							// remove all white spaces in string
+							var c = Regex.Replace(command, @"\s+", string.Empty);
+							if (c.Contains("*beaten:"))
+							{
+								if (GetDateFromCommand(c.Replace("*beaten:", string.Empty), out int? year, out int? month, out int? day))
+								{
+									games = games.Where(g => g.Value.Completed.HasValue &&
+										(!year.HasValue || g.Value.Completed.Value.Year == year.Value) &&
+										(!month.HasValue || g.Value.Completed.Value.Month == month.Value) &&
+										(!day.HasValue || g.Value.Completed.Value.Day == day.Value));
+									Debug.WriteLine($"beaten: { year }/{ month }/{ day }");
+								}
+							}
+							else if (c.Contains("*added:"))
+							{
+								if (GetDateFromCommand(c.Replace("*added:", string.Empty), out int? year, out int? month, out int? day))
+								{
+									games = games.Where(g =>
+										(!year.HasValue || g.Value.Added.Year == year.Value) &&
+										(!month.HasValue || g.Value.Added.Month == month.Value) &&
+										(!day.HasValue || g.Value.Added.Day == day.Value));
+									Debug.WriteLine($"added: { year }/{ month }/{ day }");
+								}
+							}
+						}
+						else
+							// filter by game title
+							games = games.Where(g => g.Value.Title.ToLower().Contains(command));
+					}
+				}
+				catch (Exception ex)
+				{
+					Log.WriteLine(ex.ToString());
+					games = Games.AsEnumerable();
+				}
+			}
 
 			switch (filter)
 			{
@@ -147,21 +193,55 @@ namespace GameLibrary
 			return result.ToArray();
 		}
 
+		/// <summary>
+		/// parse command date in format YEAR/MONTH/DAY
+		/// </summary>
+		/// <param name="commandDate">format: YEAR/MONTH/DAY</param>
+		/// <param name="year"></param>
+		/// <param name="month"></param>
+		/// <param name="day"></param>
+		/// <returns>true if at least one part is parsed</returns>
+		private static bool GetDateFromCommand(string commandDate, out int? year, out int? month, out int? day)
+		{
+			year = null;
+			month = null;
+			day = null;
+
+			try
+			{
+				var parts = commandDate.Split('/');
+				if (Int32.TryParse(parts[0], out int y))
+					year = y;
+
+				if (parts.Length > 1 && Int32.TryParse(parts[1], out int m))
+					month = m;
+
+				if (parts.Length > 2 && Int32.TryParse(parts[2], out int d))
+					day = d;
+
+				return year.HasValue || month.HasValue || day.HasValue;
+			}
+			catch
+			{
+				return false;
+			}
+		}
+
 		public static ConcurrentDictionary<string, Bitmap> GameImageCache { get; private set; } = new ConcurrentDictionary<string, Bitmap>();
 
 		static ConcurrentDictionary<string, Bitmap> ImageCache { get; set; } = new ConcurrentDictionary<string, Bitmap>();
 
-		static string BackupDirectory 
-		{ 
-			get 
-			{ 
+		static string BackupDirectory
+		{
+			get
+			{
 
 				var backupDirectory = Path.Combine(UserDataFolder, "GameLibraryBackup");
 				if (!Directory.Exists(backupDirectory))
 					Directory.CreateDirectory(backupDirectory);
 
 				return backupDirectory;
-			} 
+			}
 		}
 
 		static string GameLibraryFile { get { return Path.Combine(UserDataFolder, GamesLibraryFileName); } }
@@ -606,7 +686,7 @@ namespace GameLibrary
 
 			if (!Games.TryRemove(gameId, out GameInfo oldGame))
 				return false;
-				
+
 			Save();
 			return true;
 		}
@@ -697,7 +777,7 @@ namespace GameLibrary
 				try
 				{
 					//if (!Debugger.IsAttached)
-						Process.Start(processInfo);
+					Process.Start(processInfo);
 
 					return true;
 				}

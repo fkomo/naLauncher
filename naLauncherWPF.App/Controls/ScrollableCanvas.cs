@@ -30,10 +30,7 @@ namespace naLauncherWPF.App.Controls
                 }
             }
 
-            var result = new Size(rightMost, bottomMost);
-
-            Debug.WriteLine($"MeasureOverride({ constraint }, childrenCount={ Children.Count }): { result }");
-            return result;
+            return new Size(rightMost, bottomMost);
         }
     }
 }
