@@ -107,33 +107,45 @@ namespace GameLibrary
 			{
 				try
 				{
-					var commands = filterCommand.Trim().ToLower().Split(new char[] { ';' }, StringSplitOptions.RemoveEmptyEntries);
+					var commands = filterCommand.Trim().ToLower().Split(new char[] { '&' }, StringSplitOptions.RemoveEmptyEntries);
 					foreach (var command in commands)
 					{
 						if (command.StartsWith("*"))
 						{
 							// remove all white spaces in string
 							var c = Regex.Replace(command, @"\s+", string.Empty);
-							if (c.Contains("*beaten:"))
+							var op = GetOperatorFromCommand(c);
+
+							if (c.Contains("*beaten"))
 							{
-								if (GetDateFromCommand(c.Replace("*beaten:", string.Empty), out int? year, out int? month, out int? day))
+								if (GetDateFromCommand(c.Replace($"*beaten{ op }", string.Empty), out int? year, out int? month, out int? day))
 								{
-									games = games.Where(g => g.Value.Completed.HasValue &&
-										(!year.HasValue || g.Value.Completed.Value.Year == year.Value) &&
-										(!month.HasValue || g.Value.Completed.Value.Month == month.Value) &&
-										(!day.HasValue || g.Value.Completed.Value.Day == day.Value));
-									Debug.WriteLine($"beaten: { year }/{ month }/{ day }");
+									games = games.Where(g => EvaluateDates(g.Value.Completed, op, year, month, day));
+									Debug.WriteLine($"beaten{ op }{ year }/{ month }/{ day }");
 								}
 							}
-							else if (c.Contains("*added:"))
+							else if (c.Contains("*added"))
 							{
-								if (GetDateFromCommand(c.Replace("*added:", string.Empty), out int? year, out int? month, out int? day))
+								if (GetDateFromCommand(c.Replace($"*added{ op }", string.Empty), out int? year, out int? month, out int? day))
 								{
-									games = games.Where(g =>
-										(!year.HasValue || g.Value.Added.Year == year.Value) &&
-										(!month.HasValue || g.Value.Added.Month == month.Value) &&
-										(!day.HasValue || g.Value.Added.Day == day.Value));
-									Debug.WriteLine($"added: { year }/{ month }/{ day }");
+									games = games.Where(g => EvaluateDates(g.Value.Added, op, year, month, day));
+									Debug.WriteLine($"added{ op }{ year }/{ month }/{ day }");
+								}
+							}
+							else if (c.Contains("*playcount"))
+							{
+								if (GetNumberFromCommand(c.Replace($"*playcount{ op }", string.Empty), out int? count))
+								{
+									games = games.Where(g => EvaluateNum(g.Value.PlayCount, op, count.Value));
+									Debug.WriteLine($"playcount{ op }{ count }");
+								}
+							}
+							else if (c.Contains("*rating"))
+							{
+								if (GetNumberFromCommand(c.Replace($"*rating{ op }", string.Empty), out int? rating))
+								{
+									games = games.Where(g => EvaluateNum(g.Value.Rating, op, rating.Value));
+									Debug.WriteLine($"rating{ op }{ rating }");
 								}
 							}
 						}
@@ -191,6 +203,73 @@ namespace GameLibrary
 				result = result.Reverse();
 
 			return result.ToArray();
+		}
+
+		private static bool EvaluateDates(DateTime? op1, string op, int? year, int? month, int? day)
+		{
+			switch (op)
+			{
+				case "=": return op1.HasValue &&
+					(!year.HasValue || op1.Value.Year == year.Value) &&
+					(!month.HasValue || op1.Value.Month == month.Value) &&
+					(!day.HasValue || op1.Value.Day == day.Value);
+
+				case "<": return op1.HasValue &&
+					(!year.HasValue || op1.Value.Year < year.Value) &&
+					(!month.HasValue || op1.Value.Month < month.Value) &&
+					(!day.HasValue || op1.Value.Day < day.Value);
+
+				case ">": return op1.HasValue &&
+					(!year.HasValue || op1.Value.Year > year.Value) &&
+					(!month.HasValue || op1.Value.Month > month.Value) &&
+					(!day.HasValue || op1.Value.Day > day.Value);
+			}
+
+			return false;
+		}
+
+		private static bool EvaluateNum(int? op1, string op, int op2)
+		{
+			if (!op1.HasValue)
+				return false;
+
+			switch (op)
+			{
+				case "=": return op1.Value == op2;
+				case ">": return op1.Value > op2;
+				case "<": return op1.Value < op2;
+			}
+
+			return false;
+		}
+
+		private static bool GetNumberFromCommand(string commandNumber, out int? number)
+		{
+			number = null;
+
+			try
+			{
+				if (Int32.TryParse(commandNumber, out int n))
+					number = n;
+
+				return number.HasValue;
+			}
+			catch
+			{
+				return false;
+			}
+		}
+
+		private static string GetOperatorFromCommand(string command)
+		{
+			if (command.Contains("="))
+				return "=";
+			else if (command.Contains("<"))
+				return "<";
+			else if (command.Contains(">"))
+				return ">";
+
+			return null;
 		}
 
 		/// <summary>
