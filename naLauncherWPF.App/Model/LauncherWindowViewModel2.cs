@@ -169,6 +169,18 @@ namespace naLauncherWPF.App.Model
 			}
 		}
 
+		public ICommand ClearCommand
+		{
+			get
+			{
+				return new DelegateCommand(() =>
+				{
+					if (!string.IsNullOrEmpty(titleFilter))
+						TitleFilter = null;
+				});
+			}
+		}
+
 		#endregion
 
 		#region Properties
@@ -189,6 +201,7 @@ namespace naLauncherWPF.App.Model
 				filteredGames = value;
 
 				OnPropertyChanged();
+				OnPropertyChanged(nameof(Clear));
 			}
 		}
 
@@ -217,7 +230,7 @@ namespace naLauncherWPF.App.Model
 		private GameFilter filter = (GameFilter)Properties.Settings.Default.Filter;
 		public string Filter
 		{
-			get { return string.Join(" ", Strings.SplitToWords(filter.ToString())) + " " + $"({ filteredGames.Length })"; }
+			get { return string.Join(" ", Strings.SplitToWords(filter.ToString())); }
 			private set
 			{
 				filter = (GameFilter)Enum.Parse(typeof(GameFilter), value.Replace(" ", string.Empty));
@@ -225,6 +238,11 @@ namespace naLauncherWPF.App.Model
 
 				OnPropertyChanged();
 			}
+		}
+
+		public string Clear
+		{
+			get { return (string.IsNullOrEmpty(titleFilter) ? null : "Clear ") + $"({ filteredGames.Length })"; }
 		}
 
 		private GameOrder order = (GameOrder)Properties.Settings.Default.Order;

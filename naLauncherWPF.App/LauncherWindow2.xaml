@@ -150,6 +150,16 @@
 					Command="{Binding ChangeOrderDirectionCommand}"
 					Content="{Binding OrderDirection}" />
 
+				<Button DockPanel.Dock="Right"
+					Name="ClearButton" 
+					Height="32" Padding="8,0,8,0" Margin="16,0,0,0" BorderThickness="1" BorderBrush="#333333"
+					Background="#222222" Foreground="#aaaaaa"
+					Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+					FontSize="{Binding TextFontSize}"
+					Effect="{StaticResource BlackShadow16}"
+					Command="{Binding ClearCommand}"
+					Content="{Binding Clear}" />
+
 				<Grid DockPanel.Dock="Right">
 					<TextBox Name="GameFilterInput" 
 						Height="32" Padding="7,0,0,0" BorderBrush="#333333"
