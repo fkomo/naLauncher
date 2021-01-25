@@ -132,6 +132,14 @@ namespace GameLibrary
 									Debug.WriteLine($"added{ op }{ year }/{ month }/{ day }");
 								}
 							}
+							else if (c.Contains("*played"))
+							{
+								if (GetDateFromCommand(c.Replace($"*played{ op }", string.Empty), out int? year, out int? month, out int? day))
+								{
+									games = games.Where(g => EvaluateDates(g.Value.DateTimesPlayed, op, year, month, day));
+									Debug.WriteLine($"played{ op }{ year }/{ month }/{ day }");
+								}
+							}
 							else if (c.Contains("*playcount"))
 							{
 								if (GetNumberFromCommand(c.Replace($"*playcount{ op }", string.Empty), out int? count))
@@ -203,6 +211,11 @@ namespace GameLibrary
 				result = result.Reverse();
 
 			return result.ToArray();
+		}
+
+		private static bool EvaluateDates(DateTime[] op1, string op, int? year, int? month, int? day)
+		{
+			return op1.Any(d => EvaluateDates(d, op, year, month, day));
 		}
 
 		private static bool EvaluateDates(DateTime? op1, string op, int? year, int? month, int? day)

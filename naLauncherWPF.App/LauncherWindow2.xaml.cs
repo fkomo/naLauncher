@@ -173,7 +173,8 @@ namespace naLauncherWPF.App
 				//var gameGrid = Helpers.UIHelper.FindChild<Grid>(GameGridScrollViewer, "GameGrid");
 				//var realScrollableHeight = ((gameGrid.RowDefinitions.Count - 1) / 2) * (Const.GameControlSize.Height + Const.GridBorder) - GameGridScrollViewer.ViewportHeight;
 
-				//TODO scrolling with pgUp/ pgDown or ctrl+pgUp / pgDown should be checked against realScrollableHeight
+				// TODO BUG max scrolling height is not updated after filter change
+				// TODO scrolling with pgUp/ pgDown or ctrl+pgUp / pgDown should be checked against realScrollableHeight
   
 				// "smooth" scrolling
   				Threading.ThreadAndForget(() =>

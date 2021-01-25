@@ -12,6 +12,7 @@ namespace naLauncherWPF.App
 	// TODO application context menu
 	// TODO merge game library with another one (from different device)
 	// TODO upload/download library to/from google drive
+	// TODO change ui toggle button to combobox
 
 	public enum SmoothScrollingMode
 	{

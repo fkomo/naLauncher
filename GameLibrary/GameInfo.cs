@@ -71,13 +71,21 @@ namespace GameLibrary
 			}
 		}
 
-		public int LastMonthPlayCount
+		public DateTime[] DateTimesPlayed
 		{
 			get
 			{
 				return TimeStamps
 					?.Split(new char[] { ';' }, StringSplitOptions.RemoveEmptyEntries)
-					?.Count(t => DateTime.ParseExact(t.Substring(0, TIMESTAMP_FORMAT.Length), TIMESTAMP_FORMAT, null) > DateTime.Now.AddMonths(-1)) ?? 0;
+					?.Select(ts => DateTime.ParseExact(ts.Substring(0, TIMESTAMP_FORMAT.Length), TIMESTAMP_FORMAT, null))?.ToArray() ?? new DateTime[] { };
+			}
+		}
+
+		public int LastMonthPlayCount
+		{
+			get
+			{
+				return DateTimesPlayed.Count(dt => dt > DateTime.Now.AddMonths(-1));
 			}
 		}
 

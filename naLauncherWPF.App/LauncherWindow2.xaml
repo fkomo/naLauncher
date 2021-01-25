@@ -158,7 +158,7 @@
 						FontSize="{Binding TextFontSize}"
 						Effect="{StaticResource BlackShadow16}" 
 						Text="{Binding TitleFilter,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
-					<TextBlock Text="Find game ..." 
+					<TextBlock Text="[ Title | *added | *played | *beaten | *playcount | *rating ]" 
 						Height="32" Padding="10,8,0,0"
 						FontSize="{Binding TextFontSize}"
 						Foreground="#444444" 
