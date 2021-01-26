@@ -145,7 +145,7 @@
 4560;game;companyofheroes;Company of Heroes
 4570;game;warhammer40000dawnofwargameoftheyearedition;Warhammer® 40,000: Dawn of War® - Game of the Year Edition
 4580;game;warhammer40000dawnofwardarkcrusade;Warhammer® 40,000: Dawn of War® - Dark Crusade
-4700;game;medievaliitotalwar;Medieval II: Total War™
+4700;game;totalwarmedievaliidefinitiveedition;Total War: MEDIEVAL II - Definitive Edition
 4720;game;condemnedcriminalorigins;Condemned: Criminal Origins
 4760;game;rometotalwarcollection;Rome: Total War™ - Collection
 4770;game;rometotalwaralexander;Rome: Total War™ - Alexander
@@ -161,6 +161,7 @@
 6020;game;starwarsjediknightjediacademy;STAR WARS™ Jedi Knight - Jedi Academy™
 6030;game;starwarsjediknightiijedioutcast;STAR WARS™ Jedi Knight II - Jedi Outcast™
 6040;game;thedig;The Dig®
+6050;game;zakmckrackenthealienmindbenders;Zak McKracken and the Alien Mindbenders
 6060;game;starwarsbattlefrontii;STAR WARS™ Battlefront™ II
 6080;game;thrillvilleofftherails;Thrillville®: Off the Rails™
 6090;game;armeddangerous;Armed and Dangerous®
@@ -299,7 +300,7 @@
 10260;game;ptboatssouthgambit;PT Boats: South Gambit
 10270;game;disciplesiiireincarnation;Disciples III: Reincarnation
 10460;game;theclub;The Club™
-10500;game;empiretotalwar;Empire: Total War™
+10500;game;totalwarempiredefinitiveedition;Total War: EMPIRE - Definitive Edition
 10520;game;beijing2008;Beijing 2008
 10530;game;spacesiege;Space Siege
 10600;dlc;empiretotalwarspecialforcesunitsbonuscontent;Empire: Total War™ - Special Forces Units & Bonus Content
@@ -740,7 +741,7 @@
 33980;game;poundofground;Pound of Ground
 33990;game;alternativa;Alternativa
 34010;game;alphaprotocol;Alpha Protocol™
-34030;game;napoleontotalwar;Napoleon: Total War™
+34030;game;totalwarnapoleondefinitiveedition;Total War: NAPOLEON - Definitive Edition
 34180;game;vancouver2010theofficialvideogameoftheolympicwintergames;Vancouver 2010™ - The Official Video Game of the Olympic Winter Games
 34190;game;sonicsegaallstarsracing;Sonic & SEGA All-Stars Racing
 34270;game;segamegadrivegenesisclassics;SEGA Mega Drive and Genesis Classics
@@ -834,7 +835,7 @@
 38230;game;hotelgiant2;Hotel Giant 2
 38400;game;fallout;Fallout
 38410;game;fallout2;Fallout 2
-38420;game;fallouttacticsbrotherhoodofsteel;Fallout Tactics: Brotherhood of Steel
+38420;game;fallouttactics;Fallout Tactics
 38430;game;kingpinlifeofcrime;Kingpin — Life of Crime
 38440;game;sacrifice;Sacrifice
 38450;game;mdk;MDK
@@ -1087,6 +1088,7 @@
 55470;dlc;warhammer40000spacemarinelegionofthedamnedarmourset;Warhammer 40,000: Space Marine - Legion of the Damned Armour Set
 56436;dlc;warhammer40000dawnofwariiretributiontyranidwargeardlc;Warhammer 40,000: Dawn of War II - Retribution - Tyranid Wargear DLC
 56480;dlc;warhammer40000dawnofwariiretributioncaptainwargeardlc;Warhammer 40,000: Dawn of War II: Retribution - Captain Wargear DLC
+56483;dlc;warhammer40000dawnofwariiretributionlordgeneralwargeardlc;Warhammer 40,000: Dawn of War II - Retribution - Lord General Wargear DLC
 56485;dlc;warhammer40000dawnofwariiretributionhivetyrantwargeardlc;Warhammer 40,000: Dawn of War II - Retribution - Hive Tyrant Wargear DLC
 57000;game;nyxquestkindredspirits;NyxQuest: Kindred Spirits
 57200;game;puzzledimension;Puzzle Dimension
@@ -1133,7 +1135,7 @@
 63500;game;swordssoldiershd;Swords and Soldiers HD
 63600;game;realmyst;realMYST
 63610;game;riventhesequeltomyst;Riven: The Sequel to MYST
-63620;game;cosmicosmotheworldsbeyondthemackerel;Cosmic Osmo and the Worlds Beyond the Mackerel
+63620;game;cosmicosmo;Cosmic Osmo
 63630;game;themanholemasterpieceedition;The Manhole: Masterpiece Edition
 63640;game;spelunxthecavesofmrseudo;Spelunx and the Caves of Mr. Seudo
 63650;game;urucompletechronicles;URU: Complete Chronicles
@@ -1141,6 +1143,7 @@
 63700;game;bittripbeat;BIT.TRIP BEAT
 63710;game;bittriprunner;BIT.TRIP RUNNER
 63800;game;delvedeeper;Delve Deeper
+63802;dlc;delvedeepertreasurestunnels;Delve Deeper: Treasures and Tunnels
 63900;game;fantasywars;Fantasy Wars
 63910;game;kingsbountycrossworlds;King's Bounty: Crossworlds
 63940;game;menofwarvietnam;Men of War: Vietnam
@@ -1432,12 +1435,12 @@
 201100;dlc;postapocalypticmayhemdlcchaospack;Post Apocalyptic Mayhem: DLC - Chaos Pack
 201210;game;poxnora;Pox Nora
 201230;game;everquestiifreetoplayyourway;EverQuest® II Free-To-Play. Your Way.™
-201271;game;totalwarshogun2fallofthesamurai;Total War: Shogun 2 - Fall of the Samurai
+201271;dlc;totalwarsagafallofthesamurai;Total War Saga: FALL OF THE SAMURAI
 201272;dlc;totalwarshogun2bloodpackdlc;Total War: Shogun 2 - Blood Pack DLC
-201273;dlc;totalwarshogun2fallofthesamuraithesagafactionpack;Total War: Shogun 2 - Fall of the Samurai – The Saga Faction Pack
-201274;dlc;totalwarshogun2fallofthesamuraitheobamafactionpack;Total War: Shogun 2 - Fall of the Samurai – The Obama Faction Pack
-201275;dlc;totalwarshogun2fallofthesamuraithetsufactionpack;Total War: Shogun 2 - Fall of the Samurai – The Tsu Faction Pack
-201276;dlc;totalwarshogun2fallofthesamuraithesendaifactionpack;Total War: Shogun 2 - Fall of the Samurai – The Sendai Faction Pack
+201273;dlc;totalwarshogun2fallofthesamuraisagafactionpackdlc;Total War: SHOGUN 2 - Fall of the Samurai - Saga Faction Pack DLC
+201274;dlc;totalwarshogun2fallofthesamuraiobamafactionpackdlc;Total War: SHOGUN 2 - Fall of the Samurai - Obama Faction Pack DLC
+201275;dlc;totalwarshogun2fallofthesamuraitsufactionpackdlc;Total War: SHOGUN 2 - Fall of the Samurai - Tsu Faction Pack DLC
+201276;dlc;totalwarshogun2fallofthesamuraisendaifactionpackdlc;Total War: SHOGUN 2 - Fall of the Samurai - Sendai Faction Pack DLC
 201277;dlc;totalwarshogun2dragonwarbattlepack;Total War: SHOGUN 2 - Dragon War Battle Pack
 201279;dlc;totalwarshogun2saintsheroesunitpack;Total War: SHOGUN 2: Saints and Heroes Unit Pack
 201290;game;sinsofasolarempiretrinity;Sins of a Solar Empire®: Trinity
@@ -1680,7 +1683,7 @@
 206119;dlc;rocksmith3doorsdownloser;Rocksmith - 3 Doors Down - Loser
 206120;dlc;rocksmith3doorsdown3songpack;Rocksmith - 3 Doors Down - 3-Song Pack
 206121;dlc;rocksmithbbkingthethrillisgone;Rocksmith - B. B. King - The Thrill Is Gone
-206122;dlc;rocksmiththebluesbrothersbandsoulman;Rocksmith - The Blues Brothers Band - Soul Man
+206122;dlc;rocksmithsoulmanthebluesbrothers;Rocksmith™ - “Soul Man” - The Blues Brothers
 206123;dlc;rocksmithalbertkingwithstevierayvaughanbornunderabadsign;Rocksmith - Albert King with Stevie Ray Vaughan - Born Under a Bad Sign
 206124;dlc;rocksmithfosterthepeoplepumpedupkicks;Rocksmith - Foster the People - Pumped Up Kicks
 206125;dlc;rocksmithbringmetolifeevanescence;Rocksmith™ - “Bring Me to Life” - Evanescence
@@ -2218,6 +2221,7 @@
 215670;game;home;Home
 215690;game;zenoclash2;Zeno Clash 2
 215710;game;fieldrunners2; Fieldrunners 2
+215730;game;mightmagicheroesvishadesofdarknessreview;Might  Magic: Heroes VI - Shades of Darkness Review
 215770;game;shado;Shad'O
 215790;game;dreampinball3d;Dream Pinball 3D
 215850;dlc;magic2014expansionpack;Magic 2014 - Expansion Pack
@@ -2753,6 +2757,8 @@
 229754;dlc;rpgmakervxacedsresourcepack;RPG Maker VX Ace - DS Resource Pack
 229755;dlc;rpgmakervxacecinematicsoundtrackmusicpack;RPG Maker VX Ace - Cinematic Soundtrack Music Pack
 229790;game;mightmagicheroesvishadesofdarkness;Might & Magic: Heroes VI - Shades of Darkness
+229791;dlc;mightmagicheroesvishadesofdarknesskey;Might  Magic: Heroes VI - Shades of Darkness Key
+229792;dlc;mightmagicheroesvishadesofdarknesspreorderkey;Might  Magic: Heroes VI - Shades of Darkness Preorder Key
 229810;game;afistfulofgun;A Fistful of Gun
 229870;game;shootmaniastorm;ShootMania Storm
 229890;game;joedanger;Joe Danger
@@ -3576,7 +3582,7 @@
 255750;dlc;pacmanmuseummspacmandlc;PAC-MAN MUSEUM™ - Ms. PAC-MAN™ DLC
 255870;game;pixeljunkshooter;PixelJunk™ Shooter
 255900;game;sidmeierspirates;Sid Meier's Pirates!
-255910;dlc;sinsofasolarempirerebellionstellarphenomena;Sins of a Solar Empire®: Rebellion - Stellar Phenomena®
+255910;dlc;sinsofasolarempirerebellionstellarphenomenadlc;Sins of a Solar Empire: Rebellion - Stellar Phenomena DLC
 255920;game;the7thguest;The 7th Guest
 255940;game;the11thhour;The 11th Hour
 255960;game;badmojoredux;Bad Mojo Redux
@@ -3626,6 +3632,7 @@
 257370;dlc;southparkthestickoftruthultimatefellowshippack;South Park™: The Stick of Truth™ - Ultimate Fellowship Pack
 257371;dlc;southparkthestickoftruthsupersamuraispacemanpack;South Park™: The Stick of Truth™ - Super Samurai Spaceman Pack
 257400;game;fuse;Fuse
+257420;game;serioussam4;Serious Sam 4
 257510;game;thetalosprinciple;The Talos Principle
 257610;game;logomaker4;LogoMaker 4
 257630;game;blastem;Blast Em!
@@ -4307,7 +4314,7 @@
 270940;dlc;axisgamefactorysagfprozombiefpsplayerdlc;Axis Game Factory's AGFPRO Zombie FPS Player DLC
 270941;dlc;axisgamefactorysagfprofantasysidescrollerplayer;Axis Game Factory's AGFPRO Fantasy Side-Scroller Player
 270942;dlc;axisgamefactorysagfprobattlematmultiplayerdlc;Axis Game Factory's AGFPRO BattleMat Multi-Player DLC
-270950;game;skiregionsimulatorgoldedition;Ski Region Simulator - Gold Edition
+270950;game;skiregionsimulator;Ski Region Simulator
 271010;dlc;soundofthehumantanks;Sound of the Human Tanks
 271030;dlc;sonicallstarsracingtransformedryohazuki;Sonic and All-Stars Racing Transformed: Ryo Hazuki
 271100;dlc;masterrebootartbooksoundtrack;Master Reboot Art Book and Soundtrack
@@ -7882,7 +7889,7 @@
 338140;game;veneticagoldedition;Venetica - Gold Edition
 338160;dlc;expansioneuropauniversalisiveldorado;Expansion - Europa Universalis IV: El Dorado
 338161;dlc;contentpackeuropauniversalisiveldorado;Content Pack - Europa Universalis IV: El Dorado
-338162;dlc;europauniversalisivgunsdrumssteelvolume2musicpack;Europa Universalis IV: Guns, Drums and Steel Volume 2 Music Pack
+338162;dlc;europauniversalisivgunsdrumssteelvolume2;Europa Universalis IV: Guns, Drums and Steel Volume 2
 338163;dlc;expansioneuropauniversalisivcommonsense;Expansion - Europa Universalis IV: Common Sense
 338170;game;ratzinstagib;Ratz Instagib
 338180;game;batla;Batla
@@ -9419,7 +9426,7 @@
 360426;dlc;fantasygroundsddmonsterpackmonstrosities;Fantasy Grounds - D&D Monster Pack - Monstrosities
 360427;dlc;fantasygroundsddmonsterpackoozesplantsswarms;Fantasy Grounds - D&D Monster Pack - Oozes, Plants & Swarms
 360428;dlc;fantasygroundsddmonsterpackundead;Fantasy Grounds - D&D Monster Pack - Undead
-360430;game;mafiaiii;Mafia III
+360430;game;mafiaiiidefinitiveedition;Mafia III: Definitive Edition
 360450;game;kiairesonance;Kiai Resonance
 360500;game;snakecubed;Snake Cubed
 360510;game;intothestars;Into the Stars
@@ -10435,7 +10442,7 @@
 375500;game;thedeeppathslabyrinthofandokost;The Deep Paths: Labyrinth Of Andokost
 375510;game;newkindofadventure;New kind of adventure
 375520;game;taimumari;Taimumari
-375530;game;footballtactics;Football Tactics
+375530;game;footballtacticsglory;Football, Tactics  Glory
 375550;game;dungeonrift;DungeonRift
 375580;game;threedays;Three Days
 375590;dlc;epicarenauniformcolorspack;Epic Arena - Uniform Colors Pack
@@ -11543,6 +11550,7 @@
 392110;game;endlessspace2digitaldeluxeedition;Endless Space® 2 - Digital Deluxe Edition
 392120;game;cityz;City Z
 392150;game;skijump;#SkiJump
+392170;dlc;saintseiyasoldierssoulhadesathenaintheiroriginalcolors;Saint Seiya: Soldiers' Soul - Hades and Athena in their original colors!
 392190;game;selfietennis;#SelfieTennis
 392230;game;littlstarvrcinema;Littlstar VR Cinema
 392260;game;roguewizards;Rogue Wizards
@@ -12023,7 +12031,7 @@
 400570;game;warpball;WarpBall
 400580;game;blackcloset;Black Closet
 400600;dlc;racknruinsoundtrack;Rack N Ruin - Soundtrack
-400630;game;wuppo;Wuppo
+400630;game;wuppodefinitiveedition;Wuppo - Definitive Edition
 400650;game;emediaguitarmethod;eMedia Guitar Method
 400660;game;reversecrawl;Reverse Crawl
 400710;game;bleedingblocks;Bleeding Blocks
@@ -12496,6 +12504,7 @@
 409210;dlc;terrariaofficialsoundtrack;Terraria: Official Soundtrack
 409230;dlc;battleofempires19141918artost;Battle of Empires: 1914-1918 - ART+OST
 409240;dlc;epiccharactergeneratorseason1modernfemale;ePic Character Generator - Season #1: Modern Female
+409241;dlc;epiccharactergeneratorseason2femaledrowspellcaster;ePic Character Generator - Season #2: Female Drow Spellcaster
 409250;dlc;epiccharactergeneratorseason2femalemodern1;ePic Character Generator - Season #2: Female Modern #1
 409280;game;bluesheep;Blue Sheep
 409290;game;herdingdog;Herding Dog
@@ -12573,6 +12582,7 @@
 410550;game;tankm1a1abramsbattlesimulation;Tank: M1A1 Abrams Battle Simulation
 410570;game;gunjack;Gunjack
 410590;game;fiendsofimprisonment;Fiends of Imprisonment
+410640;dlc;wasteland3bonustrack;Wasteland 3 Bonus Track
 410670;game;suitsabusinessrpg;Suits: A Business RPG
 410710;game;systemshockenhancededition;System Shock: Enhanced Edition
 410720;dlc;trovearcaniumexpeditionpack;Trove - Arcanium Expedition Pack
@@ -15647,6 +15657,7 @@
 462550;dlc;championsofbreakfastost;Champions of Breakfast - OST
 462570;game;newyankeeinkingarthurscourt;New Yankee in King Arthur's Court
 462580;game;newyankeeinsantasservice;New Yankee in Santa's Service
+462605;dlc;raidersofthebrokenplanethadesbetrayalcampaign;Raiders of the Broken Planet - Hades Betrayal Campaign
 462610;dlc;celestiantalesoldnorthhowloftheravager;Celestian Tales: Old North - Howl of the Ravager
 462611;dlc;celestiantalesoldnorthalternatecostumepack;Celestian Tales: Old North - Alternate Costume Pack
 462620;game;pocketkingdom;Pocket Kingdom
@@ -15839,7 +15850,7 @@
 465170;game;crimesecretscrimsonlily;Crime Secrets: Crimson Lily
 465180;game;onedayinlondon;One day in London
 465190;game;spacesurvival;Space Survival
-465200;game;badasshero;Badass Hero
+465200;game;furyunleashed;Fury Unleashed
 465210;dlc;wailingheightsoriginalsoundtrackpdfcomicartbook;Wailing Heights - Original Soundtrack and PDF Comic Artbook
 465220;dlc;fracturedspacecommanderpack;Fractured Space - Commander Pack
 465230;dlc;spellweaversoldierreverencedeck;Spellweaver - Soldier Reverence Deck
@@ -19279,7 +19290,7 @@
 527070;dlc;galacticcivilizationsiiicrusadeexpansionpack;Galactic Civilizations III: Crusade Expansion Pack
 527080;dlc;fantasygroundsquestsofdoompfrpg;Fantasy Grounds - Quests of Doom (PFRPG)
 527100;game;startrekbridgecrew;Star Trek™: Bridge Crew
-527110;game;themelodyofdust;The Melody of Dust
+527110;game;hotsugarpresentsthemelodyofdust;Hot Sugar Presents The Melody of Dust
 527150;game;dead;Dead
 527160;game;cmoarvrcinema;Cmoar VR Cinema
 527170;dlc;thelasttimesoundtrack;The Last Time - Soundtrack
@@ -21257,6 +21268,7 @@
 558880;dlc;theassemblyoriginalsoundtrack;The Assembly - Original Soundtrack
 559010;game;cosmicsugarvr;Cosmic Sugar VR
 559040;dlc;doombloodfall;DOOM: Bloodfall
+559070;game;zakmckrackenthealienmindbenders;Zak McKracken and the Alien Mindbenders
 559130;game;innervoices;Inner Voices
 559140;game;pinheadsbowlingvr;Pinheads Bowling VR
 559150;game;royaldetectivethelordofstatuescollectorsedition;Royal Detective: The Lord of Statues Collector's Edition
@@ -22015,6 +22027,7 @@
 571670;dlc;heroineanthemzerooriginalsoundtrack;Heroine Anthem Zero - Original Soundtrack
 571680;game;birthseederia;Birthseederia
 571690;game;facerigstudiopersonal;FaceRig Studio - Personal
+571710;dlc;arma3lawsofwar;Arma 3 Laws of War
 571730;dlc;ride2freebikespack4;Ride 2 Free Bikes Pack 4
 571740;game;golfit;Golf It!
 571750;dlc;svrvivethedeushelixchristmasdlc;SVRVIVE: The Deus Helix - Christmas DLC
@@ -22594,6 +22607,7 @@
 581630;game;swordwithsaucealpha;Sword With Sauce: Alpha
 581640;game;numberline;Numberline
 581650;game;onceuponanallhallowseve;Once Upon an All Hallow's Eve
+581660;game;supermeatboyforever;Super Meat Boy Forever
 581670;game;theastralhero;The Astral Hero
 581700;game;whisperslasthope;Whispers: Last Hope
 581710;game;stickmageddon;Stickmageddon
@@ -23855,6 +23869,7 @@
 604480;dlc;rotiisoundtrack;ROTii Soundtrack
 604490;game;runningthroughrussia;Running Through Russia
 604530;game;embodymebeta;EmbodyMe Beta
+604540;game;empireofsin;Empire of Sin
 604550;game;realityincognita;Reality Incognita
 604570;game;universeinfire;Universe in Fire
 604600;dlc;male1boosterpack;Male #1 + Booster Pack
@@ -24083,6 +24098,7 @@
 610330;dlc;snowflakeschanceoriginalsoundtrack;Snowflake's Chance Original Soundtrack
 610350;game;pokershowvr;Poker Show VR
 610360;game;zupzero;Zup! Zero
+610370;game;desperadosiii;Desperados III
 610400;dlc;dayofinfamydeluxedlcunitstarterpacksoundtrack;Day of Infamy - Deluxe DLC (Unit Starter Pack and Soundtrack)
 610410;game;pawarumi;PAWARUMI
 610420;dlc;fantasygrounds0onescolorprints3theburningtemplemappack;Fantasy Grounds - 0one's Colorprints #3: The Burning Temple (Map Pack)
@@ -25047,6 +25063,7 @@
 632900;game;sermentcontractwithadevil;Serment - Contract with a Devil
 632910;dlc;rasoundtrack;Ra² | Soundtrack
 632920;game;dali17vrmuseumtours;Dali 17 - VR Museum Tours
+632940;dlc;imgurshades;Imgur Shades
 633020;dlc;fantasygroundsfrozennorthtokenpack;Fantasy Grounds - Frozen North (Token Pack)
 633130;game;nongünz;Nongünz
 633150;game;mythlink;Mythlink
@@ -25093,6 +25110,7 @@
 635340;dlc;talismanthehorusheresyheroesvillains4;Talisman: The Horus Heresy - Heroes & Villains 4
 635370;dlc;tower2011sewashingtonkiadairport;Tower!2011:SE - Washington [KIAD] Airport
 635380;dlc;tower2011selaguardiaklgaairport;Tower!2011:SE - La Guardia [KLGA] Airport
+635390;game;thiefofthievesseasonone;Thief of Thieves: Season One
 635410;game;theadventurerhisbackpack;The Adventurer and His Backpack
 635510;dlc;fantasygroundsgoblinsorcstokenpack;Fantasy Grounds - Goblins and Orcs (Token Pack)
 635520;game;phantasmattheendlessnightcollectorsedition;Phantasmat: The Endless Night Collector's Edition
@@ -25113,6 +25131,7 @@
 635870;dlc;ovivosoundtrackbybrokenkites;OVIVO Soundtrack by Brokenkites
 635880;game;chickenlabyrinthpuzzles;Chicken Labyrinth Puzzles
 635890;dlc;fantasygroundsamazonstokenpack;Fantasy Grounds - Amazons (Token Pack)
+635900;game;tunnelsofdespair;Tunnels of Despair
 636010;game;chateaugarden;Chateau Garden
 636020;game;indiagarden;India Garden
 636030;game;rickyraccoon2adventuresinegypt;Ricky Raccoon 2 - Adventures in Egypt
@@ -25251,6 +25270,7 @@
 639730;game;murderintehransalleys2016;Murder In Tehran's Alleys 2016
 639760;dlc;oldmansjourneysoundtrack;Old Man's Journey - Soundtrack
 639770;game;untitled;UNTITLED
+639780;game;deepspacewaifuflatjustice;DEEP SPACE WAIFU: FLAT JUSTICE
 639790;game;deepspacewaifu;DEEP SPACE WAIFU
 639840;game;fieldbreaking;FIELD BREAKING
 639860;dlc;fantasygroundsorctownorcarenamappack;Fantasy Grounds - Orc Town: Orc Arena (Map Pack)
@@ -25559,6 +25579,7 @@
 650320;dlc;adventureragesoundtrack;Adventure Rage Soundtrack
 650340;game;tublervr;TublerVR
 650360;dlc;deluxecontentcossacks3ost;Deluxe Content - Cossacks 3: OST
+650570;game;code7astorydrivenhackingadventure;Code 7: A Story-Driven Hacking Adventure
 650580;game;bequiet;Be Quiet!
 650630;dlc;themaidsanscavingadventuresoundtrack;The Maid_san's Caving Adventure Soundtrack
 650670;game;grimoireheraldsofthewingedexemplar;Grimoire : Heralds of the Winged Exemplar
@@ -26003,8 +26024,11 @@
 670700;dlc;commandlivepolepositions;Command LIVE - Pole Positions
 671270;game;stophat;Stophat
 672920;game;thebountydeluxeedition;The Bounty: Deluxe Edition
+673130;game;amidevil;AMID EVIL
 674150;game;simonthesorcerer25thanniversaryedition;Simon the Sorcerer: 25th Anniversary Edition
 674940;game;stickfightthegame;Stick Fight: The Game
+675590;dlc;assettocorsaferraripack;Assetto Corsa - Ferrari Pack
+676170;game;ungroundedrippleunleashedvr;Ungrounded: Ripple Unleashed VR
 676810;dlc;fantasygroundspathfinderrpgmummysmaskap1thehalfdeadcitypfrpg;Fantasy Grounds - Pathfinder RPG - Mummy's Mask AP 1: The Half-Dead City (PFRPG)
 677960;dlc;trainsimulatorchathammainmedwayvalleylinesrouteaddon;Train Simulator: Chatham Main and Medway Valley Lines Route Add-On
 678001;dlc;trainsimulatorwoodheadelectricrailwayinbluerouteaddon;Train Simulator: Woodhead Electric Railway in Blue Route Add-On
@@ -26018,11 +26042,16 @@
 681350;game;battlefieldalliance;Battlefield Alliance
 684470;game;superblockbreak3d;Super Blockbreak 3D
 686620;game;3dmahjongworlds;3D Mahjong worlds
+689800;dlc;ninokuniiirevenantkingdomthelairofthelostlord;Ni no Kuni™ II: REVENANT KINGDOM - The Lair of the Lost Lord
+690640;game;trine4thenightmareprince;Trine 4: The Nightmare Prince
 691110;dlc;companyofheroes2whaledolphinconservationcharitypatternpack;Company of Heroes 2 - Whale and Dolphin Conservation Charity Pattern Pack
+691450;game;misaodefinitiveedition;Misao: Definitive Edition
 692050;dlc;rugby18thebritishirishlions2017team;RUGBY 18 - The British and Irish Lions 2017 Team
 692880;game;黃昏賢者thesageoftwilight;黃昏賢者 The Sage of Twilight
+692890;game;roboquest;Roboquest
 693618;dlc;hideseekminecrafthead;Hide and Seek - Minecraft Head
 695470;game;supergalaxyboy;Super Galaxy Boy
+696010;game;otherworldshadesoffallcollectorsedition;Otherworld: Shades of Fall Collector's Edition
 696910;game;thelegendofthedragonflamehighschool;The Legend of the Dragonflame High School
 697210;dlc;superpuzzlegalaxyboostballpack;Super Puzzle Galaxy: Boost Ball Pack
 697660;game;jumpgunners;Jump Gunners
@@ -26041,8 +26070,11 @@
 711660;game;chuchel;CHUCHEL
 711750;game;monsterenergysupercrosstheofficialvideogame;Monster Energy Supercross - The Official Videogame
 711890;game;darkparablesgoldilocksthefallenstarcollectorsedition;Dark Parables: Goldilocks and the Fallen Star Collector's Edition
+712080;game;7bones7stonestheritual;7 Bones and 7 Stones - The Ritual
+712100;game;totalwarsagathronesofbritannia;Total War Saga: Thrones of Britannia
 713430;game;secretsofmagic2witcheswizards;Secrets of Magic 2: Witches and Wizards
 713560;dlc;seumthedrunksideofthemoon;SEUM: The Drunk Side of the Moon
+719040;game;wasteland3;Wasteland 3
 720690;dlc;legomarvelsuperheroes2classicguardiansofthegalaxy;LEGO® Marvel Super Heroes 2 - Classic Guardians of the Galaxy
 720780;dlc;legomarvelsuperheroes2infinitywar;LEGO® Marvel Super Heroes 2 - Infinity War
 720800;dlc;legomarvelsuperheroes2guardiansofthegalaxyvol2;LEGO® Marvel Super Heroes 2 - Guardians of the Galaxy Vol. 2
@@ -26071,6 +26103,7 @@
 742170;game;drfranksbuildaboyfriend;Dr. Frank's Build a Boyfriend
 743140;game;pillarsofeternityiideadfireclosedbeta;Pillars of Eternity II: Deadfire - Closed Beta
 744800;game;banyulintaranginlittlestorm;Banyu Lintar Angin - Little Storm -
+745960;game;askyfullofstars;A Sky Full of Stars
 746140;game;thewalkingzombiedeadcity;The walking zombie: Dead city
 748490;game;thelegendofheroestrailsofcoldsteelii;The Legend of Heroes: Trails of Cold Steel II
 751500;game;tinymetal;TINY METAL
@@ -26079,6 +26112,7 @@
 753640;game;outerwilds;Outer Wilds
 753869;dlc;rocksmith2014editionremasteredstonesourabsolutezero;Rocksmith® 2014 Edition – Remastered – Stone Sour - “Absolute Zero”
 753893;dlc;rocksmith2014editionremasteredghostbcyearzero;Rocksmith® 2014 Edition – Remastered – Ghost B.C. - “Year Zero”
+755800;game;hadesstar;Hades' Star
 756660;dlc;crusaderkingsiiholyfury;Crusader Kings II: Holy Fury
 757300;game;truberbrook;Truberbrook
 758280;game;drunkenpants;Drunkenpants
@@ -26086,6 +26120,7 @@
 760610;dlc;banyulintaranginlittlestormdeluxeedition;Banyu Lintar Angin - Little Storm - Deluxe Edition
 761330;game;navalny208theriseofevil;Navalny 20!8 : The Rise of Evil
 761460;game;lamplightcity;Lamplight City
+762060;dlc;fantasygroundssavagesuzeraindogsofhadessavageworlds;Fantasy Grounds - Savage Suzerain: Dogs Of Hades (Savage Worlds)
 764050;game;maelstrom;Maelstrom
 765870;game;leisuresuitlarrywetdreamsdontdry;Leisure Suit Larry - Wet Dreams Don't Dry
 766600;game;amazinghuman;Amazing Human
@@ -26099,6 +26134,7 @@
 774911;game;themaster;The Master
 775210;dlc;originalsoundtrack;Original Soundtrack
 779938;dlc;dragonballfighterzandroid17;DRAGON BALL FighterZ - Android 17
+782330;game;doometernal;DOOM Eternal
 783170;game;insomniatheark;INSOMNIA: The Ark
 783960;game;forgottensound2destiny;Forgotten Sound 2: Destiny
 786060;game;seaofliesburningcoastcollectorsedition;Sea of Lies: Burning Coast Collector's Edition
@@ -26118,28 +26154,37 @@
 795290;dlc;fantasygroundsreturntofreeportpart4thefreebooterscitypfrpg;Fantasy Grounds - Return to Freeport: Part 4 The Freebooters City (PFRPG)
 795940;game;fantasymosaics19edgeoftheworld;Fantasy Mosaics 19: Edge of the World
 797280;dlc;thesurgecuttingedgepack;The Surge - Cutting Edge Pack
+798390;dlc;arma3tanks;Arma 3 Tanks
 799070;game;zup8;Zup! 8
 799790;dlc;battletechdigitaldeluxecontent;BATTLETECH Digital Deluxe Content
+803320;game;haldor;Haldor
+803330;game;destroyallhumans;Destroy All Humans!
+807120;game;iratuslordofthedead;Iratus: Lord of the Dead
 811300;dlc;chuchelsoundtrackartbook;CHUCHEL Soundtrack + Art Book
 812290;dlc;superbombermanrgoldenvicviper;SUPER BOMBERMAN R - GOLDEN VIC VIPER
 812291;dlc;superbombermanrshinybombers;SUPER BOMBERMAN R - SHINY BOMBERS
 813780;game;ageofempiresiidefinitiveedition;Age of Empires II: Definitive Edition
+814600;game;tunnelb1;Tunnel B1
 815120;dlc;fantasygroundspathfinderrpgruinsofazlantap3thefloodedcathedralpfrpg;Fantasy Grounds - Pathfinder RPG - Ruins of Azlant AP 3: The Flooded Cathedral (PFRPG)
 815580;game;darkparablesreturnofthesaltprincesscollectorsedition;Dark Parables: Return of the Salt Princess Collector's Edition
 815600;dlc;fantasygroundspathfinderrpgruinsofazlantap4cityinthedeeppfrpg;Fantasy Grounds - Pathfinder RPG - Ruins of Azlant AP 4: City in the Deep (PFRPG)
 816350;game;theflood;The Flood
 816390;dlc;thefloodsupportthedeveloperpackagesoundtrackextras;The Flood - Support the Developer package (Soundtrack + Extras)
+817360;game;theouterrimsurvivor;The Outer Rim: Survivor
 819420;dlc;fantasygroundsmythicmonsters19constructspfrpg;Fantasy Grounds - Mythic Monsters #19: Constructs (PFRPG)
 821290;game;rune;Rune
 822210;dlc;fantasygroundsstarfinderrpgdeadsunsap4theruinedcloudssfrpg;Fantasy Grounds - Starfinder RPG - Dead Suns AP 4: The Ruined Clouds (SFRPG)
 826430;game;twilightphenomenatheincredibleshowcollectorsedition;Twilight Phenomena: The Incredible Show Collector's Edition
+826460;game;theroadtohades;The Road to Hades
 838100;game;point;Point
 838380;game;deadoralive6;DEAD OR ALIVE 6
 839990;dlc;fantasygroundsstarfinderrpgdeadsunsap5thethirteenthgatepfrpg;Fantasy Grounds - Starfinder RPG - Dead Suns AP 5: The Thirteenth Gate (PFRPG)
+840370;game;somedayyoullreturn;Someday You'll Return
 841370;game;nba2k19;NBA 2K19
 843700;game;eltacodiablo;El Taco Diablo
 845760;game;primitiverace;Primitive Race
 845980;dlc;ninjastealth2goldenedition;Ninja Stealth 2 - Golden Edition
+851670;game;luminesremastered;LUMINES REMASTERED
 851850;game;dragonballzkakarot;DRAGON BALL Z: KAKAROT
 853610;game;theoutlawthedrunkthewhore;The Outlaw, The Drunk,  The Whore
 854010;dlc;pixeljunkmonsters2goldenoutfitspack;PixelJunk™ Monsters 2 Golden Outfits Pack
@@ -26148,8 +26193,13 @@
 855400;dlc;galgun2polepositionpinup;Gal*Gun 2 - Pole Position Pin-up
 855930;dlc;pillarsofeternityiideadfirecriticalrolepack;Pillars of Eternity II: Deadfire - Critical Role Pack
 856840;dlc;framedcollectiontheoriginalsoundtrack;FRAMED Collection - The Original Soundtrack
+858090;game;spellcastia;Spellcastia
 858240;dlc;overcooked2toomanycookspack;Overcooked! 2 - Too Many Cooks Pack
+858260;game;untilyoufall;Until You Fall
+859090;game;turbotunnel;Turbo Tunnel
 859250;dlc;fantasygroundsstarfinderrpgdeadsunsap6empireofbonessfrpg;Fantasy Grounds - Starfinder RPG - Dead Suns AP 6: Empire of Bones (SFRPG)
+860500;game;spellfront;SpellFront
+860950;game;markoftheninjaremastered;Mark of the Ninja: Remastered
 862100;dlc;fantasygroundsbattlefieldevents5e;Fantasy Grounds - Battlefield Events (5E)
 863550;game;hitman2;HITMAN™ 2
 863660;game;seaofmemories;Sea of memories
@@ -26158,6 +26208,7 @@
 864210;dlc;fantasygroundspathfinderrpgwarforthecrownap3thetwilightchildpfrpg;Fantasy Grounds - Pathfinder RPG - War for the Crown AP 3: The Twilight Child (PFRPG)
 864240;dlc;fantasygroundspathfinderrpgwarforthecrownap4cityinthelionseyepfrpg;Fantasy Grounds - Pathfinder RPG - War for the Crown AP 4: City in the Lion's Eye (PFRPG)
 864310;game;destinyofawizard2beyondthevale;Destiny of a Wizard 2: Beyond the Vale
+865880;game;天岚行throughthemistsky;天岚行 - Through the Mist and Sky
 866780;game;seaofliestideoftreacherycollectorsedition;Sea of Lies: Tide of Treachery Collector's Edition
 866980;dlc;superpuzzlegalaxywarpballpack;Super Puzzle Galaxy: Warp Ball Pack
 868420;dlc;justcause4deathstalkerscorpionpack;Just Cause™ 4: Deathstalker Scorpion Pack
@@ -26181,12 +26232,17 @@
 883150;dlc;kingdomcomedeliverancefromtheashes;Kingdom Come: Deliverance – From the Ashes
 883710;game;residentevil2biohazardre2;RESIDENT EVIL 2 / BIOHAZARD RE:2
 884590;game;garagemaster2018;Garage Master 2018
+884620;dlc;totalwarsagathronesofbritanniabloodsweatspears;Total War Saga: THRONES OF BRITANNIA - Blood, Sweat and Spears
+885940;game;meritocracyoftheoniblade;Meritocracy of the Oni  Blade
 886910;dlc;bussimulator18countryskindecalpack;Bus Simulator 18 - Country Skin  Decal Pack
 887060;game;asterixobelixxxl2;Asterix  Obelix XXL 2
+889740;game;theonisellsword;The Oni Sellsword
 890070;game;秋色的記憶體驗版fallinlovedemo;秋色的記憶(體驗版) / Fall...in Love (Demo)
 890780;game;primitivesurvival;Primitive Survival
 892380;game;drgreenstuff;Dr Greenstuff
+893710;game;mercenaryleto;Mercenary Leto
 894870;dlc;doodlegodblitzthereturnofthekingdlc;Doodle God Blitz: The Return of the King DLC
+895620;game;spellcasteruniversity;Spellcaster University
 899789;dlc;rocksmith2014editionremasteredwhitezombiemorehumanthanhuman;Rocksmith® 2014 Edition – Remastered – White Zombie - “More Human Than Human”
 899823;dlc;rocksmith2014editionremasteredwheatusteenagedirtbag;Rocksmith® 2014 Edition – Remastered – Wheatus - “Teenage Dirtbag”
 899844;dlc;rocksmith2014editionremasteredwarrenzevonwerewolvesoflondon;Rocksmith® 2014 Edition – Remastered – Warren Zevon - “Werewolves of London”
@@ -26233,9 +26289,12 @@
 901750;game;redorchestra2heroesofstalingradwithrisingstorm;Red Orchestra 2: Heroes of Stalingrad with Rising Storm
 904720;game;riftriderscallofthemaelstrom;Rift Riders: Call of the Maelstrom
 906200;game;tunchearena;Tunche: Arena
+907370;dlc;mirrorthelostshards;Mirror: The Lost Shards
+907470;game;irisfall;Iris.Fall
 909190;game;escapelala;Escape Lala
 911490;dlc;fantasygroundsstarfinderrpgagainsttheaeonthroneap1thereachofempiresfrpg;Fantasy Grounds - Starfinder RPG - Against the Aeon Throne AP 1: The Reach of Empire (SFRPG)
 915870;dlc;unavowedofficialsoundtrack;Unavowed - Official Soundtrack
+917840;game;wintermoortacticsclub;Wintermoor Tactics Club
 918670;game;jewelmatchtwilightsolitaire;Jewel Match Twilight Solitaire
 920560;dlc;residentevil2leoncostumearklaysheriff;RESIDENT EVIL 2 - Leon Costume: Arklay Sheriff
 920561;dlc;residentevil2leoncostumenoir;RESIDENT EVIL 2 - Leon Costume: Noir
@@ -26252,12 +26311,16 @@
 926990;game;wolfquestanniversaryedition;WolfQuest: Anniversary Edition
 933140;game;drunknbarfightonhalloween;Drunkn Bar Fight on Halloween
 933764;dlc;footballmanager2019touchrisefromtheasheschallenge;Football Manager 2019 Touch - Rise from the Ashes Challenge
+937370;dlc;fantasygroundsdogsofhadesintropacksavageworlds;Fantasy Grounds - Dogs of Hades Intro Pack (Savage Worlds)
 938490;dlc;syrianwarfarebattlefields;Syrian Warfare: Battlefields
 938590;dlc;leisuresuitlarrywetdreamsdontdryartbooksoundtrack;Leisure Suit Larry - Wet Dreams Don't Dry Artbook  Soundtrack
 940080;dlc;justcause4japaneseaudiopack;Just Cause™ 4: Japanese Audio Pack
 941000;game;witcheslegacylairofthewitchqueencollectorsedition;Witches' Legacy: Lair of the Witch Queen Collector's Edition
+941964;dlc;devilmaycry5vvergilaltcolors;Devil May Cry 5 - V  Vergil Alt Colors
 943720;dlc;highwayblossoms18adultonlycontent;Highway Blossoms - 18+ Adult Only Content
 944810;game;drcaresfamilypractice;Dr. Cares - Family Practice
+945360;game;amongus;Among Us
+946430;dlc;amongushamsterpetbundle;Among Us - Hamster Pet Bundle
 947510;dlc;sidmeierscivilizationvigatheringstorm;Sid Meier's Civilization VI: Gathering Storm
 947650;dlc;nekoparavol118adultonlycontent;NEKOPARA Vol.1 - 18+ Adult Only Content
 947660;dlc;nekoparavol218adultonlycontent;NEKOPARA Vol.2 - 18+ Adult Only Content
@@ -26292,18 +26355,30 @@
 960832;dlc;hitman2gotyupgradelegacypack;HITMAN™ 2 - GOTY Upgrade Legacy Pack
 961440;game;residentevil2biohazardre21shotdemo;RESIDENT EVIL 2 / BIOHAZARD RE:2 "1-Shot Demo"
 961870;game;toltecthemysteriesofthesecretisland;TOLTEC AND THE MYSTERIES OF THE SECRET ISLAND
+962130;game;grounded;Grounded
 962290;game;天罡星宿海;天罡星宿海
+962730;game;skaterxl;Skater XL
+964800;game;prodeus;Prodeus
 965670;game;niplheimshunterbrandedazel;Niplheim's Hunter - Branded Azel
 965720;dlc;niplheimshunterbrandedazelmaturecontent;Niplheim's Hunter - Branded Azel - Mature Content
 966530;game;youhaveadrunkfriend;You have a drunk friend
 966690;dlc;twopointhospitalbigfoot;Two Point Hospital: Bigfoot
 970840;game;overpass;Overpass
+971790;dlc;deadbydaylightdarknessamongus;Dead by Daylight - Darkness Among Us
+971924;dlc;amongusbedcrabpetbundle;Among Us - Bedcrab Pet Bundle
+971925;dlc;amonguspolusmap;Among Us - Polus Map
+971995;dlc;amongusbrainslugpetbundle;Among Us - Brainslug Pet Bundle
+971996;dlc;amongusminicrewmatebundle;Among Us - Mini Crewmate Bundle
+971998;dlc;amongusmirahqmap;Among Us - MIRA HQ Map
+971999;dlc;amongusstickminpetbundle;Among Us - Stickmin Pet Bundle
 972050;game;supercaptain3d;Super Captain 3D
+974650;dlc;sinsofasolarempirerebellionminorfactionsdlc;Sins of a Solar Empire: Rebellion - Minor Factions DLC
 975500;game;thepodlands;The Podlands
 975530;dlc;leisuresuitlarrywetdreamsdontdrysoundtrack;Leisure Suit Larry - Wet Dreams Don't Dry Soundtrack
 975680;game;metalslugxx;METAL SLUG XX
 976310;game;mortalkombat11;Mortal Kombat 11
 976730;game;halothemasterchiefcollection;Halo: The Master Chief Collection
+978630;game;jurojanosik;Juro Janosik
 980450;dlc;kingdomtwocrownsshogun;Kingdom Two Crowns: Shogun
 980547;dlc;trainsimulatorguiguanghighspeedrailwayguilinhezhourouteaddon;Train Simulator: Guiguang High Speed Railway: Guilin - Hezhou Route Add-On
 983240;game;boobsorgtfo;Boobs or gtfo
@@ -26311,11 +26386,15 @@
 984110;game;synthetikarena;SYNTHETIK: Arena
 985020;game;三国古战略;三国古战略
 985070;game;darkheartflightoftheharpies;Darkheart: Flight of the Harpies
+985620;game;spacecaptainmccalleryepisode2pilgrimsinpurplemoss;Space Captain McCallery - Episode 2: Pilgrims in Purple Moss
+985890;game;streetsofrage4;Streets of Rage 4
 988810;dlc;kingdomtwocrownsost;Kingdom Two Crowns: OST
 990920;game;seaofcraft;Sea of Craft
 995860;dlc;warhammer40000gladiustyranids;Warhammer 40,000: Gladius - Tyranids
 997160;dlc;blackcloverquartetknightsoutfitperkycatvanessa;BLACK CLOVER: QUARTET KNIGHTS Outfit “Perky Cat Vanessa”
+1000410;game;wrathaeonofruin;WRATH: Aeon of Ruin
 1003190;game;alpacapacadoubledash;Alpacapaca Double Dash
+1003400;game;thelordoftheringsjourneysinmiddleearth;The Lord of the Rings: Journeys in Middle-earth
 1003890;game;blacksad;Blacksad
 1007040;game;earthdefenseforce5;EARTH DEFENSE FORCE 5
 1007280;game;thedenofchaos混沌の魔窟殿アヒアハン１９世の指令編;The Den of Chaos - 混沌の魔窟殿～アヒアハン１９世の指令編～
@@ -26329,19 +26408,28 @@
 1013300;dlc;overcooked2campfirecookoff;Overcooked! 2 - Campfire Cook Off
 1015500;game;wwe2k20;WWE 2K20
 1015880;dlc;farmingsimulator19andersongroupequipmentpack;Farming Simulator 19 - Anderson Group Equipment Pack
+1016120;game;pgatour2k21;PGA TOUR 2K21
 1021860;game;unravelcyndy;Unravel Cyndy
 1025000;game;edgeofgalaxy;Edge of Galaxy
+1028460;game;spellcastingcollection;Spellcasting Collection
 1028630;game;cricket19;Cricket 19
 1028890;dlc;warhammer40000inquisitormartyrmaelstromofcarnage;Warhammer 40,000: Inquisitor - Martyr - Maelstrom of Carnage
+1029860;game;ambersairline7wonders;Amber's Airline - 7 Wonders
 1030760;game;steamdollsorderofchaosfree;SteamDolls - Order Of Chaos - Free
+1030830;game;mafiaiidefinitiveedition;Mafia II: Definitive Edition
+1030840;game;mafiadefinitiveedition;Mafia: Definitive Edition
 1030970;game;dreamrose;Dream Rose
 1032040;game;龍炎高校伝説２thelegendofthedragonflamehighschool2;龍炎高校伝説２ The Legend of the Dragonflame High School 2
 1036020;dlc;heroineanthemzero2colorfulfeatherpack;Heroine Anthem Zero 2 - Colorful Feather Pack -
 1038040;dlc;heroineanthemzero2originalsoundtrack;Heroine Anthem Zero 2 - Original Sound Track
+1038840;game;baldoo;BALDOO
 1041660;game;welcometochichester3thedemonofchichesterthelastday;Welcome To... Chichester 3 : The Demon Of Chichester And The Last Day
+1042220;dlc;arma3creatordlcglobalmobilizationcoldwargermany;Arma 3 Creator DLC: Global Mobilization - Cold War Germany
+1042490;game;callofthesea;Call of the Sea
 1043240;game;東方輝針城doubledealingcharacter;東方輝針城 〜 Double Dealing Character
 1049020;dlc;mordhausupporterpack;MORDHAU - Supporter Pack
 1049050;dlc;truberbrooktravelguide;Truberbrook - Travel Guide
+1049280;game;pilgrims;Pilgrims
 1049410;game;superliminal;Superliminal
 1050210;game;thesuperlativesshatteredworlds;The Superlatives: Shattered Worlds
 1051620;dlc;shaokahn;Shao Kahn
@@ -26365,12 +26453,18 @@
 1057281;dlc;earthdefenseforce5airraiderpilotedweaponcombatframephantasiashieldnyx;EARTH DEFENSE FORCE 5 - Air Raider Piloted Weapon Combat Frame Phantasia Shield Nyx
 1057282;dlc;earthdefenseforce5airraiderpilotedweaponblackernumber5;EARTH DEFENSE FORCE 5 - Air Raider Piloted Weapon Blacker Number 5
 1057283;dlc;earthdefenseforce5airraidervehiclecalibanarmoredambulancejoyfulmarking;EARTH DEFENSE FORCE 5 - Air Raider Vehicle Caliban Armored Ambulance Joyful Marking
+1058520;dlc;aldor;Aldor
 1059460;game;drunkenfist;Drunken Fist
+1059800;dlc;juventusvrronaldosjuvedebut;Juventus VR - Ronaldo's Juve debut
 1059900;game;primitivebuildersimulator;Primitive Builder Simulator
+1061610;game;tenderfoottactics;Tenderfoot Tactics
 1063270;dlc;pathwayofficialsoundtrack;Pathway - Official Soundtrack
 1063310;game;vane;Vane
 1063480;dlc;vanesoundtrack;Vane Soundtrack
 1064220;dlc;haloreach;Halo: Reach
+1064273;dlc;halo4;Halo 4
+1066010;game;heraklestheprincessoftroy;Herakles and the Princess of Troy
+1067410;game;elremediodealdorf;El Remedio de Aldorf
 1067980;dlc;rage2ragecoins;RAGE 2 - RAGE Coins
 1072420;game;dragonquestbuilders2;DRAGON QUEST BUILDERS™ 2
 1074670;game;trialbytengatwilightpathadventure;Trial by Teng: A Twilight Path Adventure
@@ -26381,11 +26475,15 @@
 1076013;dlc;earthdefenseforce5wingdiverweaponstarburst;EARTH DEFENSE FORCE 5 - Wing Diver Weapon Starburst
 1076014;dlc;earthdefenseforce5rangerweaponsingingdancingpuredecoylaunchersetof8;EARTH DEFENSE FORCE 5 - Ranger Weapon Singing and Dancing Pure Decoy Launcher Set of 8
 1076015;dlc;earthdefenseforce5airraiderweaponsingingdancingpuredecoylaunchersetof8;EARTH DEFENSE FORCE 5 - Air Raider Weapon Singing and Dancing Pure Decoy Launcher Set of 8
+1076620;game;svoboda1945;Svoboda 1945
 1076890;dlc;guarddutyofficialsoundtrack;Guard Duty - Official Soundtrack
 1079450;game;escapelala2;Escape Lala 2
+1080100;game;desperadosiiiclosedbeta;Desperados III Closed Beta
 1080770;dlc;farmingsimulator19holmerterravariantdlc;Farming Simulator 19 - HOLMER Terra Variant DLC
 1085510;game;garfieldkartfuriousracing;Garfield Kart - Furious Racing
 1085660;game;destiny2;Destiny 2
+1086060;game;tunnelvision;Tunnel Vision
+1086940;game;baldursgate3;Baldur's Gate 3
 1087740;dlc;splitgatearenawarfarefoundersedition;Splitgate: Arena Warfare - Founder's Edition
 1089350;game;nba2k20;NBA 2K20
 1089740;dlc;mxgp2019twilightpack;MXGP 2019 - Twilight Pack
@@ -26404,24 +26502,35 @@
 1090200;dlc;destiny2shadowkeep;Destiny 2: Shadowkeep
 1090201;dlc;destiny2shadowkeeppreorderpack;Destiny 2: Shadowkeep Pre-Order Pack
 1090202;dlc;destiny2shadowkeepdeluxepack;Destiny 2: Shadowkeep Deluxe Pack
+1091500;game;cyberpunk2077;Cyberpunk 2077
 1091920;game;plantera2goldenacorn;Plantera 2: Golden Acorn
 1093400;dlc;atomrpgsupporterpack;ATOM RPG - Supporter Pack
 1095030;dlc;shangtsung;Shang Tsung
 1095031;dlc;klassicninjaskins;Klassic Ninja Skins
+1097150;game;fallguys;Fall Guys
 1097840;game;gears5;Gears 5
+1098290;dlc;doometernalsingleplayercampaign;DOOM Eternal - Single Player Campaign
+1098291;dlc;doometernalyearonepass;DOOM Eternal: Year One Pass
+1098300;dlc;doometernalpreorderbonuses;DOOM Eternal - Pre Order Bonuses
+1098301;dlc;doometernaldeluxeeditioncontent;DOOM Eternal - Deluxe Edition Content
 1098500;game;astralbattlefield星界战场;Astral Battlefield / 星界战场
 1098820;dlc;overpasssitessoundscollection;Overpass: Sites  Sounds Collection
 1099250;game;gtfobeta;GTFO Beta
+1099410;game;totalwarsagatroy;Total War Saga: TROY
 1100796;dlc;footballmanager2020touchrisefromtheasheschallenge;Football Manager 2020 Touch Rise from the Ashes Challenge
 1101720;dlc;farmingsimulator19johndeerecottondlc;Farming Simulator 19 - John Deere Cotton DLC
+1103120;game;dunesea;Dune Sea
 1105950;dlc;gears5ultimateeditiondlccontent;Gears 5 - Ultimate Edition DLC Content
 1105951;dlc;gears5prepurchasebonusdlccontent;Gears 5 - Pre-Purchase Bonus DLC Content
 1109690;game;asterixobelixxxl3thecrystalmenhir;Asterix  Obelix XXL 3 - The Crystal Menhir
+1112760;game;farrealmtheprinceofwinds;Farrealm: The Prince of Winds
 1112970;dlc;soulatstaketeenagedreamthebridesdress;Soul at Stake - "Teenage Dream" the Bride's Dress
+1116580;game;shadypartofme;Shady Part of Me
 1116620;dlc;nightwolf;Nightwolf
 1117250;dlc;gears5ultrahdtexturepack;Gears 5 - Ultra-HD Texture Pack
 1118293;dlc;dirtrally20killarneyinternationalracewaysouthafricarallycrosstrack;DiRT Rally 2.0 - Killarney International Raceway, South Africa (Rallycross Track)
 1118730;game;superleeworld;Super Lee World
+1118840;game;mynameisyouitstheonlyunusualthinginmylife;My Name is You and it's the only unusual thing in my life
 1120950;game;chameleonrundeluxeedition;Chameleon Run Deluxe Edition
 1121810;dlc;electronicsuperjoy2goldedition;Electronic Super Joy 2 - Gold Edition
 1122080;dlc;lovelovecube18adultonlycontent;LOVE³ -Love Cube- 18+ Adult Only Content
@@ -26439,34 +26548,152 @@
 1133551;dlc;wwe2k2020aesmackdown;WWE 2K20 - 20AE Smackdown
 1137890;dlc;fantasygroundsstarfinderrpgdawnofflameap4theblindcitysfrpg;Fantasy Grounds - Starfinder RPG - Dawn of Flame AP 4: The Blind City (SFRPG)
 1138060;game;暗黑破坏岛diabloisland;暗黑破坏岛/DiabloIslanD
+1139900;game;ghostrunner;Ghostrunner
+1141670;dlc;hentaigirls7animated;Hentai Girls [#7 Animated]
 1143840;dlc;huntshowdownlegendsofthebayou;Hunt: Showdown - Legends of the Bayou
+1145360;game;hades;Hades
+1146310;game;beyondasteelsky;Beyond a Steel Sky
 1146610;dlc;ageofempiresiidefinitiveeditionplaceholderkeyactivationenabledlc;Age of Empires II: Definitive Edition - Placeholder - Key Activation Enable DLC
+1147030;game;theterribleoldman;The Terrible Old Man
+1150550;game;winterpolaris;Winter Polaris
+1150640;game;yugiohlegacyoftheduelistlinkevolution;Yu-Gi-Oh! Legacy of the Duelist : Link Evolution
+1151640;game;horizonzerodawn;Horizon Zero Dawn
 1152020;game;returnofthezombieking;Return Of The Zombie King
 1152560;dlc;wwe2k20backstagepass;WWE 2K20 - Backstage Pass
 1155260;game;beatdiablo;Beat Diablo
 1160241;dlc;doublefeatureskinpack;Double Feature Skin Pack
 1160243;dlc;masqueradeskinpack;Masquerade Skin Pack
+1161880;game;vaporumlockdown;Vaporum: Lockdown
 1165940;dlc;fantasygroundspathfinder2rpgageofashesap4firesofthehauntedcitypfrpg2;Fantasy Grounds - Pathfinder 2 RPG - Age of Ashes AP 4: Fires of the Haunted City (PFRPG2)
 1166470;dlc;huntshowdownlloronasheir;Hunt: Showdown - Llorona’s Heir
 1166471;dlc;huntshowdownthephantom;Hunt: Showdown - The Phantom
 1166472;dlc;huntshowdownlastgust;Hunt: Showdown - Last Gust
+1168250;game;shadesofheroes;Shades Of Heroes
 1169020;game;darkfallghostvigil;Dark Fall: Ghost Vigil
+1171980;game;almostepicadventuresneverlooteddungeon;Almost Epic Adventures™: Neverlooted Dungeon
 1172380;game;starwarsjedifallenorder;STAR WARS Jedi: Fallen Order™
+1172620;game;seaofthieves;Sea of Thieves
 1172760;game;twilightslastgleaming;Twilight's Last Gleaming
 1173920;dlc;bdsmbigdrunksatanicmassacreadultonly;BDSM: Big Drunk Satanic Massacre. Adult Only
+1174180;game;reddeadredemption2;Red Dead Redemption 2
 1175060;game;humansimulator;Human Simulator
 1176490;dlc;hentaiasmodeusdevilsseal18uncensored;Hentai Asmodeus - Devil's Seal (18+ Uncensored)
+1176614;dlc;warriorsorochi4ultimatespecialcostumeforhades;WARRIORS OROCHI 4 Ultimate - Special Costume for Hades
 1180720;dlc;sindel;Sindel
 1181520;game;nullpetainvasionofthequeenbug;Null  Peta -Invasion of the Queen Bug-
 1182306;dlc;commandmolivepolepositions;Command:MO LIVE - Pole Positions
+1184050;game;gearstactics;Gears Tactics
+1185160;game;inunakitunnel犬鳴トンネル;Inunaki Tunnel | 犬鳴トンネル
+1185530;game;mywetletocomic;My Wet Leto Comic
 1187510;game;rocksimulator;Rock Simulator
 1188720;game;drunkenwrestlers;Drunken Wrestlers
+1190050;dlc;reddeadredemption2specialeditioncontent;Red Dead Redemption 2: Special Edition Content
+1190051;dlc;reddeadredemption2ultimateeditioncontent;Red Dead Redemption 2: Ultimate Edition Content
+1190460;game;deathstranding;DEATH STRANDING
+1191060;dlc;wasteland3coloradosurvivalgear;Wasteland 3 - Colorado Survival Gear
 1193040;game;eternalbattlefield;Eternal Battlefield
+1194940;game;towerofshades;Tower of Shades
+1195710;game;monsterviator;Monster Viator
+1198260;game;beneathsteelclouds;Beneath steel clouds
+1198780;dlc;amidevilancientalphas;AMID EVIL - Ancient Alphas
 1199120;dlc;dcsjf17thunder;DCS: JF-17 Thunder
+1201150;dlc;experiencex3monsterviator;Experience x3 - Monster Viator
+1201151;dlc;whitepanchomonsterviator;White Pancho - Monster Viator
+1201152;dlc;damagex2monsterviator;Damage x2 - Monster Viator
 1201880;game;thenorthpole;The North Pole
 1203440;dlc;darksidersgenesisdigitalextras;Darksiders Genesis - Digital Extras
 1206320;game;primitivesurvival;Primitive Survival
 1207370;game;primitivehunter;Primitive Hunter
 1208620;game;super3dcrunkbros;SUPER 3-D CRUNK BROS.
 1208730;dlc;beatdiablo角色与音乐扩展包;BeatDiablo - 角色与音乐扩展包
+1213210;game;commandconquerremasteredcollection;Command  Conquer™ Remastered Collection
 1216794;dlc;epicrollercoastersnorthpole;Epic Roller Coasters — North Pole
+1217060;game;gunfirereborn;Gunfire Reborn
+1222140;game;detroitbecomehuman;Detroit: Become Human
+1225330;game;nba2k21;NBA 2K21
+1237430;dlc;thebattleofpolytopiapolaristribe;The Battle of Polytopia - Polaris Tribe
+1239030;game;sevendunescurseonthegoldensand;Seven Dunes: Curse on the Golden Sand
+1240680;game;hadesultimatefightingball;Hades Ultimate Fighting Ball
+1245150;dlc;remnantfromtheashesswampsofcorsus;Remnant: From the Ashes - Swamps of Corsus
+1245970;dlc;mywetletocomicthepaststories;My Wet Leto Comic-The Past Stories
+1249200;game;ghostrunnerdemo;Ghostrunner Demo
+1254570;dlc;destroyallhumansskinpack;Destroy All Humans! Skin Pack
+1258510;dlc;deathstrandingdigitalartbook;DEATH STRANDING Digital Art Book
+1258610;dlc;deathstrandingpreordercontent;DEATH STRANDING Pre-Order Content
+1259970;game;efootballpes2021seasonupdate;eFootball PES 2021 SEASON UPDATE
+1261620;dlc;fallguysgordonheadcrabpreorderbonus;Fall Guys - Gordon Headcrab Preorder Bonus
+1262780;game;polary;Polary
+1262960;game;furyunleashedprologue;Fury Unleashed: Prologue
+1265770;game;tunnelbird;Tunnel Bird
+1265940;game;fallguystechnicalbeta;Fall Guys: Technical Beta
+1278950;dlc;pgatour2k21preorderpack;PGA TOUR 2K21 - PreOrder Pack
+1278951;dlc;pgatour2k21deluxepack;PGA TOUR 2K21 Deluxe Pack
+1284080;game;legiongold;Legion Gold
+1286010;game;godlesstactics;Godless Tactics
+1289700;dlc;fantasygroundsdevinnighttp124wastelandwarriors3;Fantasy Grounds - Devin Night TP124: Wasteland Warriors 3
+1293080;dlc;footballtacticsgloryfootballstars;Football, Tactics  Glory: Football Stars
+1303310;dlc;empireofsinalcaponesfurcoat;Empire of Sin - Al Capone's Fur Coat
+1303311;dlc;empireofsinthegoodsonpack;Empire of Sin - The Good Son Pack
+1303312;dlc;empireofsindeluxepack;Empire of Sin - Deluxe Pack
+1303313;dlc;empireofsinexpansion1;Empire of Sin - Expansion 1
+1303314;dlc;empireofsinexpansion2;Empire of Sin - Expansion 2
+1308850;dlc;desperadosiiiseasonpass;Desperados III Season Pass
+1313860;game;easportsfifa21;EA SPORTS™ FIFA 21
+1318090;game;vertigoremastered;Vertigo Remastered
+1330600;dlc;serioussam4classictommygun;Serious Sam 4 Classic Tommy Gun
+1330602;dlc;serioussam4digitalartbook;Serious Sam 4 Digital Artbook
+1332680;dlc;fifa21standardeditionpreorderincentive;FIFA 21 STANDARD EDITION PRE-ORDER INCENTIVE
+1332681;dlc;fifa21champinseditionpreorderincentive;FIFA 21 CHAMPINS EDITION PRE-ORDER INCENTIVE
+1332682;dlc;fifa21ultimateearlyeditionpreorderincentive;FIFA 21 ULTIMATE(EARLY)EDITION PRE-ORDER INCENTIVE
+1332683;dlc;fifa21ultimateeditionpreorderincentive;FIFA 21 ULTIMATE EDITION PRE-ORDER INCENTIVE
+1332684;dlc;fifa21launchchampionseditionincentivewaterfall;FIFA 21 LAUNCH CHAMPIONS EDITION INCENTIVE (WATERFALL)
+1332685;dlc;fifa21launchultimateeditionincentivewaterfall;FIFA 21 LAUNCH ULTIMATE EDITION INCENTIVE (WATERFALL)
+1332686;dlc;fifa21postlaunchchampionseditionincentiveinstant;FIFA 21 POST LAUNCH CHAMPIONS EDITION INCENTIVE (INSTANT)
+1332687;dlc;fifa21postlaunchultimateeditionincentiveinstant;FIFA 21 POST LAUNCH ULTIMATE EDITION INCENTIVE (INSTANT)
+1333760;dlc;fantasygroundsstarfinderrpgstarfindersocietyscenario220shadesofspite;Fantasy Grounds - Starfinder RPG - Starfinder Society Scenario #2-20: Shades of Spite
+1342710;dlc;easportsfifa21standardeditionpreorderkey;EA SPORTS™ FIFA 21 Standard Edition Pre-Order - Key
+1342711;dlc;easportsfifa21championseditionpreorderkey;EA SPORTS™ FIFA 21 Champions Edition Pre-Order - Key
+1342712;dlc;easportsfifa21ultimateeditionlimitedtimebonuspreorderkey;EA SPORTS™ FIFA 21 Ultimate Edition + Limited Time Bonus Pre-Order - Key
+1342713;dlc;easportsfifa21ultimateeditionpreorderkey;EA SPORTS™ FIFA 21 Ultimate Edition Pre-Order - Key
+1343612;dlc;fallguyscollectorspack;Fall Guys - Collector's Pack
+1349611;dlc;efootballpes2021standardeditionbonusdigital;eFootball PES 2021 STANDARD EDITION BONUS (Digital)
+1349612;dlc;efootballpes2021fcbayernmuncheneditionbonus;eFootball PES 2021 FC BAYERN MÜNCHEN EDITION BONUS
+1349613;dlc;efootballpes2021juventuseditionbonus;eFootball PES 2021 JUVENTUS EDITION BONUS
+1349614;dlc;efootballpes2021manchesterunitededitionbonus;eFootball PES 2021 MANCHESTER UNITED EDITION BONUS
+1349616;dlc;efootballpes2021fcbarcelonaeditionbonus;eFootball PES 2021 FC BARCELONA EDITION BONUS
+1349650;dlc;efootballpes2021myclubfcbarcelona;eFootball PES 2021 myClub FC BARCELONA
+1349651;dlc;efootballpes2021myclubfcbayernmunchen;eFootball PES 2021 myClub FC BAYERN MUNCHEN
+1349652;dlc;efootballpes2021myclubjuventus;eFootball PES 2021 myClub JUVENTUS
+1349653;dlc;efootballpes2021myclubmanchesterunited;eFootball PES 2021 myClub MANCHESTER UNITED
+1349660;dlc;efootballpes2021myclubmanchesterunitedbonus;eFootball PES 2021 myClub MANCHESTER UNITED Bonus
+1349661;dlc;efootballpes2021myclubjuventusbonus;eFootball PES 2021 myClub JUVENTUS Bonus
+1349662;dlc;efootballpes2021myclubfcbayernmunchenbonus;eFootball PES 2021 myClub FC BAYERN MUNCHEN Bonus
+1349663;dlc;efootballpes2021myclubfcbarcelonabonus;eFootball PES 2021 myClub FC BARCELONA Bonus
+1353430;dlc;efootballpes2021fullgamecertificate;eFootball PES 2021 full game certificate
+1362660;dlc;fallguysfastfoodcostumepack;Fall Guys - Fast Food Costume Pack
+1382210;dlc;wasteland3digitaldeluxeextras;Wasteland 3 - Digital Deluxe Extras
+1383800;dlc;easportsfifa21ultimateeditioninstantkey;EA SPORTS™ FIFA 21 Ultimate Edition (Instant) - Key
+1383801;dlc;easportsfifa21championseditioninstantkey;EA SPORTS™ FIFA 21 Champions Edition (Instant) - Key
+1383802;dlc;easportsfifa21ultimateeditionwaterfallkey;EA SPORTS™ FIFA 21 Ultimate Edition (Waterfall) - Key
+1383803;dlc;easportsfifa21championseditionwaterfallkey;EA SPORTS™ FIFA 21 Champions Edition (Waterfall) - Key
+1383804;dlc;easportsfifa21standardeditionkey;EA SPORTS™ FIFA 21 Standard Edition - Key
+1386900;game;observersystemredux;Observer: System Redux
+1390160;dlc;fantasygroundsreachadventure7thelasttrainoutofrakkengoll;Fantasy Grounds - Reach Adventure 7: The Last Train Out of Rakken-Goll
+1396070;dlc;theartofobserversystemredux;The Art of Observer System Redux
+1399410;dlc;wreckfestracingheroescarpack;Wreckfest - Racing Heroes Car Pack
+1408110;game;thegrounding;The Grounding
+1409870;dlc;easportsfifa21playfirsttrialkey;EA SPORTS™ FIFA 21 Play First Trial - Key
+1410320;game;lostdunes;Lost Dunes
+1412120;game;shinysummer;Shiny Summer
+1412170;game;janosik;Janosik
+1415070;dlc;gears5hivebusters;Gears 5 - Hivebusters
+1426870;game;dunemechanicsurvivethesteampunkera;Dune Mechanic : Survive The Steampunk Era
+1432640;dlc;devilmaycry5playablecharactervergil;Devil May Cry 5 - Playable Character: Vergil
+1432641;dlc;devilmaycry5vergilbattletrack4pack;Devil May Cry 5 - Vergil Battle Track 4-Pack
+1432642;dlc;devilmaycry5supervergilunlock;Devil May Cry 5 - Super Vergil Unlock
+1432643;dlc;devilmaycry5vergilexprovocation;Devil May Cry 5 - Vergil EX Provocation
+1440440;game;sammaxsavetheworld;Sam  Max Save the World
+1444560;dlc;trine4melodyofmystery;Trine 4: Melody of Mystery
+1475510;dlc;calloftheseaartbook;Call of the Sea Art Book
+1495710;dlc;cyberpunk2077bonuscontent;Cyberpunk 2077 Bonus Content
+1504370;dlc;trine4thenightmareprinceartbook;Trine 4: The Nightmare Prince - Artbook
