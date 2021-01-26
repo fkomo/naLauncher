@@ -121,7 +121,7 @@ namespace naLauncherWPF.App.Model
 
 				Application.Current?.Dispatcher.Invoke(() =>
 				{
-					FilteredGames.SingleOrDefault(g => g.ViewModel.GameId == gameId).ViewModel = new GameControlViewModel(gameId, RebuildGameGrid);
+					allGames.SingleOrDefault(g => g.ViewModel.GameId == gameId).ViewModel = new GameControlViewModel(gameId, RebuildGameGrid);
 					RebuildGameGrid();
 				});
 			}

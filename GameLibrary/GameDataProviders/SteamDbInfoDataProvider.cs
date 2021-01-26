@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using SteamDb;
 using System;
 using System.IO;
+using System.Linq;
 using System.Runtime.Serialization;
 using Ujeby.Common.Tools;
 
@@ -78,6 +79,8 @@ namespace GameLibrary.GameDataProviders
 
 	internal class SteamDbInfoDataProvider : GameDataProvider, IGameDataProvider
 	{
+		public const string ShortcutExtension = ".url";
+
 		private static string CurrentClassName { get { return typeof(SteamDbInfoDataProvider).Name; } }
 
 		/// <summary>
@@ -100,9 +103,32 @@ namespace GameLibrary.GameDataProviders
 		{
 			try
 			{
-				var steamApp = CurrentSteamDbCache.GetByTitle(gameTitle, ignoreLocalCache);
+				SteamApp steamApp = null;
+
+				try
+				{
+					// try to get steamId from steam game shortcut
+					var shortcut = GameLibrary.Games[GameLibrary.GetGameId(gameTitle)].Shortcut;
+					if (!string.IsNullOrEmpty(shortcut) && shortcut.EndsWith(ShortcutExtension) && File.Exists(shortcut))
+					{
+						var fileContent = File.ReadAllLines(shortcut);
+						var steamId = fileContent
+							?.SingleOrDefault(l => l.Contains("steam://rungameid"))
+							?.Replace("URL=steam://rungameid/", string.Empty);
+						steamApp = SteamApp.Create(steamId, null, gameTitle);
+					}
+				}
+				catch (Exception ex)
+				{
+					Log.WriteLine($"{ CurrentClassName }.{ Utils.GetCurrentMethodName() }({ gameTitle }): { ex }");
+				}
+
 				if (steamApp == null)
-					return null;
+				{
+					steamApp = CurrentSteamDbCache.GetByTitle(gameTitle, ignoreLocalCache);
+					if (steamApp == null)
+						return null;
+				}
 
 				// NOTE steampowered-api rate limiting! (200 requests / 5 min)
 				var response = WebUtils.SilentWebRequest(steamApp.SteamPoweredApiUrl);
