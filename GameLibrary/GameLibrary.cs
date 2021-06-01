@@ -60,7 +60,7 @@ namespace GameLibrary
 		/// <summary>
 		/// static initialization
 		/// </summary>
-		static GameLibrary()
+		public static void Initialize()
 		{
 			var userSteamDbCacheFile = Path.Combine(UserDataFolder, SteamDbCache.DefaultFileName);
 			var applicationSteamDbCacheFile = Path.Combine(new FileInfo(Assembly.GetExecutingAssembly().Location).Directory.FullName, "Content", SteamDbCache.DefaultFileName);
@@ -116,6 +116,7 @@ namespace GameLibrary
 							var c = Regex.Replace(command, @"\s+", string.Empty);
 							var op = GetOperatorFromCommand(c);
 
+							// DATE filters
 							if (c.Contains("*beaten"))
 							{
 								if (GetDateFromCommand(c.Replace($"*beaten{ op }", string.Empty), out int? year, out int? month, out int? day))
@@ -140,6 +141,8 @@ namespace GameLibrary
 									Debug.WriteLine($"played{ op }{ year }/{ month }/{ day }");
 								}
 							}
+
+							// NUMBER filters
 							else if (c.Contains("*playcount"))
 							{
 								if (GetNumberFromCommand(c.Replace($"*playcount{ op }", string.Empty), out int? count))

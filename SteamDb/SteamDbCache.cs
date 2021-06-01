@@ -205,10 +205,11 @@ namespace SteamDb
 
 				var steamAppId = steamAppNode.Attributes["data-appid"].Value;
 
-				var title = steamAppNode.ChildNodes[2].InnerXml;
+				var title = steamAppNode.ChildNodes[2].InnerText;
 
 				// remove muted part of title
 				title = Strings.RemoveFromTo(title, "<i class=\"muted\">", "</i>").Trim();
+				title = title.Trim('\n');
 
 				result.Add(SteamApp.Create(steamAppId, type, title));
 			}
@@ -227,12 +228,21 @@ namespace SteamDb
 
 			Entries = new SortedDictionary<int, SteamApp>();
 
+			var index = 0;
 			var cacheLines = File.ReadAllLines(file);
 			foreach (var line in cacheLines)
 			{
-				var steamApp = new SteamApp(line);
-				if (ValidTypes == null || ValidTypes.Contains(steamApp.Type.ToLower()))
-					Entries.Add(Int32.Parse(steamApp.Id), steamApp);
+				try
+				{
+					var steamApp = new SteamApp(line);
+					if (ValidTypes == null || ValidTypes.Contains(steamApp.Type.ToLower()))
+						Entries.Add(Int32.Parse(steamApp.Id), steamApp);
+				}
+				catch (Exception ex)
+				{
+					Log.WriteLine($"{ CurrentClassName }.{ Utils.GetCurrentMethodName() }({ file }): index={ index }, line='{ line }', ex={ ex }");
+				}
+				index++;
 			}
 
 			stopwatch.Stop();
