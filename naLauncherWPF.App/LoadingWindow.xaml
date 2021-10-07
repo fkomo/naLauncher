@@ -1,0 +1,23 @@
+﻿<Window x:Class="naLauncherWPF.App.LoadingWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:gif="http://wpfanimatedgif.codeplex.com"
+        mc:Ignorable="d"
+		ContentRendered="Window_ContentRendered"
+		WindowStartupLocation="CenterScreen" Title="LoadingWindow" Height="128" Width="256"
+		WindowStyle="None" AllowsTransparency="True"
+		BorderThickness="0">
+
+	<Window.Background>
+		<SolidColorBrush Color="#ee222222"/>
+	</Window.Background>
+
+	<Border BorderThickness="1" BorderBrush="Black">
+		<!--<Image gif:ImageBehavior.AnimatedSource="Content/loading.gif"
+			   gif:ImageBehavior.AnimateInDesignMode="True"
+			   gif:ImageBehavior.AutoStart="True" />-->
+		<TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontSize="20" FontFamily="Helvetica">naLauncher is loading ...</TextBlock>
+	</Border>
+</Window>

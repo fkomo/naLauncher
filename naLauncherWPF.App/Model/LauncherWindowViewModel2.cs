@@ -15,6 +15,8 @@ namespace naLauncherWPF.App.Model
 
 		public LauncherWindowViewModel2()
 		{
+			Log.WriteLineDebug("LauncherWindowViewModel2()");
+
 			GameLibrary.GameLibrary.Load();
 
 			using (var tb = new TimedBlock($"LauncherWindowViewModel2({ GameLibrary.GameLibrary.Games.Count })#CreateAllGameControls"))
@@ -69,10 +71,15 @@ namespace naLauncherWPF.App.Model
 			Properties.Settings.Default.Filter = (int)filter;
 			Properties.Settings.Default.OrderAscending = isOrderAscending;
 
+			//Properties.Settings.Default.WindowPosition =
+			//	new System.Drawing.Point((int)Application.Current.MainWindow.Left, (int)Application.Current.MainWindow.Top);
+			//Properties.Settings.Default.WindowSize =
+			//	new System.Drawing.Size((int)Application.Current.MainWindow.Width, (int)Application.Current.MainWindow.Height);
+
 			Properties.Settings.Default.WindowPosition =
-				new System.Drawing.Point((int)Application.Current.MainWindow.Left, (int)Application.Current.MainWindow.Top);
+				new System.Drawing.Point((int)this.WindowPosition.X, (int)this.WindowPosition.Y);
 			Properties.Settings.Default.WindowSize =
-				new System.Drawing.Size((int)Application.Current.MainWindow.Width, (int)Application.Current.MainWindow.Height);
+				new System.Drawing.Size((int)this.WindowSize.Width, (int)this.WindowSize.Height);
 
 			Properties.Settings.Default.Save();
 		}
@@ -86,7 +93,7 @@ namespace naLauncherWPF.App.Model
 		{
 			Application.Current?.Dispatcher.Invoke(() =>
 			{
-				using (var tb = new TimedBlock($"RebuildGameGrid()"))
+				using (var tb = new TimedBlock($"LauncherWindowViewModel2.RebuildGameGrid()"))
 				{
 					var newFilteredGameIds = GameLibrary.GameLibrary.ListGames(titleFilter, filter, order, isOrderAscending);
 					var newFilteredGames = newFilteredGameIds.Select(gameId => allGames.Single(game => game.ViewModel.GameId == gameId)).ToArray();
@@ -248,10 +255,10 @@ namespace naLauncherWPF.App.Model
 		private GameOrder order = (GameOrder)Properties.Settings.Default.Order;
 		public string Order
 		{
-			get { return $"By { string.Join(" ", Strings.SplitToWords(order.ToString())) }"; }
+			get { return string.Join(" ", Strings.SplitToWords(order.ToString())); }
 			private set
 			{
-				order = (GameOrder)Enum.Parse(typeof(GameOrder), value.Replace("By ", string.Empty).Replace(" ", string.Empty));
+				order = (GameOrder)Enum.Parse(typeof(GameOrder), value.Replace(" ", string.Empty));
 				RebuildGameGrid();
 
 				OnPropertyChanged();
@@ -280,7 +287,9 @@ namespace naLauncherWPF.App.Model
 		public double HeaderFontSize { get; private set; } = Const.WindowHeaderFontSize;
 		public double TextFontSize { get; private set; } = Const.WindowTextFontSize;
 
-		private Size windowSize = new Size(Properties.Settings.Default.WindowSize.Width, Properties.Settings.Default.WindowSize.Height);
+		private Size windowSize = new Size(
+			Math.Max(Properties.Settings.Default.WindowSize.Width, Const.MinWindowSize.Width),
+			Math.Max(Properties.Settings.Default.WindowSize.Height, Const.MinWindowSize.Height));
 		public Size WindowSize
 		{
 			get { return windowSize; }

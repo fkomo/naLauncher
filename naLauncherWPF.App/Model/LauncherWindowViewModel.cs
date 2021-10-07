@@ -17,6 +17,8 @@ namespace naLauncherWPF.App.Model
 	{
 		public LauncherWindowViewModel()
 		{
+			Log.WriteLineDebug("LauncherWindowViewModel()");
+
 			GameLibrary.GameLibrary.Load();
 
 			using (var tb = new TimedBlock($"LauncherWindowViewModel({ GameLibrary.GameLibrary.Games.Count })#CreateAllGameControls"))
@@ -84,7 +86,7 @@ namespace naLauncherWPF.App.Model
 		{
 			Application.Current?.Dispatcher.Invoke(() =>
 			{
-				using (var tb = new TimedBlock($"RebuildGameGrid()"))
+				using (var tb = new TimedBlock($"LauncherWindowViewModel.RebuildGameGrid()"))
 				{
 					FilteredGameIds = GameLibrary.GameLibrary.ListGames(titleFilter, filter, order, isOrderAscending);
 
@@ -192,7 +194,7 @@ namespace naLauncherWPF.App.Model
 
 				if (filteredGameControls != null)
 				{
-					using (var tb = new TimedBlock($"FilteredGameControls({ filteredGameControls.Length })#UpdateGridLayout"))
+					using (var tb = new TimedBlock($"LauncherWindowViewModel.FilteredGameControls({ filteredGameControls.Length })#UpdateGridLayout"))
 					{
 						var rowCount = filteredGameControls.Length / GridSize;
 						if (filteredGameControls.Length % GridSize != 0)
@@ -214,7 +216,7 @@ namespace naLauncherWPF.App.Model
 
 				if (filteredGameControls != null)
 				{
-					using (var tb = new TimedBlock($"FilteredGameControls({ filteredGameControls.Length })#UpdateGameControlPositions"))
+					using (var tb = new TimedBlock($"LauncherWindowViewModel.FilteredGameControls({ filteredGameControls.Length })#UpdateGameControlPositions"))
 					{
 						for (var i = 0; i < filteredGameControls.Length; i++)
 						{

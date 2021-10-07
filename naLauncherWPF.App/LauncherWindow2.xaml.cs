@@ -25,6 +25,8 @@ namespace naLauncherWPF.App
 
 		public LauncherWindow2()
 		{
+			Log.WriteLineDebug("LauncherWindow2()");
+
 			InitializeComponent();
 			WindowResizeTimer.Elapsed += new ElapsedEventHandler(ResizingDone);
 		}
@@ -113,6 +115,8 @@ namespace naLauncherWPF.App
 
 		private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
 		{
+			Log.WriteLineDebug("LauncherWindow2.Closing()");
+
 			try
 			{
 				ViewModel?.Save();
@@ -125,7 +129,12 @@ namespace naLauncherWPF.App
 
 		private void MainWindow_Loaded(object sender, RoutedEventArgs e)
 		{
+			Log.WriteLineDebug("LauncherWindow2.Loaded()");
+		}
 
+		private void MainWindow_ContentRendered(object sender, EventArgs e)
+		{
+			Log.WriteLineDebug("LauncherWindow2.ContentRendered()");
 		}
 
 		private void MainWindow_SizeChanged(object sender, SizeChangedEventArgs e)

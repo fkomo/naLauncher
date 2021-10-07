@@ -16,10 +16,11 @@
 	AllowsTransparency="True"
 	ResizeMode="CanResizeWithGrip"
 	SizeChanged="MainWindow_SizeChanged"
-	Keyboard.KeyUp="MainWindow_KeyUp"
-	Mouse.MouseLeave="MainWindow_MouseLeave" 
 	Closing="MainWindow_Closing"
 	Loaded="MainWindow_Loaded"
+	ContentRendered="MainWindow_ContentRendered"
+	Keyboard.KeyUp="MainWindow_KeyUp"
+	Mouse.MouseLeave="MainWindow_MouseLeave" 
 	Mouse.MouseDown="MainWindow_MouseDown" Mouse.MouseUp="MainWindow_MouseUp" Mouse.MouseMove="MainWindow_MouseMove"
 	PreviewMouseWheel="ItemsControl_PreviewMouseWheel">
 
@@ -168,7 +169,7 @@
 						FontSize="{Binding TextFontSize}"
 						Effect="{StaticResource BlackShadow16}" 
 						Text="{Binding TitleFilter,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
-					<TextBlock Text="[ Title | *added | *played | *beaten | *playcount | *rating ]" 
+					<TextBlock Text="COMMAND[ *added | *played | *beaten | *playcount | *rating ] OP[ = | &gt; | &lt; ] VALUE[ DATE(year/month/day) | NUMBER ]" 
 						Height="32" Padding="10,8,0,0"
 						FontSize="{Binding TextFontSize}"
 						Foreground="#444444" 

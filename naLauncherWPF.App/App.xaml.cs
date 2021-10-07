@@ -41,7 +41,8 @@ namespace naLauncherWPF.App
 			Log.LogFileName = "naLauncher.log";
 			Log.LogFolder = UserDataFolder;
 
-			GameLibrary.GameLibrary.Initialize();
+			if (StartupUri?.ToString()?.Contains("Loading") != true)
+				GameLibrary.GameLibrary.Initialize();
 		}
 	}
 }

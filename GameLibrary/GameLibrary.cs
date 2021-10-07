@@ -62,6 +62,10 @@ namespace GameLibrary
 		/// </summary>
 		public static void Initialize()
 		{
+			Log.WriteLineDebug("GameLibrary.Initialize()");
+
+			Log.WriteLine($"------------------------------------------------------------------------------------------------------------------------");
+
 			var userSteamDbCacheFile = Path.Combine(UserDataFolder, SteamDbCache.DefaultFileName);
 			var applicationSteamDbCacheFile = Path.Combine(new FileInfo(Assembly.GetExecutingAssembly().Location).Directory.FullName, "Content", SteamDbCache.DefaultFileName);
 
@@ -404,7 +408,7 @@ namespace GameLibrary
 		/// <returns>games to update (without images)</returns>
 		static bool LoadGames(string libraryToLoad = null)
 		{
-			using (var tb = new TimedBlock($"LoadGames({ libraryToLoad })"))
+			using (var tb = new TimedBlock($"GameLibrary.LoadGames({ libraryToLoad })"))
 			{
 				try
 				{
@@ -466,7 +470,7 @@ namespace GameLibrary
 		/// <returns></returns>
 		static bool LoadGameImages()
 		{
-			using (var tb = new TimedBlock($"LoadGameImages({ Games.Count })"))
+			using (var tb = new TimedBlock($"GameLibrary.LoadGameImages({ Games.Count })"))
 			{
 				try
 				{
@@ -524,7 +528,7 @@ namespace GameLibrary
 		/// <returns></returns>
 		static ConcurrentDictionary<string, GameInfo> FixLibrary(string oldLibrary, ConcurrentDictionary<string, GameInfo> newLibrary)
 		{
-			using (var tb = new TimedBlock($"FixLibrary({ (string.IsNullOrEmpty(oldLibrary) ? "null" : oldLibrary) }, { newLibrary.Count })"))
+			using (var tb = new TimedBlock($"GameLibrary.FixLibrary({ (string.IsNullOrEmpty(oldLibrary) ? "null" : oldLibrary) }, { newLibrary.Count })"))
 			{
 				try
 				{
@@ -645,7 +649,7 @@ namespace GameLibrary
 
 				Threading.ThreadAndForget(() =>
 				{
-					using (var tb = new TimedBlock($"Update({ gamesToUpdate.Count() })"))
+					using (var tb = new TimedBlock($"GameLibrary.Update({ gamesToUpdate.Count() })"))
 					{
 						try
 						{
@@ -680,7 +684,7 @@ namespace GameLibrary
 		/// </summary>
 		public static void Save()
 		{
-			using (var tb = new TimedBlock($"Save({ GameLibraryFile })"))
+			using (var tb = new TimedBlock($"GameLibrary.Save({ GameLibraryFile })"))
 			{
 				try
 				{
@@ -701,6 +705,8 @@ namespace GameLibrary
 
 					// save current library
 					File.WriteAllText(GameLibraryFile, Utils.GetFormattedXml(Utils.Serialize(Games)));
+
+					// TODO mark naLauncher-lib.xml as readonly
 
 					var stats = new string[]
 					{
@@ -986,7 +992,7 @@ namespace GameLibrary
 		/// <param name="steamId"></param>
 		static void UpdatePlayTimeFromSteamLibrary()
 		{
-			using (var tb = new TimedBlock("UpdatePlayTimeFromSteamLibrary()"))
+			using (var tb = new TimedBlock("GameLibrary.UpdatePlayTimeFromSteamLibrary()"))
 			{
 				try
 				{
