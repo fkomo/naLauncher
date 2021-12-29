@@ -399,7 +399,7 @@ namespace GameLibrary
 		/// <returns></returns>
 		public static bool Load()
 		{
-			return LoadGames() && LoadGameImages();
+			return LoadGames(Settings.Default.LibraryToLoad) && LoadGameImages();
 		}
 
 		/// <summary>
@@ -415,8 +415,8 @@ namespace GameLibrary
 					Games.Clear();
 
 					// deserialize library
-					DeserializeLibrary(libraryToLoad);
-
+					DeserializeLibrary(libraryToLoad); 
+					
 					if (!string.IsNullOrEmpty(GamesDirectory))
 					{
 						// add new games from current games folder
@@ -448,10 +448,6 @@ namespace GameLibrary
 							Games[gameId].Shortcut = gameShortcut;
 						}
 					}
-
-					// mark games with not-existing shortcuts as removed
-					foreach (var game in Games.Where(g => g.Value.Shortcut != null && !File.Exists(g.Value.Shortcut)))
-						game.Value.Shortcut = null;
 
 					return true;
 				}
@@ -498,7 +494,8 @@ namespace GameLibrary
 		/// <param name="libraryToLoad"></param>
 		static void DeserializeLibrary(string libraryToLoad = null)
 		{
-			libraryToLoad = libraryToLoad ?? GameLibraryFile;
+			if (string.IsNullOrEmpty(libraryToLoad))
+				libraryToLoad = GameLibraryFile;
 
 			Games.Clear();
 
@@ -507,16 +504,80 @@ namespace GameLibrary
 				string libraryXml;
 
 				// load games from library backup
-				if (libraryToLoad.Contains(BackupExtension))
-					libraryXml = Utils.Decompress(File.ReadAllBytes(libraryToLoad));
-
-				else
+				//if (libraryToLoad.Contains(BackupExtension))
+				//	libraryXml = Utils.Decompress(File.ReadAllBytes(libraryToLoad));
+				//else
 					libraryXml = File.ReadAllText(libraryToLoad);
 
 				Games = Utils.Deserialize<ConcurrentDictionary<string, GameInfo>>(libraryXml);
 
+				// check library for corruption
+				CheckLibrary(Games);
+
 				// fix library
 				Games = FixLibrary(Settings.Default.FixLibrary, Games);
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="games"></param>
+		private static void CheckLibrary(ConcurrentDictionary<string, GameInfo> games)
+		{
+			var gameTitlesToFix = new List<string>();
+
+			// mark games with not-existing shortcuts as removed
+			foreach (var game in games.Where(g => g.Value.Shortcut != null && !File.Exists(g.Value.Shortcut)))
+			{
+				game.Value.Shortcut = null;
+				Log.WriteLine($"CheckLibrary({ game.Value.Shortcut }): shortcut not found -> fixed");
+			}
+
+			foreach (var game in games)
+			{
+				if (game.Value.Shortcut != null)
+				{
+					var fileInfo = new FileInfo(game.Value.Shortcut);
+
+					// check if shortcut corresponds with game title
+					var gameTitleFromShortcut = fileInfo.Name.Replace(fileInfo.Extension, string.Empty);
+					if (gameTitleFromShortcut != game.Value.Title)
+						throw new Exception($"CheckLibrary({ game.Value.Title }, { fileInfo.Name }): invalid game+shortcut -> manual fix needed!");
+
+					// find games that points to the same shortcut
+					if (games.Values.Count(g => g.Shortcut != null && g.Shortcut == game.Value.Shortcut) > 1)
+					{
+						Log.WriteLine($"CheckLibrary({ game.Value.Shortcut }): multiple games found");
+						// TODO delete older games and let only the newest ?
+					}
+				}
+
+				// find games that have corrupted game ids
+				var trueGameId = GetGameId(game.Value.Title);
+				if (game.Key != trueGameId)
+				{
+					if (games.TryGetValue(trueGameId, out GameInfo duplicateGame))
+						throw new Exception($"CheckLibrary({ game.Value.Title }): { game.Key } != { trueGameId } -> duplicate found!");
+
+					else
+						gameTitlesToFix.Add(game.Value.Title);
+				}
+			}
+
+			// fix game ids
+			foreach (var gameTitleToFix in gameTitlesToFix)
+			{
+				var oldGameId = Games.Single(v => v.Value.Title == gameTitleToFix).Key;
+				var trueGameId = GetGameId(gameTitleToFix);
+
+				if (Games.TryRemove(oldGameId, out GameInfo removedGame))
+				{
+					Games.AddOrUpdate(trueGameId, removedGame, (id, oldValue) => removedGame);
+					Log.WriteLine($"CheckLibrary({ gameTitleToFix }): { oldGameId } != { trueGameId } -> fixed");
+				}
+				else
+					throw new Exception($"CheckLibrary({ gameTitleToFix }): { oldGameId } != { trueGameId } -> remove failed!");
 			}
 		}
 
@@ -691,8 +752,11 @@ namespace GameLibrary
 					// backup old library
 					if (File.Exists(GameLibraryFile))
 					{
-						var newBackup = Utils.Compress(File.ReadAllText(GameLibraryFile));
-						File.WriteAllBytes(Path.Combine(BackupDirectory, GamesLibraryFileName + $"{ BackupExtension }{ DateTime.Now.ToString(TimestampFormat) }"), newBackup);
+						//var newBackup = Utils.Compress(File.ReadAllText(GameLibraryFile));
+						//File.WriteAllBytes(Path.Combine(BackupDirectory, GamesLibraryFileName + $"{ BackupExtension }{ DateTime.Now.ToString(TimestampFormat) }"), newBackup);
+
+						var newBackup = File.ReadAllText(GameLibraryFile);
+						File.WriteAllText(Path.Combine(BackupDirectory, GamesLibraryFileName + $"{ BackupExtension }{ DateTime.Now.ToString(TimestampFormat) }"), newBackup);
 
 						// keep only last week backup files
 						var oldBackupFiles = Directory.GetFiles(BackupDirectory, $"*{ BackupExtension }*");

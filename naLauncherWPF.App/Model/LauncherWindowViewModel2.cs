@@ -17,7 +17,8 @@ namespace naLauncherWPF.App.Model
 		{
 			Log.WriteLineDebug("LauncherWindowViewModel2()");
 
-			GameLibrary.GameLibrary.Load();
+			if (!GameLibrary.GameLibrary.Load())
+				throw new Exception("GameLibrary.Load failed");
 
 			using (var tb = new TimedBlock($"LauncherWindowViewModel2({ GameLibrary.GameLibrary.Games.Count })#CreateAllGameControls"))
 			{

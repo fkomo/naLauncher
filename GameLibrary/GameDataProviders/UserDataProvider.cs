@@ -29,26 +29,28 @@ namespace GameLibrary.GameDataProviders
 
 	internal class UserDataProvider : GameDataProvider, IGameDataProvider
 	{
+		private readonly static string[] SupportedImageExtensions = new string[]
+		{
+			".jpg",
+			".jpeg",
+			".png",
+			".bmp",
+			".gif",
+		};
+
 		public GameData GetGameData(string gameTitle, bool ignoreLocalCache)
 		{
-			// jpg
-			var imageFileFromCache = Path.Combine(ImageCacheDirectory, gameTitle) + ".jpg";
-			if (!ImageExists(imageFileFromCache))
+			foreach (var extension in SupportedImageExtensions)
 			{
-				// png
-				imageFileFromCache = Path.Combine(ImageCacheDirectory, gameTitle) + ".png";
-				if (!ImageExists(imageFileFromCache))
+				var imageFileFromCache = Path.Combine(ImageCacheDirectory, gameTitle + extension);
+				if (ImageExists(imageFileFromCache))
 				{
-					// try other image formats ... bmp/gif?
-					imageFileFromCache = null;
+					return new UserData(gameTitle)
+					{
+						Image = new GameImage { LocalFilename = imageFileFromCache }
+					};
 				}
 			}
-
-			if (imageFileFromCache != null)
-				return new UserData(gameTitle)
-				{
-					Image = new GameImage { LocalFilename = imageFileFromCache }
-				};
 
 			return null;
 		}
