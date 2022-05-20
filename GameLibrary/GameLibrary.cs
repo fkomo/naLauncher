@@ -117,7 +117,9 @@ namespace GameLibrary
 						if (command.StartsWith("*"))
 						{
 							// remove all white spaces in string
-							var c = Regex.Replace(command, @"\s+", string.Empty);
+							var c = command.Replace(" ", string.Empty);
+							//var c = Regex.Replace(command, @"\s+", string.Empty);
+
 							var op = GetOperatorFromCommand(c);
 
 							// DATE filters
@@ -169,9 +171,9 @@ namespace GameLibrary
 							games = games.Where(g => g.Value.Title.ToLower().Contains(command));
 					}
 				}
-				catch (Exception ex)
+				catch (Exception)
 				{
-					Log.WriteLine(ex.ToString());
+					//Log.WriteLine(ex.ToString());
 					games = Games.AsEnumerable();
 				}
 			}

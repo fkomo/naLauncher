@@ -20,7 +20,6 @@
 	Loaded="MainWindow_Loaded"
 	ContentRendered="MainWindow_ContentRendered"
 	Keyboard.KeyUp="MainWindow_KeyUp"
-	Mouse.MouseLeave="MainWindow_MouseLeave" 
 	Mouse.MouseDown="MainWindow_MouseDown" Mouse.MouseUp="MainWindow_MouseUp" Mouse.MouseMove="MainWindow_MouseMove"
 	PreviewMouseWheel="ItemsControl_PreviewMouseWheel">
 

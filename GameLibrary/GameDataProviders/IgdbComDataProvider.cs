@@ -199,7 +199,7 @@ namespace GameLibrary.GameDataProviders
 
 					// get best matching game by id
 					response = JsonConvert.DeserializeObject(WebUtils.Post($"{ ApiBaseUrl }games",
-							$"fields name, artworks, cover, genres, total_rating, summary, time_to_beat, involved_companies; where id = { bestMatch.Value.Key };",
+							$"fields name, artworks, cover, genres, total_rating, summary, involved_companies; where id = { bestMatch.Value.Key };",
 							GetIgdbHeaders));
 
 					//fields name, artworks, cover, genres, total_rating, summary, time_to_beat, involved_companies; where id = 113114;
@@ -234,9 +234,9 @@ namespace GameLibrary.GameDataProviders
 						var genres = GetGenres(response[0].genres);
 						var developer = GetDeveloper(response[0].involved_companies);
 						var timesToBeat = GetTimesToBeat(response[0].time_to_beat);
-						var image = GetImage(response[0].artworks, response[0].conver);
+						var image = GetImage(gameTitle, response[0].cover);
 
-						var gameData = new IgdbComData(response[0].name.ToString())
+						var gameData = new IgdbComData(gameTitle)
 						{
 							Id = bestMatch.Value.Key,
 							Summary = response[0].summary?.ToString(),
@@ -244,6 +244,7 @@ namespace GameLibrary.GameDataProviders
 							Developer = developer,
 							Genres = genres,
 							TimeToBeat = timesToBeat,
+							Image = image,
 						};
 
 						return gameData;
@@ -380,9 +381,49 @@ namespace GameLibrary.GameDataProviders
 			return null;
 		}
 
-		GameImage GetImage(dynamic artworks, dynamic cover)
+		GameImage GetImage(string gameTitle, dynamic cover)
 		{
-			// TODO get game image from artworks / cover images
+			if (cover != null)
+			{
+				dynamic response = JsonConvert.DeserializeObject(WebUtils.Post($"{ ApiBaseUrl }covers",
+					$"fields id, url, width, height; where id = { cover.ToString() };",
+					GetIgdbHeaders));
+
+				//https://api-v3.igdb.com/covers
+				//fields*; where id = 83213;
+				//[
+				//    {
+				//        "id": 83213,
+				//        "alpha_channel": false,
+				//        "animated": false,
+				//        "game": 113114,
+				//        "height": 1080,
+				//        "image_id": "co1s7h",
+				//        "url": "//images.igdb.com/igdb/image/upload/t_thumb/co1s7h.jpg",
+				//        "width": 810
+				//    }
+				//]
+
+				if (response != null)
+				{
+					var imageUrl = "https:" + response[0].url.ToString().Replace("t_thumb", "t_original").ToString();
+
+					// download image
+					var image = WebUtils.DownloadImage(imageUrl, out System.Drawing.Imaging.ImageFormat imageFormat);
+
+					if (image != null)
+					{
+						var gameImage = new GameImage
+						{
+							SourceUrl = imageUrl,
+						};
+
+						gameImage.LocalFilename = SaveGameImage(gameTitle, image, imageFormat, IgdbComData.ImageCacheDirectory);
+
+						return gameImage;
+					}
+				}
+			}
 
 			//https://api-v3.igdb.com/artworks
 			//fields*; where id = 7445;
@@ -396,21 +437,6 @@ namespace GameLibrary.GameDataProviders
 			//        "image_id": "ar5qt",
 			//        "url": "//images.igdb.com/igdb/image/upload/t_thumb/ar5qt.jpg",
 			//        "width": 1920
-			//    }
-			//]
-
-			//https://api-v3.igdb.com/covers
-			//fields*; where id = 83213;
-			//[
-			//    {
-			//        "id": 83213,
-			//        "alpha_channel": false,
-			//        "animated": false,
-			//        "game": 113114,
-			//        "height": 1080,
-			//        "image_id": "co1s7h",
-			//        "url": "//images.igdb.com/igdb/image/upload/t_thumb/co1s7h.jpg",
-			//        "width": 810
 			//    }
 			//]
 

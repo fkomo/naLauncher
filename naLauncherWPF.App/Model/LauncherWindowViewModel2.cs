@@ -3,6 +3,7 @@ using naLauncherWPF.App.Controls;
 using naLauncherWPF.App.Helpers;
 using System;
 using System.Linq;
+using System.Timers;
 using System.Windows;
 using System.Windows.Input;
 using Ujeby.Common.Tools;
@@ -13,8 +14,15 @@ namespace naLauncherWPF.App.Model
 	{
 		private static Random Rng = new Random();
 
+		/// <summary>
+		/// delay between RebuildGameGrid and actual rebuild (RebuildGameGridInternal) in miliseconds
+		/// </summary>
+		private static double RebuildDelay = 256;
+
 		public LauncherWindowViewModel2()
 		{
+			RebuildDelayTimer.Elapsed += new ElapsedEventHandler(RebuildDelayElapsed);
+
 			Log.WriteLineDebug("LauncherWindowViewModel2()");
 
 			if (!GameLibrary.GameLibrary.Load())
@@ -64,6 +72,13 @@ namespace naLauncherWPF.App.Model
 				});
 		}
 
+		private void RebuildDelayElapsed(object sender, ElapsedEventArgs e)
+		{
+			RebuildDelayTimer.Stop();
+
+			RebuildGameGridInternal();
+		}
+
 		public void Save()
 		{
 			GameLibrary.Tools.GameSpy.TerminateAll();
@@ -90,11 +105,26 @@ namespace naLauncherWPF.App.Model
 			IsProgressBarRunning = isRunning;
 		}
 
+		private Timer RebuildDelayTimer = new Timer(RebuildDelay) { Enabled = false };
+
 		public void RebuildGameGrid()
+		{
+			try
+			{
+				RebuildDelayTimer.Stop();
+				RebuildDelayTimer.Start();
+			}
+			catch (Exception ex)
+			{
+				Log.WriteLine(ex.ToString());
+			}
+		}
+
+		private void RebuildGameGridInternal()
 		{
 			Application.Current?.Dispatcher.Invoke(() =>
 			{
-				using (var tb = new TimedBlock($"LauncherWindowViewModel2.RebuildGameGrid()"))
+				using (var tb = new TimedBlock($"LauncherWindowViewModel2.RebuildGameGridInternal()"))
 				{
 					var newFilteredGameIds = GameLibrary.GameLibrary.ListGames(titleFilter, filter, order, isOrderAscending);
 					var newFilteredGames = newFilteredGameIds.Select(gameId => allGames.Single(game => game.ViewModel.GameId == gameId)).ToArray();

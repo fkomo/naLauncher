@@ -460,7 +460,9 @@ namespace naLauncherWPF.App.Model
 						gameImageFromCache.GetHbitmap(),
 						IntPtr.Zero,
 						Int32Rect.Empty,
-						BitmapSizeOptions.FromWidthAndHeight((int)Const.GameImageSize.Width, (int)Const.GameImageSize.Height));
+						//BitmapSizeOptions.FromWidthAndHeight((int)Const.GameImageSize.Width, (int)Const.GameImageSize.Height)
+						BitmapSizeOptions.FromWidthAndHeight((int)gameImageFromCache.Width, (int)gameImageFromCache.Height)
+						);
 				}
 
 				return null;

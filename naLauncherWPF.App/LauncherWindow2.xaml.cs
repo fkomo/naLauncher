@@ -20,7 +20,6 @@ namespace naLauncherWPF.App
 			set { this.DataContext = value; }
 		}
 
-		private Timer WindowResizeTimer = new Timer(128) { Enabled = false };
 		private Size? WindowSizeBeforeMax { get; set; } = null;
 
 		public LauncherWindow2()
@@ -28,7 +27,6 @@ namespace naLauncherWPF.App
 			Log.WriteLineDebug("LauncherWindow2()");
 
 			InitializeComponent();
-			WindowResizeTimer.Elapsed += new ElapsedEventHandler(ResizingDone);
 		}
 
 		/// <summary>point where mouse drag started</summary>
@@ -101,18 +99,6 @@ namespace naLauncherWPF.App
 			}
 		}
 
-		private void MainWindow_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
-		{
-			try
-			{
-				//DragStart = null;
-			}
-			catch (Exception ex)
-			{
-				Log.WriteLine(ex.ToString());
-			}
-		}
-
 		private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
 		{
 			Log.WriteLineDebug("LauncherWindow2.Closing()");
@@ -139,32 +125,10 @@ namespace naLauncherWPF.App
 
 		private void MainWindow_SizeChanged(object sender, SizeChangedEventArgs e)
 		{
-			try
+			Application.Current?.Dispatcher.Invoke(() =>
 			{
-				WindowResizeTimer.Stop();
-				WindowResizeTimer.Start();
-			}
-			catch (Exception ex)
-			{
-				Log.WriteLine(ex.ToString());
-			}
-		}
-
-		void ResizingDone(object sender, ElapsedEventArgs e)
-		{
-			try
-			{
-				WindowResizeTimer.Stop();
-
-				Application.Current?.Dispatcher.Invoke(() =>
-				{
-					ViewModel?.RebuildGameGrid();
-				});
-			}
-			catch (Exception ex)
-			{
-				Log.WriteLine(ex.ToString());
-			}
+				ViewModel?.RebuildGameGrid();
+			});
 		}
 
 		private void ItemsControl_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
@@ -183,7 +147,7 @@ namespace naLauncherWPF.App
 				//var realScrollableHeight = ((gameGrid.RowDefinitions.Count - 1) / 2) * (Const.GameControlSize.Height + Const.GridBorder) - GameGridScrollViewer.ViewportHeight;
 
 				// TODO BUG max scrolling height is not updated after filter change
-				// TODO scrolling with pgUp/ pgDown or ctrl+pgUp / pgDown should be checked against realScrollableHeight
+				// TODO scrolling with pgUp / pgDown or ctrl+pgUp / pgDown should be checked against realScrollableHeight
   
 				// "smooth" scrolling
   				Threading.ThreadAndForget(() =>
